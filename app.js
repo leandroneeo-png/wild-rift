@@ -1886,14 +1886,45 @@ function selectX1Champion(champ) {
   }
   if (activeBanrate) activeBanrate.textContent = champ.banRate;
 
-  // Add "Ver Build" badge
-  let buildBadge = centerCard?.querySelector(".x1-build-badge");
-  if (!buildBadge && centerCard) {
-    buildBadge = document.createElement("div");
-    buildBadge.className = "x1-build-badge";
-    buildBadge.innerHTML = `<i class="fa-solid fa-eye"></i> VER BUILD`;
-    centerCard.appendChild(buildBadge);
+  // Add bottom buttons container with Ver Build and Duo Bot (if applicable)
+  if (centerCard) {
+    const oldButtons = centerCard.querySelector(".x1-card-buttons");
+    if (oldButtons) oldButtons.remove();
+    const oldBuildBadge = centerCard.querySelector(".x1-build-badge");
+    if (oldBuildBadge) oldBuildBadge.remove();
+
+    const buttonsContainer = document.createElement("div");
+    buttonsContainer.className = "x1-card-buttons";
+
+    // Button: Ver Build
+    const buildBtn = document.createElement("button");
+    buildBtn.className = "x1-badge-btn x1-build-btn";
+    buildBtn.innerHTML = `<i class="fa-solid fa-eye"></i> VER BUILD`;
+    buildBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      showChampionDetails(champ);
+    });
+    buttonsContainer.appendChild(buildBtn);
+
+    // Button: Duo Bot (only for ADC/3 or Support/4 if they have synergy data)
+    if ((champ.lane === "3" || champ.lane === "4") && BOTLANE_DUOS[champ.slug]) {
+      const duoBtn = document.createElement("button");
+      duoBtn.className = "x1-badge-btn x1-duo-btn";
+      duoBtn.innerHTML = `<i class="fa-solid fa-user-group"></i> DUO BOT`;
+      duoBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const duoTabBtn = document.querySelector(`.tab-btn[data-tab="duos"]`);
+        if (duoTabBtn) {
+          duoTabBtn.click();
+          selectDuoChampion(champ);
+        }
+      });
+      buttonsContainer.appendChild(duoBtn);
+    }
+
+    centerCard.appendChild(buttonsContainer);
   }
+
 
   // Add VS indicator (only once)
   const arenaWrapper = document.querySelector(".x1-arena-wrapper");

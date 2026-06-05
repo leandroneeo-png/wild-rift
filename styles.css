@@ -3831,6 +3831,59 @@ footer a:hover {
   transform: translateX(-50%) translateY(-2px);
 }
 
+/* Container for bottom buttons on selected card */
+.x1-card-buttons {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+  transition: all var(--transition-smooth);
+}
+
+.x1-selected-card:hover .x1-card-buttons {
+  transform: translateX(-50%) translateY(-2px);
+}
+
+/* Base style for badge buttons */
+.x1-badge-btn {
+  background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-deep));
+  color: #000;
+  border: none;
+  padding: 6px 14px;
+  border-radius: var(--radius-lg);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 4px 12px var(--accent-gold-glow);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.x1-badge-btn:hover {
+  box-shadow: 0 6px 18px rgba(200, 170, 110, 0.5);
+  filter: brightness(1.1);
+}
+
+/* Duo Bot button specific styling */
+.x1-duo-btn {
+  background: linear-gradient(135deg, #8a2be2, #4b0082);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(138, 43, 226, 0.4);
+}
+
+.x1-duo-btn:hover {
+  box-shadow: 0 6px 18px rgba(138, 43, 226, 0.6);
+  filter: brightness(1.2);
+}
+
+
 .card-glow {
   display: none;
 }
