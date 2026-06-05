@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Cache & intermediate data files
+builds_cache.json
+inspect_out.json
+guide_details_out.json
+*.json.bak
+*.bak
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db

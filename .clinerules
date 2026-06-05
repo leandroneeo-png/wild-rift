@@ -1,0 +1,5 @@
+# Regras de Resposta (Custom Instructions)
+
+- **Idioma de Comunicação**: Comunique-se sempre em Português (do Brasil) em todas as respostas de chat com o usuário.
+- **Artefatos e Documentos**: Todos os arquivos markdown de planejamento, tarefas e relatórios criados na pasta de artefatos (como `implementation_plan.md`, `task.md`, `walkthrough.md`) devem ser escritos inteiramente em Português.
+- **Links de Arquivos**: Lembre-se de manter os links para arquivos no formato markdown com o esquema `file://` (ex: [app.js](file:///c:/Users/leand/Documents/Projetos/Wild%20Rift/app.js)).

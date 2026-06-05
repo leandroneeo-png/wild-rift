@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wild Codex - Patch 7.1F</title>
+  <meta name="description"
+    content="Estatísticas oficiais de Wild Rift do servidor chinês. Tier list, builds, runas e feitiços para o Patch 7.1F com dados Mestre+.">
+  <meta name="keywords"
+    content="Wild Rift, Tier List, Meta, Builds, Runas, Feitiços, Patch 7.1F, LoL Wild Rift, Servidor Chinês">
+  <meta name="author" content="Wild Codex">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://wildriftmeta.com.br/">
+  <!-- Google AdSense — Substituir pelo seu código após aprovação -->
+  <!-- <meta name="google-adsense-account" content="ca-pub-XXXXXXXXXXXXXXXX"> -->
+  <!-- Google Fonts: Outfit (Heading) e Inter (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <!-- FontAwesome para Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css?v=1.0.4">
+  <link rel="icon" type="image/png" href="logo-icon.png">
+</head>
+
+<body>
+
+  <!-- Background Art & FX -->
+  <div class="bg-art" id="bg-art"></div>
+  <div class="bg-overlay"></div>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+  <div class="bg-particles" id="bg-particles"></div>
+
+  <!-- Header -->
+  <header id="main-header">
+    <div class="header-container">
+      <div class="logo-area">
+        <div class="logo-icon">
+          <img src="logo-icon.png" alt="Wild Codex"
+            style="width: 100%; height: 100%; object-fit: contain; border-radius: inherit; display: block;">
+        </div>
+        <div>
+          <h1>WILD <span class="accent-text">CODEX</span></h1>
+          <p class="subtitle">
+            <span class="patch-badge"><i class="fa-solid fa-code-branch"></i> Patch 7.1F</span>
+            <span class="separator">•</span>
+            <span><i class="fa-solid fa-crown"></i> Mestre+</span>
+            <span class="separator">•</span>
+            <span><i class="fa-solid fa-globe-asia"></i> Servidor Chinês</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Navegação por Abas Principais -->
+      <nav class="main-tabs" id="main-tabs">
+        <button class="tab-btn active" data-tab="x1">X1</button>
+        <button class="tab-btn" data-tab="duos">Duo Bot</button>
+        <button class="tab-btn" data-tab="ranking">Ranking</button>
+        <button class="tab-btn" data-tab="tierlist">Tier List</button>
+        <button class="tab-btn" data-tab="itens">Itens</button>
+      </nav>
+
+      <div class="search-area">
+        <div class="search-wrapper">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="search-input" placeholder="Buscar campeão..." autocomplete="off">
+          <kbd class="search-shortcut">Ctrl+K</kbd>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- AdSense: Banner Topo (após header) -->
+  <div class="ad-container ad-banner-top" id="ad-banner-top">
+    <div class="ad-container-inner" id="ad-slot-top">
+      <!-- AdSense: Substituir pelo código do bloco de anúncios após aprovação -->
+      <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins> -->
+      <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="container">
+
+    <!-- ============================================ -->
+    <!--  Aba 0: X1 TAB (COUNTERS & DUELOS)           -->
+    <!-- ============================================ -->
+    <div class="tab-content active" id="x1-tab-content">
+      <!-- Title & Search Area inside X1 -->
+      <div class="x1-intro-container glass-card">
+        <div class="x1-intro-text">
+          <h2><i class="fa-solid fa-bolt accent-text"></i> ARENA X1</h2>
+          <p>Selecione um campeão para ver contra quem ele é forte e quais são os seus counters.</p>
+        </div>
+        <div class="x1-search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="x1-search-input" placeholder="Buscar campeão..." autocomplete="off">
+          <button id="x1-clear-btn" class="x1-action-btn" style="display: none;"><i class="fa-solid fa-rotate-left"></i>
+            Limpar</button>
+        </div>
+      </div>
+
+      <!-- Filtros de Rota + Grid Seletor de Campeões -->
+      <div class="x1-selector-wrapper glass-card">
+        <div class="x1-lane-filters" id="x1-lane-filters">
+          <button class="x1-lane-btn active" data-lane="all">
+            <i class="fa-solid fa-border-all"></i>
+            <span>Todos</span>
+          </button>
+          <button class="x1-lane-btn" data-lane="2">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Solo</span>
+          </button>
+          <button class="x1-lane-btn" data-lane="5">
+            <i class="fa-solid fa-tree"></i>
+            <span>Selva</span>
+          </button>
+          <button class="x1-lane-btn" data-lane="1">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Mid</span>
+          </button>
+          <button class="x1-lane-btn" data-lane="3">
+            <i class="fa-solid fa-crosshairs"></i>
+            <span>ADC</span>
+          </button>
+          <button class="x1-lane-btn" data-lane="4">
+            <i class="fa-solid fa-hands-holding-circle"></i>
+            <span>Suporte</span>
+          </button>
+        </div>
+        <div class="x1-grid-selector" id="x1-grid-selector">
+          <!-- Injetado dinamicamente via JS -->
+        </div>
+      </div>
+
+      <!-- Arena de Duelo -->
+      <div class="x1-arena-wrapper">
+        <!-- SVG Backdrop de Conexão com Linhas de Energia -->
+        <svg class="x1-svg-connections" id="x1-svg-connections" viewBox="0 0 1000 400" preserveAspectRatio="none">
+          <path id="x1-line-left-1" class="connection-line strong" d="" />
+          <path id="x1-line-left-2" class="connection-line strong" d="" />
+          <path id="x1-line-left-3" class="connection-line strong" d="" />
+          <path id="x1-line-right-1" class="connection-line weak" d="" />
+          <path id="x1-line-right-2" class="connection-line weak" d="" />
+          <path id="x1-line-right-3" class="connection-line weak" d="" />
+        </svg>
+
+        <div class="x1-arena" id="x1-arena">
+          <!-- Welcome State -->
+          <div class="x1-welcome-state" id="x1-welcome-state">
+            <div class="x1-welcome-pulse">
+              <i class="fa-solid fa-gamepad"></i>
+            </div>
+            <h3>AGUARDANDO SELEÇÃO</h3>
+            <p>Escolha um campeão acima para ver seus pontos fortes e fracos.</p>
+          </div>
+
+          <!-- Conteúdo da Arena -->
+          <div class="x1-arena-content" id="x1-arena-content" style="display: none;">
+
+            <!-- Coluna Esquerda: Forte Contra -->
+            <div class="x1-column x1-column-strong animate-slide-left">
+              <h3 class="column-title text-green"><i class="fa-solid fa-circle-chevron-up"></i> FORTE CONTRA</h3>
+              <div class="x1-counters-list" id="x1-list-strong">
+                <!-- 3 cards injetados via JS -->
+              </div>
+            </div>
+
+            <!-- Coluna Central: Campeão Ativo -->
+            <div class="x1-column x1-column-center">
+              <div class="x1-selected-card" id="x1-selected-card">
+                <div class="card-glow"></div>
+                <div class="card-border-ring"></div>
+                <div class="card-portrait-container">
+                  <img id="x1-selected-img" src="" alt="">
+                  <span class="card-tier-badge" id="x1-selected-tier">S+</span>
+                </div>
+                <h2 id="x1-selected-name">Aatrox</h2>
+                <div class="card-lane-badge" id="x1-selected-lane">
+                  <i class="fa-solid fa-shield-halved"></i> Solo
+                </div>
+                <div class="card-stats-row">
+                  <div>
+                    <span class="stat-label">Win Rate</span>
+                    <span class="stat-val text-green" id="x1-selected-winrate">52.3%</span>
+                  </div>
+                  <div>
+                    <span class="stat-label">Ban Rate</span>
+                    <span class="stat-val" style="color: var(--text-secondary);" id="x1-selected-banrate">12.5%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Coluna Direita: Fraco Contra -->
+            <div class="x1-column x1-column-weak animate-slide-right">
+              <h3 class="column-title text-red"><i class="fa-solid fa-circle-chevron-down"></i> FRACO CONTRA</h3>
+              <div class="x1-counters-list" id="x1-list-weak">
+                <!-- 3 cards injetados via JS -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!--  Aba 1: RANKING TAB                          -->
+    <!-- ============================================ -->
+    <div class="tab-content" id="ranking-tab-content" style="display: none;">
+      <!-- Stats Summary Bar -->
+      <div class="stats-bar" id="stats-bar">
+        <div class="stats-item active" data-filter="all">
+          <i class="fa-solid fa-users"></i>
+          <span id="stat-total">0</span>
+          <label>Campeões</label>
+        </div>
+        <div class="stats-item" data-filter="s">
+          <i class="fa-solid fa-trophy"></i>
+          <span id="stat-s-plus">0</span>
+          <label>Tier S</label>
+        </div>
+        <div class="stats-item" data-filter="high-wr">
+          <i class="fa-solid fa-chart-line"></i>
+          <span id="stat-high-wr">0</span>
+          <label>Win Rate > 52%</label>
+        </div>
+        <div class="stats-item" data-filter="high-ban">
+          <i class="fa-solid fa-ban"></i>
+          <span id="stat-high-ban">0</span>
+          <label>Ban Rate > 20%</label>
+        </div>
+      </div>
+
+      <!-- Filter and Sort Bar -->
+      <div class="control-bar">
+        <!-- Lane/Role Filters -->
+        <div class="lane-filters" id="lane-filters">
+          <button class="lane-btn active" data-lane="all" id="btn-lane-all">
+            <i class="fa-solid fa-border-all"></i>
+            <span>Todos</span>
+          </button>
+          <button class="lane-btn" data-lane="2" id="btn-lane-baron">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Solo/Barão</span>
+          </button>
+          <button class="lane-btn" data-lane="5" id="btn-lane-jungle">
+            <i class="fa-solid fa-tree"></i>
+            <span>Selva</span>
+          </button>
+          <button class="lane-btn" data-lane="1" id="btn-lane-mid">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Mid</span>
+          </button>
+          <button class="lane-btn" data-lane="3" id="btn-lane-adc">
+            <i class="fa-solid fa-crosshairs"></i>
+            <span>ADC</span>
+          </button>
+          <button class="lane-btn" data-lane="4" id="btn-lane-support">
+            <i class="fa-solid fa-hands-holding-circle"></i>
+            <span>Suporte</span>
+          </button>
+        </div>
+
+        <!-- Sorting -->
+        <div class="sort-area">
+          <label for="sort-select">Ordenar:</label>
+          <div class="select-wrapper">
+            <select id="sort-select">
+              <option value="tier-desc">Maior Tier</option>
+              <option value="winRate-desc">Maior Winrate</option>
+              <option value="pickRate-desc">Maior Pickrate</option>
+              <option value="banRate-desc">Maior Banrate</option>
+            </select>
+            <i class="fa-solid fa-chevron-down select-arrow"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ranking Table (Desktop) -->
+      <div class="ranking-table-wrapper">
+        <table class="ranking-table">
+          <thead>
+            <tr>
+              <th style="width: 70px; text-align: center;">#</th>
+              <th>CAMPEÃO</th>
+              <th style="width: 150px; text-align: center;">Vitórias</th>
+              <th style="width: 150px; text-align: center;">Presença</th>
+              <th style="width: 150px; text-align: center;">Banimento</th>
+              <th style="width: 120px; text-align: center;">VARIAÇÃO</th>
+            </tr>
+          </thead>
+          <tbody id="ranking-table-body">
+            <!-- Cards serão injetados dinamicamente via JS -->
+            <tr>
+              <td colspan="6">
+                <div class="loading-spinner">
+                  <div class="spinner-ring"></div>
+                  <p>Carregando ranking do Firestore...</p>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Ranking Mobile Cards (Mobile) -->
+      <div class="ranking-mobile-cards" id="ranking-mobile-cards">
+        <!-- Injetado dinamicamente via JS -->
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!--  Aba 2: TIER LIST TAB                        -->
+    <!-- ============================================ -->
+    <div class="tab-content" id="tierlist-tab-content" style="display: none;">
+      <!-- Lane/Role Filters para Tier List -->
+      <div class="tierlist-control-bar">
+        <div class="lane-filters" id="tierlist-lane-filters">
+          <button class="lane-btn active" data-lane="2">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Solo/Barão</span>
+          </button>
+          <button class="lane-btn" data-lane="5">
+            <i class="fa-solid fa-tree"></i>
+            <span>Selva</span>
+          </button>
+          <button class="lane-btn" data-lane="1">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>Mid</span>
+          </button>
+          <button class="lane-btn" data-lane="3">
+            <i class="fa-solid fa-crosshairs"></i>
+            <span>ADC</span>
+          </button>
+          <button class="lane-btn" data-lane="4">
+            <i class="fa-solid fa-hands-holding-circle"></i>
+            <span>Suporte</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Info Header -->
+      <div class="tierlist-header-info">
+        <div class="info-badges">
+          <span class="badge badge-guide"><i class="fa-solid fa-play"></i> Possui guia atualizado</span>
+          <span class="badge badge-patch">PATCH 7.1F</span>
+        </div>
+        <div class="tierlist-update-date">
+          Atualizado: <span id="tierlist-update-time">04/06/2026</span>
+        </div>
+      </div>
+
+      <!-- Tier Rows List -->
+      <div class="tier-rows-container" id="tier-rows-container">
+        <!-- Injetado dinamicamente via JS -->
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!--  Aba 3: ITENS TAB                            -->
+    <!-- ============================================ -->
+    <div class="tab-content" id="itens-tab-content" style="display: none;">
+      <!-- Sub-abas (Itens, Runas, Feitiços) -->
+      <div class="items-subtabs">
+        <button class="subtab-btn active" data-subtab="itens">
+          <i class="fa-solid fa-shield-halved"></i> ITENS
+        </button>
+        <button class="subtab-btn" data-subtab="runas">
+          <i class="fa-solid fa-gem"></i> RUNAS
+        </button>
+        <button class="subtab-btn" data-subtab="spells">
+          <i class="fa-solid fa-bolt"></i> FEITIÇOS
+        </button>
+      </div>
+
+      <!-- Sub-aba 1: ITENS VIEW -->
+      <div class="subtab-content active" id="subtab-itens-content">
+        <!-- Filtros de Itens -->
+        <div class="items-filters-container">
+          <div class="sort-pills" id="items-sort-pills">
+            <button class="sort-pill active" data-sort="all">Todos</button>
+            <button class="sort-pill" data-sort="fisico"><i class="fa-solid fa-fire-flame-curved"></i> Físico</button>
+            <button class="sort-pill" data-sort="magico"><i class="fa-solid fa-wand-magic-sparkles"></i> Mágico</button>
+            <button class="sort-pill" data-sort="vida"><i class="fa-solid fa-heart"></i> Vida</button>
+            <button class="sort-pill" data-sort="mana"><i class="fa-solid fa-droplet"></i> Mana</button>
+            <button class="sort-pill" data-sort="armadura"><i class="fa-solid fa-shield"></i> Armadura</button>
+            <button class="sort-pill" data-sort="res-magica"><i class="fa-solid fa-circle-nodes"></i> Res.
+              Mágica</button>
+            <button class="sort-pill" data-sort="ouro"><i class="fa-solid fa-coins"></i> Ouro</button>
+          </div>
+
+          <div class="checkbox-filters" id="items-checkbox-filters">
+            <label class="cb-label"><input type="checkbox" value="fisico"> FÍSICO</label>
+            <label class="cb-label"><input type="checkbox" value="magico"> MÁGICO</label>
+            <label class="cb-label"><input type="checkbox" value="defesa"> DEFESA</label>
+            <label class="cb-label"><input type="checkbox" value="suporte"> SUPORTE</label>
+            <label class="cb-label"><input type="checkbox" value="botas"> BOTAS</label>
+            <label class="cb-label"><input type="checkbox" value="encantamentos"> ENCANTAMENTOS</label>
+            <label class="cb-label"><input type="checkbox" value="medio"> TIER MÉDIO</label>
+            <label class="cb-label"><input type="checkbox" value="base"> TIER BASE</label>
+          </div>
+
+          <div class="items-search-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="items-search-input" placeholder="Pesquisar item...">
+          </div>
+        </div>
+
+        <div class="items-grid-container" id="items-grid-container">
+          <!-- Injetado dinamicamente via JS por categoria (FÍSICO, MÁGICO, DEFESA, etc.) -->
+        </div>
+      </div>
+
+      <!-- Sub-aba 2: RUNAS VIEW -->
+      <div class="subtab-content" id="subtab-runas-content" style="display: none;">
+        <div class="runes-tab-wrapper">
+          <div class="items-search-wrapper" style="margin-bottom: 24px;">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="runes-search-input" placeholder="Pesquisar runa...">
+          </div>
+          <div class="runes-grid" id="runes-grid">
+            <!-- Runas injetadas via JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Sub-aba 3: FEITIÇOS VIEW -->
+      <div class="subtab-content" id="subtab-spells-content" style="display: none;">
+        <div class="spells-tab-wrapper">
+          <div class="items-search-wrapper" style="margin-bottom: 24px;">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="spells-search-input" placeholder="Pesquisar feitiço...">
+          </div>
+          <div class="spells-grid" id="spells-grid">
+            <!-- Spells injetados via JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!--  Aba 4: DUO BOT (SINERGIAS & PARCEIROS)      -->
+    <!-- ============================================ -->
+    <div class="tab-content" id="duos-tab-content" style="display: none;">
+      <!-- Title & Search Area inside Duo Bot -->
+      <div class="duo-intro-container glass-card">
+        <div class="duo-intro-text">
+          <h2><i class="fa-solid fa-people-group accent-text"></i> DUO BOT</h2>
+          <p>Selecione um campeão da Bot Lane (ADC ou Suporte) para descobrir o seu melhor parceiro e dominar a rota.
+          </p>
+        </div>
+        <div class="duo-search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="duo-search-input" placeholder="Buscar campeão..." autocomplete="off">
+          <button id="duo-clear-btn" class="duo-action-btn" style="display: none;"><i
+              class="fa-solid fa-rotate-left"></i> Limpar</button>
+        </div>
+      </div>
+
+      <!-- Filtros de Rota + Grid Seletor de Campeões -->
+      <div class="duo-selector-wrapper glass-card">
+        <div class="duo-lane-filters" id="duo-lane-filters">
+          <button class="duo-lane-btn active" data-role="all">
+            <i class="fa-solid fa-border-all"></i>
+            <span>Todos</span>
+          </button>
+          <button class="duo-lane-btn" data-role="adc">
+            <i class="fa-solid fa-crosshairs"></i>
+            <span>Atiradores (ADC)</span>
+          </button>
+          <button class="duo-lane-btn" data-role="support">
+            <i class="fa-solid fa-hands-holding-circle"></i>
+            <span>Suportes</span>
+          </button>
+        </div>
+        <div class="duo-grid-selector" id="duo-grid-selector">
+          <!-- Injetado dinamicamente via JS -->
+        </div>
+      </div>
+
+      <!-- Arena de Sinergia -->
+      <div class="duo-arena-wrapper">
+        <!-- SVG Backdrop de Conexão com Linhas de Energia Sinergia -->
+        <svg class="duo-svg-connections" id="duo-svg-connections" viewBox="0 0 1000 400" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="duo-energy-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="var(--accent-gold)" />
+              <stop offset="50%" stop-color="var(--accent-gold-light)" />
+              <stop offset="100%" stop-color="var(--green)" />
+            </linearGradient>
+          </defs>
+          <path id="duo-connection-line" class="duo-connection-line" d="" />
+        </svg>
+
+        <div class="duo-arena" id="duo-arena">
+          <!-- Welcome State -->
+          <div class="duo-welcome-state" id="duo-welcome-state">
+            <div class="duo-welcome-pulse">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+            <h3>AGUARDANDO SELEÇÃO</h3>
+            <p>Escolha um campeão da Bot Lane acima para ver sua melhor sinergia e parceiro ideal.</p>
+          </div>
+
+          <!-- Conteúdo da Arena -->
+          <div class="duo-arena-content" id="duo-arena-content" style="display: none;">
+
+            <!-- Coluna Esquerda: Campeão Selecionado -->
+            <div class="duo-column duo-column-selected animate-slide-left">
+              <h3 class="column-title text-gold"><i class="fa-solid fa-user-check"></i> SELECIONADO</h3>
+              <div class="duo-selected-card" id="duo-selected-card">
+                <div class="card-glow"></div>
+                <div class="card-border-ring"></div>
+                <div class="card-portrait-container">
+                  <img id="duo-selected-img" src="" alt="">
+                  <span class="card-tier-badge" id="duo-selected-tier">S+</span>
+                </div>
+                <h2 id="duo-selected-name">Jinx</h2>
+                <div class="card-lane-badge" id="duo-selected-lane">
+                  <i class="fa-solid fa-crosshairs"></i> ADC
+                </div>
+                <div class="card-stats-row">
+                  <div>
+                    <span class="stat-label">Win Rate</span>
+                    <span class="stat-val text-green" id="duo-selected-winrate">51.5%</span>
+                  </div>
+                  <div>
+                    <span class="stat-label">Ban Rate</span>
+                    <span class="stat-val" style="color: var(--text-secondary);" id="duo-selected-banrate">10%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Coluna Central: Sinergia Score -->
+            <div class="duo-column duo-column-score">
+              <div class="duo-score-badge-wrapper">
+                <div class="duo-score-glow"></div>
+                <div class="duo-score-circle">
+                  <span class="duo-score-number" id="duo-score-number">9.9</span>
+                  <span class="duo-score-label">Sinergia</span>
+                </div>
+                <div class="duo-synergy-badge" id="duo-synergy-badge">S+ Sinergia</div>
+              </div>
+            </div>
+
+            <!-- Coluna Direita: Melhor Parceiro -->
+            <div class="duo-column duo-column-partner animate-slide-right">
+              <h3 class="column-title text-green"><i class="fa-solid fa-crown"></i> PARCEIRO RECOMENDADO</h3>
+              <div class="duo-selected-card" id="duo-partner-card">
+                <div class="card-glow"></div>
+                <div class="card-border-ring"></div>
+                <div class="card-portrait-container">
+                  <img id="duo-partner-img" src="" alt="">
+                  <span class="card-tier-badge" id="duo-partner-tier">S+</span>
+                </div>
+                <h2 id="duo-partner-name">Lulu</h2>
+                <div class="card-lane-badge" id="duo-partner-lane">
+                  <i class="fa-solid fa-hands-holding-circle"></i> Suporte
+                </div>
+                <div class="card-stats-row">
+                  <div>
+                    <span class="stat-label">Win Rate</span>
+                    <span class="stat-val text-green" id="duo-partner-winrate">52.3%</span>
+                  </div>
+                  <div>
+                    <span class="stat-label">Ban Rate</span>
+                    <span class="stat-val" style="color: var(--text-secondary);" id="duo-partner-banrate">12%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Detalhes da Sinergia e Parceiros Alternativos -->
+      <div class="duo-details-wrapper glass-card" id="duo-details-wrapper" style="display: none;">
+        <div class="duo-details-grid">
+          <!-- Por que funcionam bem? -->
+          <div class="duo-info-section duo-synergy-reason">
+            <h3><i class="fa-solid fa-circle-question text-gold"></i> Por que jogam bem juntos?</h3>
+            <p id="duo-synergy-desc-text">A Lulu potencializa a Jinx...</p>
+          </div>
+          <!-- Como jogar na rota? -->
+          <div class="duo-info-section duo-lane-tips">
+            <h3><i class="fa-solid fa-wand-magic-sparkles text-green"></i> Como jogar a rota?</h3>
+            <div class="duo-tip-box">
+              <p id="duo-synergy-tip-text">Foque em farmar seguro até ter o primeiro item fechado...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Outros parceiros alternativos -->
+        <div class="duo-alternatives-section">
+          <h3><i class="fa-solid fa-code-merge text-gold"></i> Outras Boas Sinergias</h3>
+          <div class="duo-alternatives-list" id="duo-alternatives-list">
+            <!-- Injetado dinamicamente -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- AdSense: Banner antes do Footer -->
+  <div class="ad-container ad-before-footer" id="ad-before-footer">
+    <div class="ad-container-inner" id="ad-slot-bottom">
+      <!-- AdSense: Substituir pelo código do bloco de anúncios após aprovação -->
+      <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins> -->
+      <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+    </div>
+  </div>
+
+  <!-- Footer — Expandido para compliance AdSense -->
+  <footer id="main-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- Sobre o projeto -->
+        <div class="footer-section">
+          <h4><i class="fa-solid fa-book-open"></i> Sobre o Wild Codex</h4>
+          <p>
+            O Wild Codex apresenta estatísticas oficiais extraídas do servidor chinês de Wild Rift,
+            com dados atualizados automaticamente para jogadores de elo Mestre e acima. Acompanhe tier lists,
+            builds recomendadas, runas e feitiços para dominar suas partidas ranqueadas.
+          </p>
+          <p style="margin-top: 8px;">
+            Todos os dados são extraídos de fontes públicas e atualizados regularmente para refletir o meta
+            mais recente do Patch 7.1F.
+          </p>
+        </div>
+
+        <!-- Links úteis -->
+        <div class="footer-section">
+          <h4>Links Úteis</h4>
+          <ul>
+            <li><a href="#" onclick="switchTab('ranking'); window.scrollTo(0,0); return false;">
+                <i class="fa-solid fa-chart-simple"></i> Ranking de Campeões
+              </a></li>
+            <li><a href="#" onclick="switchTab('tierlist'); window.scrollTo(0,0); return false;">
+                <i class="fa-solid fa-list-ol"></i> Tier List
+              </a></li>
+            <li><a href="#" onclick="switchTab('itens'); window.scrollTo(0,0); return false;">
+                <i class="fa-solid fa-shield-halved"></i> Itens & Runas
+              </a></li>
+            <li><a href="https://wildlegends.net" target="_blank" rel="noopener">
+                <i class="fa-solid fa-external-link"></i> WildLegends.net
+              </a></li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#" id="open-privacy-modal">
+                <i class="fa-solid fa-shield-check"></i> Política de Privacidade
+              </a></li>
+            <li><a href="#" id="open-terms-modal">
+                <i class="fa-solid fa-file-contract"></i> Termos de Uso
+              </a></li>
+            <li><a href="mailto:contato@wildriftmeta.com.br">
+                <i class="fa-solid fa-envelope"></i> Contato
+              </a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Wild Codex. Dados extraídos de
+          <a href="https://wildlegends.net" target="_blank" rel="noopener">wildlegends.net</a>.
+        </p>
+        <p class="footer-sub">
+          O Wild Codex não é afiliado, associado, autorizado, endossado por ou de alguma forma oficialmente
+          conectado com a Riot Games, Inc. ou qualquer de suas subsidiárias ou afiliadas.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Details Modal -->
+  <div class="modal" id="detail-modal">
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="close-modal-btn" id="close-modal-btn">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="modal-header">
+        <div class="modal-champ-portrait">
+          <div class="modal-portrait-ring"></div>
+          <img id="modal-champ-img" src="" alt="">
+          <span class="modal-champ-tier" id="modal-champ-tier">S+</span>
+        </div>
+        <div class="modal-champ-info">
+          <h2 id="modal-champ-name">Nome do Campeão</h2>
+          <p id="modal-champ-title">Título do Campeão</p>
+          <div class="modal-stats-row">
+            <div class="modal-stat">
+              <span class="stat-label">Winrate</span>
+              <div class="stat-bar-wrapper">
+                <span class="stat-value text-green" id="modal-winrate">50%</span>
+                <div class="stat-progress-bar">
+                  <div class="stat-progress-fill stat-progress-wr" id="modal-wr-bar"></div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-stat">
+              <span class="stat-label">Pickrate</span>
+              <div class="stat-bar-wrapper">
+                <span class="stat-value" id="modal-pickrate">5%</span>
+                <div class="stat-progress-bar">
+                  <div class="stat-progress-fill stat-progress-pr" id="modal-pr-bar"></div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-stat">
+              <span class="stat-label">Banrate</span>
+              <div class="stat-bar-wrapper">
+                <span class="stat-value text-red" id="modal-banrate">2%</span>
+                <div class="stat-progress-bar">
+                  <div class="stat-progress-fill stat-progress-br" id="modal-br-bar"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <!-- Build/Items Section -->
+        <section class="modal-section">
+          <h3><i class="fa-solid fa-shield"></i> Build Recomendada</h3>
+          <div class="items-grid" id="modal-items-grid">
+            <!-- Itens injetados via JS -->
+          </div>
+        </section>
+
+        <!-- Counters Section -->
+        <div class="rune-spell-row" id="modal-counters-section" style="display: none; margin-bottom: 0;">
+          <!-- Forte Contra -->
+          <section class="modal-section flex-1">
+            <h3><i class="fa-solid fa-circle-chevron-up" style="color: var(--green);"></i> Forte Contra</h3>
+            <div class="counters-list" id="modal-strong-against">
+              <!-- Champions injetados via JS -->
+            </div>
+          </section>
+
+          <!-- Fraco Contra -->
+          <section class="modal-section flex-1">
+            <h3><i class="fa-solid fa-circle-chevron-down" style="color: var(--red);"></i> Fraco Contra</h3>
+            <div class="counters-list" id="modal-weak-against">
+              <!-- Champions injetados via JS -->
+            </div>
+          </section>
+        </div>
+
+        <div class="modal-section-divider"></div>
+
+        <div class="rune-spell-row">
+          <!-- Runes Section -->
+          <section class="modal-section flex-1">
+            <h3><i class="fa-solid fa-gem"></i> Runas Recomendadas</h3>
+            <div class="runes-list" id="modal-runes-list">
+              <!-- Runas injetadas via JS -->
+            </div>
+          </section>
+
+          <!-- Spells Section -->
+          <section class="modal-section flex-1">
+            <h3><i class="fa-solid fa-bolt"></i> Feitiços de Invocador</h3>
+            <div class="spells-list" id="modal-spells-list">
+              <!-- Spells injetados via JS -->
+            </div>
+          </section>
+        </div>
+
+        <!-- Skill Order Section -->
+        <section class="modal-section" id="modal-skills-section" style="display: none;">
+          <h3><i class="fa-solid fa-graduation-cap"></i> Ordem de Habilidades</h3>
+          <div class="skills-sequence-wrapper">
+            <div class="skills-sequence-grid" id="modal-skills-sequence-grid">
+              <!-- Injetado via JS -->
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <!-- Privacy Policy Modal -->
+  <div class="privacy-modal" id="privacy-modal">
+    <div class="modal-overlay" id="privacy-modal-overlay"></div>
+    <div class="privacy-modal-content">
+      <button class="close-modal-btn" id="close-privacy-modal-btn">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <h2><i class="fa-solid fa-shield-check" style="color: var(--accent-gold);"></i> Política de Privacidade</h2>
+
+      <p><strong>Última atualização:</strong> 04 de junho de 2026</p>
+
+      <h3>1. Informações que Coletamos</h3>
+      <p>O Wild Codex não coleta informações pessoais identificáveis dos seus visitantes. As únicas
+        informações
+        coletadas automaticamente são:</p>
+      <ul>
+        <li>Dados de navegação anônimos (páginas visitadas, tempo na página)</li>
+        <li>Informações técnicas do dispositivo (tipo de navegador, sistema operacional, resolução de tela)</li>
+        <li>Endereço IP anonimizado para fins de segurança e análise agregada</li>
+      </ul>
+
+      <h3>2. Cookies e Tecnologias de Rastreamento</h3>
+      <p>Utilizamos cookies essenciais para o funcionamento do site e cookies de terceiros através de serviços como:</p>
+      <ul>
+        <li><strong>Google AdSense:</strong> Exibe anúncios personalizados com base nos seus interesses. Você pode
+          gerenciar
+          suas preferências de anúncios em <a href="https://www.google.com/settings/ads" target="_blank"
+            rel="noopener">Configurações de Anúncios do Google</a>.</li>
+        <li><strong>Google Analytics:</strong> Coleta dados anonimizados sobre o uso do site para melhorar a experiência
+          do usuário.</li>
+      </ul>
+
+      <h3>3. Uso das Informações</h3>
+      <p>As informações coletadas são utilizadas exclusivamente para:</p>
+      <ul>
+        <li>Melhorar a experiência do usuário no site</li>
+        <li>Analisar padrões de uso e otimizar o conteúdo</li>
+        <li>Exibir anúncios relevantes através do Google AdSense</li>
+        <li>Garantir a segurança e o funcionamento adequado do site</li>
+      </ul>
+
+      <h3>4. Compartilhamento de Dados</h3>
+      <p>Não vendemos, trocamos ou transferimos suas informações pessoais para terceiros. As únicas exceções são
+        parceiros de confiança que nos auxiliam na operação do site (como o Google), desde que concordem em manter
+        essas informações confidenciais.</p>
+
+      <h3>5. Links para Sites de Terceiros</h3>
+      <p>Este site pode conter links para sites externos como WildLegends.net, Riot Games e outros. Não somos
+        responsáveis
+        pelas práticas de privacidade desses sites e recomendamos a leitura de suas políticas de privacidade.</p>
+
+      <h3>6. Direitos do Usuário</h3>
+      <p>De acordo com a Lei Geral de Proteção de Dados (LGPD), você tem o direito de:</p>
+      <ul>
+        <li>Solicitar acesso aos seus dados pessoais</li>
+        <li>Solicitar a correção de dados incompletos ou desatualizados</li>
+        <li>Solicitar a eliminação dos seus dados pessoais</li>
+        <li>Revogar o consentimento a qualquer momento</li>
+      </ul>
+
+      <h3>7. Contato</h3>
+      <p>Para questões relacionadas à privacidade, entre em contato pelo e-mail:
+        <a href="mailto:contato@wildriftmeta.com.br">contato@wildriftmeta.com.br</a>
+      </p>
+
+      <h3>8. Alterações nesta Política</h3>
+      <p>Esta política pode ser atualizada periodicamente. Recomendamos que revise esta página regularmente para se
+        manter informado sobre como protegemos suas informações.</p>
+    </div>
+  </div>
+
+  <!-- Terms of Use Modal -->
+  <div class="privacy-modal" id="terms-modal">
+    <div class="modal-overlay" id="terms-modal-overlay"></div>
+    <div class="privacy-modal-content">
+      <button class="close-modal-btn" id="close-terms-modal-btn">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <h2><i class="fa-solid fa-file-contract" style="color: var(--accent-gold);"></i> Termos de Uso</h2>
+
+      <p><strong>Última atualização:</strong> 04 de junho de 2026</p>
+
+      <h3>1. Aceitação dos Termos</h3>
+      <p>Ao acessar e utilizar o Wild Codex, você concorda com estes Termos de Uso. Se não concordar
+        com algum destes termos, não utilize o site.</p>
+
+      <h3>2. Descrição do Serviço</h3>
+      <p>O Wild Codex é uma plataforma gratuita de estatísticas e informações sobre o jogo Wild Rift,
+        oferecendo tier lists, builds, runas e dados do meta baseados em estatísticas do servidor chinês.</p>
+
+      <h3>3. Propriedade Intelectual</h3>
+      <p>Wild Rift, League of Legends e todos os ativos relacionados são propriedade da Riot Games, Inc. Este site
+        não é afiliado, associado, autorizado, endossado por ou de alguma forma oficialmente conectado com a
+        Riot Games, Inc.</p>
+
+      <h3>4. Isenção de Responsabilidade</h3>
+      <p>As informações apresentadas são baseadas em dados públicos e podem não refletir com 100% de precisão o
+        estado atual do jogo. Não nos responsabilizamos por decisões tomadas com base nas informações deste site.</p>
+
+      <h3>5. Uso Permitido</h3>
+      <p>Você pode acessar e utilizar o conteúdo do site para fins pessoais e não comerciais. A reprodução ou
+        distribuição do conteúdo sem autorização prévia é proibida.</p>
+
+      <h3>6. Modificações</h3>
+      <p>Reservamos o direito de modificar estes Termos de Uso a qualquer momento. Alterações entram em vigor
+        imediatamente após sua publicação no site.</p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

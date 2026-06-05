@@ -1,0 +1,902 @@
+{
+  "status": 0,
+  "msg": "success",
+  "data": [
+    {
+      "heroId": "10",
+      "name": "Kayle",
+      "winRate": "55.52%",
+      "appearanceRate": "6.80%",
+      "banRate": "1.92%"
+    },
+    {
+      "heroId": "27",
+      "name": "Singed",
+      "winRate": "53.00%",
+      "appearanceRate": "1.35%",
+      "banRate": "0.57%"
+    },
+    {
+      "heroId": "87",
+      "name": "Olaf",
+      "winRate": "52.97%",
+      "appearanceRate": "1.19%",
+      "banRate": "2.22%"
+    },
+    {
+      "heroId": "62",
+      "name": "Wukong",
+      "winRate": "52.74%",
+      "appearanceRate": "2.71%",
+      "banRate": "2.59%"
+    },
+    {
+      "heroId": "67",
+      "name": "Vayne",
+      "winRate": "52.55%",
+      "appearanceRate": "2.16%",
+      "banRate": "10.22%"
+    },
+    {
+      "heroId": "98",
+      "name": "Shen",
+      "winRate": "52.43%",
+      "appearanceRate": "2.73%",
+      "banRate": "0.36%"
+    },
+    {
+      "heroId": "68",
+      "name": "Rumble",
+      "winRate": "52.13%",
+      "appearanceRate": "5.15%",
+      "banRate": "4.39%"
+    },
+    {
+      "heroId": "85",
+      "name": "Kennen",
+      "winRate": "51.82%",
+      "appearanceRate": "1.31%",
+      "banRate": "0.48%"
+    },
+    {
+      "heroId": "17",
+      "name": "Teemo",
+      "winRate": "51.54%",
+      "appearanceRate": "5.43%",
+      "banRate": "20.29%"
+    },
+    {
+      "heroId": "24",
+      "name": "Jax",
+      "winRate": "51.40%",
+      "appearanceRate": "5.98%",
+      "banRate": "1.02%"
+    },
+    {
+      "heroId": "150",
+      "name": "Gnar",
+      "winRate": "51.17%",
+      "appearanceRate": "4.09%",
+      "banRate": "2.76%"
+    },
+    {
+      "heroId": "86",
+      "name": "Garen",
+      "winRate": "51.17%",
+      "appearanceRate": "19.24%",
+      "banRate": "12.57%"
+    },
+    {
+      "heroId": "36",
+      "name": "Dr. Mundo",
+      "winRate": "50.98%",
+      "appearanceRate": "5.60%",
+      "banRate": "1.58%"
+    },
+    {
+      "heroId": "111",
+      "name": "Nautilus",
+      "winRate": "50.77%",
+      "appearanceRate": "2.44%",
+      "banRate": "3.64%"
+    },
+    {
+      "heroId": "516",
+      "name": "Ornn",
+      "winRate": "50.58%",
+      "appearanceRate": "3.19%",
+      "banRate": "0.30%"
+    },
+    {
+      "heroId": "114",
+      "name": "Fiora",
+      "winRate": "50.22%",
+      "appearanceRate": "4.28%",
+      "banRate": "1.48%"
+    },
+    {
+      "heroId": "777",
+      "name": "Yone",
+      "winRate": "50.10%",
+      "appearanceRate": "6.38%",
+      "banRate": "4.30%"
+    },
+    {
+      "heroId": "13",
+      "name": "Ryze",
+      "winRate": "50.07%",
+      "appearanceRate": "1.24%",
+      "banRate": "35.33%"
+    },
+    {
+      "heroId": "266",
+      "name": "Aatrox",
+      "winRate": "49.93%",
+      "appearanceRate": "6.06%",
+      "banRate": "24.96%"
+    },
+    {
+      "heroId": "875",
+      "name": "Sett",
+      "winRate": "49.91%",
+      "appearanceRate": "10.91%",
+      "banRate": "1.25%"
+    },
+    {
+      "heroId": "23",
+      "name": "Tryndamere",
+      "winRate": "49.86%",
+      "appearanceRate": "3.93%",
+      "banRate": "14.22%"
+    },
+    {
+      "heroId": "6",
+      "name": "Urgot",
+      "winRate": "49.27%",
+      "appearanceRate": "5.29%",
+      "banRate": "3.11%"
+    },
+    {
+      "heroId": "54",
+      "name": "Malphite",
+      "winRate": "48.69%",
+      "appearanceRate": "4.53%",
+      "banRate": "20.57%"
+    },
+    {
+      "heroId": "14",
+      "name": "Sion",
+      "winRate": "48.57%",
+      "appearanceRate": "2.88%",
+      "banRate": "0.69%"
+    },
+    {
+      "heroId": "122",
+      "name": "Darius",
+      "winRate": "48.45%",
+      "appearanceRate": "19.19%",
+      "banRate": "7.13%"
+    },
+    {
+      "heroId": "58",
+      "name": "Renekton",
+      "winRate": "48.45%",
+      "appearanceRate": "3.03%",
+      "banRate": "0.28%"
+    },
+    {
+      "heroId": "887",
+      "name": "Gwen",
+      "winRate": "48.39%",
+      "appearanceRate": "2.25%",
+      "banRate": "0.59%"
+    },
+    {
+      "heroId": "39",
+      "name": "Irelia",
+      "winRate": "48.19%",
+      "appearanceRate": "2.19%",
+      "banRate": "1.64%"
+    },
+    {
+      "heroId": "82",
+      "name": "Mordekaiser",
+      "winRate": "48.16%",
+      "appearanceRate": "7.08%",
+      "banRate": "8.30%"
+    },
+    {
+      "heroId": "157",
+      "name": "Yasuo",
+      "winRate": "47.16%",
+      "appearanceRate": "4.52%",
+      "banRate": "16.21%"
+    },
+    {
+      "heroId": "8",
+      "name": "Vladimir",
+      "winRate": "46.88%",
+      "appearanceRate": "1.42%",
+      "banRate": "6.42%"
+    },
+    {
+      "heroId": "126",
+      "name": "Jayce",
+      "winRate": "46.17%",
+      "appearanceRate": "1.65%",
+      "banRate": "0.12%"
+    },
+    {
+      "heroId": "32",
+      "name": "Amumu",
+      "winRate": "57.64%",
+      "appearanceRate": "6.26%",
+      "banRate": "1.85%"
+    },
+    {
+      "heroId": "25",
+      "name": "Morgana",
+      "winRate": "53.93%",
+      "appearanceRate": "1.91%",
+      "banRate": "30.10%"
+    },
+    {
+      "heroId": "33",
+      "name": "Rammus",
+      "winRate": "53.34%",
+      "appearanceRate": "2.63%",
+      "banRate": "0.74%"
+    },
+    {
+      "heroId": "876",
+      "name": "Lillia",
+      "winRate": "52.50%",
+      "appearanceRate": "3.46%",
+      "banRate": "1.96%"
+    },
+    {
+      "heroId": "9",
+      "name": "Fiddlesticks",
+      "winRate": "52.22%",
+      "appearanceRate": "3.72%",
+      "banRate": "1.46%"
+    },
+    {
+      "heroId": "245",
+      "name": "Ekko",
+      "winRate": "52.12%",
+      "appearanceRate": "3.35%",
+      "banRate": "0.84%"
+    },
+    {
+      "heroId": "59",
+      "name": "Jarvan IV",
+      "winRate": "51.92%",
+      "appearanceRate": "7.87%",
+      "banRate": "0.69%"
+    },
+    {
+      "heroId": "20",
+      "name": "Nunu e Willump",
+      "winRate": "51.65%",
+      "appearanceRate": "1.98%",
+      "banRate": "0.11%"
+    },
+    {
+      "heroId": "203",
+      "name": "Kindred",
+      "winRate": "51.04%",
+      "appearanceRate": "1.95%",
+      "banRate": "0.20%"
+    },
+    {
+      "heroId": "511",
+      "name": "Graves",
+      "winRate": "51.01%",
+      "appearanceRate": "8.24%",
+      "banRate": "0.59%"
+    },
+    {
+      "heroId": "131",
+      "name": "Diana",
+      "winRate": "50.60%",
+      "appearanceRate": "3.28%",
+      "banRate": "0.93%"
+    },
+    {
+      "heroId": "5",
+      "name": "Xin Zhao",
+      "winRate": "49.90%",
+      "appearanceRate": "10.16%",
+      "banRate": "1.59%"
+    },
+    {
+      "heroId": "80",
+      "name": "Pantheon",
+      "winRate": "49.84%",
+      "appearanceRate": "7.31%",
+      "banRate": "3.32%"
+    },
+    {
+      "heroId": "28",
+      "name": "Evelynn",
+      "winRate": "49.39%",
+      "appearanceRate": "2.89%",
+      "banRate": "0.99%"
+    },
+    {
+      "heroId": "79",
+      "name": "Gragas",
+      "winRate": "49.38%",
+      "appearanceRate": "1.18%",
+      "banRate": "0.07%"
+    },
+    {
+      "heroId": "141",
+      "name": "Kayn",
+      "winRate": "49.38%",
+      "appearanceRate": "3.50%",
+      "banRate": "0.29%"
+    },
+    {
+      "heroId": "254",
+      "name": "Vi",
+      "winRate": "49.27%",
+      "appearanceRate": "6.39%",
+      "banRate": "0.38%"
+    },
+    {
+      "heroId": "238",
+      "name": "Zed",
+      "winRate": "49.12%",
+      "appearanceRate": "3.56%",
+      "banRate": "4.15%"
+    },
+    {
+      "heroId": "11",
+      "name": "Master Yi",
+      "winRate": "48.92%",
+      "appearanceRate": "14.54%",
+      "banRate": "35.45%"
+    },
+    {
+      "heroId": "120",
+      "name": "Hecarim",
+      "winRate": "48.65%",
+      "appearanceRate": "2.18%",
+      "banRate": "0.40%"
+    },
+    {
+      "heroId": "234",
+      "name": "Viego",
+      "winRate": "48.27%",
+      "appearanceRate": "4.70%",
+      "banRate": "2.15%"
+    },
+    {
+      "heroId": "64",
+      "name": "Lee Sin",
+      "winRate": "47.51%",
+      "appearanceRate": "15.15%",
+      "banRate": "7.49%"
+    },
+    {
+      "heroId": "103",
+      "name": "Ahri",
+      "winRate": "52.68%",
+      "appearanceRate": "9.15%",
+      "banRate": "0.49%"
+    },
+    {
+      "heroId": "143",
+      "name": "Zyra",
+      "winRate": "52.45%",
+      "appearanceRate": "3.72%",
+      "banRate": "52.39%"
+    },
+    {
+      "heroId": "99",
+      "name": "Lux",
+      "winRate": "51.97%",
+      "appearanceRate": "7.89%",
+      "banRate": "40.90%"
+    },
+    {
+      "heroId": "50",
+      "name": "Swain",
+      "winRate": "51.87%",
+      "appearanceRate": "5.33%",
+      "banRate": "8.92%"
+    },
+    {
+      "heroId": "61",
+      "name": "Orianna",
+      "winRate": "50.90%",
+      "appearanceRate": "4.54%",
+      "banRate": "0.54%"
+    },
+    {
+      "heroId": "63",
+      "name": "Brand",
+      "winRate": "50.87%",
+      "appearanceRate": "9.55%",
+      "banRate": "5.56%"
+    },
+    {
+      "heroId": "3",
+      "name": "Galio",
+      "winRate": "50.12%",
+      "appearanceRate": "10.10%",
+      "banRate": "2.40%"
+    },
+    {
+      "heroId": "4",
+      "name": "Twisted Fate",
+      "winRate": "50.01%",
+      "appearanceRate": "4.54%",
+      "banRate": "0.21%"
+    },
+    {
+      "heroId": "142",
+      "name": "Zoe",
+      "winRate": "49.96%",
+      "appearanceRate": "1.50%",
+      "banRate": "1.93%"
+    },
+    {
+      "heroId": "136",
+      "name": "Aurelion Sol",
+      "winRate": "49.12%",
+      "appearanceRate": "8.02%",
+      "banRate": "5.87%"
+    },
+    {
+      "heroId": "18",
+      "name": "Tristana",
+      "winRate": "48.01%",
+      "appearanceRate": "1.09%",
+      "banRate": "0.27%"
+    },
+    {
+      "heroId": "42",
+      "name": "Corki",
+      "winRate": "47.59%",
+      "appearanceRate": "1.34%",
+      "banRate": "0.52%"
+    },
+    {
+      "heroId": "55",
+      "name": "Katarina",
+      "winRate": "47.52%",
+      "appearanceRate": "2.01%",
+      "banRate": "0.55%"
+    },
+    {
+      "heroId": "81",
+      "name": "Ezreal",
+      "winRate": "46.89%",
+      "appearanceRate": "1.16%",
+      "banRate": "0.79%"
+    },
+    {
+      "heroId": "147",
+      "name": "Seraphine",
+      "winRate": "46.58%",
+      "appearanceRate": "1.08%",
+      "banRate": "5.00%"
+    },
+    {
+      "heroId": "84",
+      "name": "Akali",
+      "winRate": "45.67%",
+      "appearanceRate": "2.87%",
+      "banRate": "0.48%"
+    },
+    {
+      "heroId": "236",
+      "name": "Lucian",
+      "winRate": "45.66%",
+      "appearanceRate": "1.39%",
+      "banRate": "0.12%"
+    },
+    {
+      "heroId": "21",
+      "name": "Miss Fortune",
+      "winRate": "52.18%",
+      "appearanceRate": "23.28%",
+      "banRate": "2.42%"
+    },
+    {
+      "heroId": "15",
+      "name": "Sivir",
+      "winRate": "51.99%",
+      "appearanceRate": "7.57%",
+      "banRate": "0.35%"
+    },
+    {
+      "heroId": "22",
+      "name": "Ashe",
+      "winRate": "50.91%",
+      "appearanceRate": "6.50%",
+      "banRate": "0.13%"
+    },
+    {
+      "heroId": "202",
+      "name": "Jhin",
+      "winRate": "50.91%",
+      "appearanceRate": "10.24%",
+      "banRate": "0.17%"
+    },
+    {
+      "heroId": "110",
+      "name": "Varus",
+      "winRate": "50.75%",
+      "appearanceRate": "15.96%",
+      "banRate": "4.31%"
+    },
+    {
+      "heroId": "222",
+      "name": "Jinx",
+      "winRate": "50.69%",
+      "appearanceRate": "12.07%",
+      "banRate": "0.36%"
+    },
+    {
+      "heroId": "498",
+      "name": "Xayah",
+      "winRate": "50.25%",
+      "appearanceRate": "7.04%",
+      "banRate": "0.32%"
+    },
+    {
+      "heroId": "29",
+      "name": "Twitch",
+      "winRate": "49.61%",
+      "appearanceRate": "2.24%",
+      "banRate": "0.15%"
+    },
+    {
+      "heroId": "51",
+      "name": "Caitlyn",
+      "winRate": "49.42%",
+      "appearanceRate": "22.05%",
+      "banRate": "2.74%"
+    },
+    {
+      "heroId": "360",
+      "name": "Samira",
+      "winRate": "48.59%",
+      "appearanceRate": "12.38%",
+      "banRate": "7.78%"
+    },
+    {
+      "heroId": "119",
+      "name": "Draven",
+      "winRate": "47.32%",
+      "appearanceRate": "8.61%",
+      "banRate": "4.67%"
+    },
+    {
+      "heroId": "145",
+      "name": "KaiSa",
+      "winRate": "46.84%",
+      "appearanceRate": "13.01%",
+      "banRate": "0.82%"
+    },
+    {
+      "heroId": "429",
+      "name": "Kalista",
+      "winRate": "46.35%",
+      "appearanceRate": "2.50%",
+      "banRate": "1.41%"
+    },
+    {
+      "heroId": "53",
+      "name": "Blitzcrank",
+      "winRate": "52.05%",
+      "appearanceRate": "10.95%",
+      "banRate": "5.39%"
+    },
+    {
+      "heroId": "43",
+      "name": "Karma",
+      "winRate": "51.68%",
+      "appearanceRate": "7.29%",
+      "banRate": "1.08%"
+    },
+    {
+      "heroId": "57",
+      "name": "Maokai",
+      "winRate": "51.45%",
+      "appearanceRate": "5.02%",
+      "banRate": "1.07%"
+    },
+    {
+      "heroId": "16",
+      "name": "Soraka",
+      "winRate": "51.40%",
+      "appearanceRate": "5.43%",
+      "banRate": "2.83%"
+    },
+    {
+      "heroId": "555",
+      "name": "Pyke",
+      "winRate": "51.12%",
+      "appearanceRate": "4.12%",
+      "banRate": "2.76%"
+    },
+    {
+      "heroId": "267",
+      "name": "Nami",
+      "winRate": "50.27%",
+      "appearanceRate": "5.18%",
+      "banRate": "0.17%"
+    },
+    {
+      "heroId": "901",
+      "name": "Milio",
+      "winRate": "50.25%",
+      "appearanceRate": "2.58%",
+      "banRate": "3.96%"
+    },
+    {
+      "heroId": "40",
+      "name": "Janna",
+      "winRate": "50.06%",
+      "appearanceRate": "2.18%",
+      "banRate": "0.17%"
+    },
+    {
+      "heroId": "201",
+      "name": "Braum",
+      "winRate": "49.32%",
+      "appearanceRate": "3.25%",
+      "banRate": "0.63%"
+    },
+    {
+      "heroId": "89",
+      "name": "Leona",
+      "winRate": "49.23%",
+      "appearanceRate": "11.07%",
+      "banRate": "8.04%"
+    },
+    {
+      "heroId": "12",
+      "name": "Alistar",
+      "winRate": "48.95%",
+      "appearanceRate": "5.60%",
+      "banRate": "0.86%"
+    },
+    {
+      "heroId": "117",
+      "name": "Lulu",
+      "winRate": "48.86%",
+      "appearanceRate": "8.71%",
+      "banRate": "8.33%"
+    },
+    {
+      "heroId": "497",
+      "name": "Rakan",
+      "winRate": "48.69%",
+      "appearanceRate": "3.04%",
+      "banRate": "0.35%"
+    },
+    {
+      "heroId": "350",
+      "name": "Yuumi",
+      "winRate": "48.18%",
+      "appearanceRate": "8.08%",
+      "banRate": "49.64%"
+    },
+    {
+      "heroId": "235",
+      "name": "Senna",
+      "winRate": "48.14%",
+      "appearanceRate": "3.64%",
+      "banRate": "0.32%"
+    },
+    {
+      "heroId": "412",
+      "name": "Thresh",
+      "winRate": "48.05%",
+      "appearanceRate": "11.56%",
+      "banRate": "5.61%"
+    },
+    {
+      "heroId": "2",
+      "name": "Olaf",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "26",
+      "name": "Zilean",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "31",
+      "name": "ChoGath",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "34",
+      "name": "Anivia",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "35",
+      "name": "Shaco",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "41",
+      "name": "Gangplank",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "60",
+      "name": "Elise",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "76",
+      "name": "Nidalee",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "104",
+      "name": "Graves",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "154",
+      "name": "Zac",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "200",
+      "name": "BelVeth",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "223",
+      "name": "Tahm Kench",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "240",
+      "name": "Kled",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "246",
+      "name": "Qiyana",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "268",
+      "name": "Azir",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "420",
+      "name": "Illaoi",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "421",
+      "name": "RekSai",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "427",
+      "name": "Ivern",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "432",
+      "name": "Bard",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "517",
+      "name": "Sylas",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "518",
+      "name": "Neeko",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "526",
+      "name": "Rell",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "888",
+      "name": "Reni",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "895",
+      "name": "Nilah",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "897",
+      "name": "KSante",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "902",
+      "name": "Briar",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "910",
+      "name": "Hwei",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    },
+    {
+      "heroId": "950",
+      "name": "Naafiri",
+      "winRate": "50.00%",
+      "appearanceRate": "5.00%",
+      "banRate": "1.00%"
+    }
+  ]
+}

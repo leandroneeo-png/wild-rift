@@ -1,0 +1,950 @@
+[
+  {
+    "ID_Chines": 31,
+    "Nome_Chines": "科加斯",
+    "Nome_PTBR": "ChoGath",
+    "Slug_Url": "chogath"
+  },
+  {
+    "ID_Chines": 34,
+    "Nome_Chines": "艾尼维亚",
+    "Nome_PTBR": "Anivia",
+    "Slug_Url": "anivia"
+  },
+  {
+    "ID_Chines": 35,
+    "Nome_Chines": "萨科",
+    "Nome_PTBR": "Shaco",
+    "Slug_Url": "shaco"
+  },
+  {
+    "ID_Chines": 41,
+    "Nome_Chines": "普朗克",
+    "Nome_PTBR": "Gangplank",
+    "Slug_Url": "gangplank"
+  },
+  {
+    "ID_Chines": 60,
+    "Nome_Chines": "伊莉丝",
+    "Nome_PTBR": "Elise",
+    "Slug_Url": "elise"
+  },
+  {
+    "ID_Chines": 154,
+    "Nome_Chines": "扎克",
+    "Nome_PTBR": "Zac",
+    "Slug_Url": "zac"
+  },
+  {
+    "ID_Chines": 200,
+    "Nome_Chines": "卑尔维斯",
+    "Nome_PTBR": "BelVeth",
+    "Slug_Url": "belveth"
+  },
+  {
+    "ID_Chines": 223,
+    "Nome_Chines": "塔姆",
+    "Nome_PTBR": "Tahm Kench",
+    "Slug_Url": "tahm-kench"
+  },
+  {
+    "ID_Chines": 240,
+    "Nome_Chines": "克烈",
+    "Nome_PTBR": "Kled",
+    "Slug_Url": "kled"
+  },
+  {
+    "ID_Chines": 246,
+    "Nome_Chines": "奇亚娜",
+    "Nome_PTBR": "Qiyana",
+    "Slug_Url": "qiyana"
+  },
+  {
+    "ID_Chines": 268,
+    "Nome_Chines": "阿兹尔",
+    "Nome_PTBR": "Azir",
+    "Slug_Url": "azir"
+  },
+  {
+    "ID_Chines": 420,
+    "Nome_Chines": "俄洛伊",
+    "Nome_PTBR": "Illaoi",
+    "Slug_Url": "illaoi"
+  },
+  {
+    "ID_Chines": 421,
+    "Nome_Chines": "雷克塞",
+    "Nome_PTBR": "RekSai",
+    "Slug_Url": "reksai"
+  },
+  {
+    "ID_Chines": 427,
+    "Nome_Chines": "艾翁",
+    "Nome_PTBR": "Ivern",
+    "Slug_Url": "ivern"
+  },
+  {
+    "ID_Chines": 517,
+    "Nome_Chines": "塞拉斯",
+    "Nome_PTBR": "Sylas",
+    "Slug_Url": "sylas"
+  },
+  {
+    "ID_Chines": 518,
+    "Nome_Chines": "妮蔻",
+    "Nome_PTBR": "Neeko",
+    "Slug_Url": "neeko"
+  },
+  {
+    "ID_Chines": 888,
+    "Nome_Chines": "雷妮",
+    "Nome_PTBR": "Reni",
+    "Slug_Url": "reni"
+  },
+  {
+    "ID_Chines": 902,
+    "Nome_Chines": "贝蕾亚",
+    "Nome_PTBR": "Briar",
+    "Slug_Url": "briar"
+  },
+  {
+    "ID_Chines": 910,
+    "Nome_Chines": "彗",
+    "Nome_PTBR": "Hwei",
+    "Slug_Url": "hwei"
+  },
+  {
+    "ID_Chines": 950,
+    "Nome_Chines": "纳菲里",
+    "Nome_PTBR": "Naafiri",
+    "Slug_Url": "naafiri"
+  },
+  {
+    "ID_Chines": 10001,
+    "Nome_Chines": "盖伦",
+    "Nome_PTBR": "Garen",
+    "Slug_Url": "garen"
+  },
+  {
+    "ID_Chines": 10002,
+    "Nome_Chines": "亚托克斯",
+    "Nome_PTBR": "Aatrox",
+    "Slug_Url": "aatrox"
+  },
+  {
+    "ID_Chines": 10003,
+    "Nome_Chines": "拉克丝",
+    "Nome_PTBR": "Lux",
+    "Slug_Url": "lux"
+  },
+  {
+    "ID_Chines": 10004,
+    "Nome_Chines": "阿木木",
+    "Nome_PTBR": "Amumu",
+    "Slug_Url": "amumu"
+  },
+  {
+    "ID_Chines": 10005,
+    "Nome_Chines": "凯隐",
+    "Nome_PTBR": "Kayn",
+    "Slug_Url": "kayn"
+  },
+  {
+    "ID_Chines": 10006,
+    "Nome_Chines": "雷恩加尔",
+    "Nome_PTBR": "Rengar",
+    "Slug_Url": "rengar"
+  },
+  {
+    "ID_Chines": 10007,
+    "Nome_Chines": "卡尔玛",
+    "Nome_PTBR": "Karma",
+    "Slug_Url": "karma"
+  },
+  {
+    "ID_Chines": 10008,
+    "Nome_Chines": "努努和威朗普",
+    "Nome_PTBR": "Nunu e Willump",
+    "Slug_Url": "nunu-willump"
+  },
+  {
+    "ID_Chines": 10009,
+    "Nome_Chines": "孙悟空",
+    "Nome_PTBR": "Wukong",
+    "Slug_Url": "wukong"
+  },
+  {
+    "ID_Chines": 10010,
+    "Nome_Chines": "薇恩",
+    "Nome_PTBR": "Vayne",
+    "Slug_Url": "vayne"
+  },
+  {
+    "ID_Chines": 10011,
+    "Nome_Chines": "艾克",
+    "Nome_PTBR": "Ekko",
+    "Slug_Url": "ekko"
+  },
+  {
+    "ID_Chines": 10012,
+    "Nome_Chines": "奥莉安娜",
+    "Nome_PTBR": "Orianna",
+    "Slug_Url": "orianna"
+  },
+  {
+    "ID_Chines": 10013,
+    "Nome_Chines": "黛安娜",
+    "Nome_PTBR": "Diana",
+    "Slug_Url": "diana"
+  },
+  {
+    "ID_Chines": 10014,
+    "Nome_Chines": "佐伊",
+    "Nome_PTBR": "Zoe",
+    "Slug_Url": "zoe"
+  },
+  {
+    "ID_Chines": 10015,
+    "Nome_Chines": "泰达米尔",
+    "Nome_PTBR": "Tryndamere",
+    "Slug_Url": "tryndamere"
+  },
+  {
+    "ID_Chines": 10016,
+    "Nome_Chines": "赵信",
+    "Nome_PTBR": "Xin Zhao",
+    "Slug_Url": "xin-zhao"
+  },
+  {
+    "ID_Chines": 10017,
+    "Nome_Chines": "卡兹克",
+    "Nome_PTBR": "Kha'Zix",
+    "Slug_Url": "khazix"
+  },
+  {
+    "ID_Chines": 10018,
+    "Nome_Chines": "金克丝",
+    "Nome_PTBR": "Jinx",
+    "Slug_Url": "jinx"
+  },
+  {
+    "ID_Chines": 10019,
+    "Nome_Chines": "赫卡里姆",
+    "Nome_PTBR": "Hecarim",
+    "Slug_Url": "hecarim"
+  },
+  {
+    "ID_Chines": 10020,
+    "Nome_Chines": "悠米",
+    "Nome_PTBR": "Yuumi",
+    "Slug_Url": "yuumi"
+  },
+  {
+    "ID_Chines": 10021,
+    "Nome_Chines": "布隆",
+    "Nome_PTBR": "Braum",
+    "Slug_Url": "braum"
+  },
+  {
+    "ID_Chines": 10022,
+    "Nome_Chines": "烬",
+    "Nome_PTBR": "Jhin",
+    "Slug_Url": "jhin"
+  },
+  {
+    "ID_Chines": 10023,
+    "Nome_Chines": "奥瑞利安·索尔",
+    "Nome_PTBR": "Aurelion Sol",
+    "Slug_Url": "aurelion-sol"
+  },
+  {
+    "ID_Chines": 10024,
+    "Nome_Chines": "辛德拉",
+    "Nome_PTBR": "Syndra",
+    "Slug_Url": "syndra"
+  },
+  {
+    "ID_Chines": 10025,
+    "Nome_Chines": "崔斯特",
+    "Nome_PTBR": "Twisted Fate",
+    "Slug_Url": "twisted-fate"
+  },
+  {
+    "ID_Chines": 10026,
+    "Nome_Chines": "卡莎",
+    "Nome_PTBR": "KaiSa",
+    "Slug_Url": "kaisa"
+  },
+  {
+    "ID_Chines": 10027,
+    "Nome_Chines": "尼菈",
+    "Nome_PTBR": "Nilah",
+    "Slug_Url": "nilah"
+  },
+  {
+    "ID_Chines": 10028,
+    "Nome_Chines": "莫甘娜",
+    "Nome_PTBR": "Morgana",
+    "Slug_Url": "morgana"
+  },
+  {
+    "ID_Chines": 10029,
+    "Nome_Chines": "伊芙琳",
+    "Nome_PTBR": "Evelynn",
+    "Slug_Url": "evelynn"
+  },
+  {
+    "ID_Chines": 10030,
+    "Nome_Chines": "潘森",
+    "Nome_PTBR": "Pantheon",
+    "Slug_Url": "pantheon"
+  },
+  {
+    "ID_Chines": 10031,
+    "Nome_Chines": "阿卡丽",
+    "Nome_PTBR": "Akali",
+    "Slug_Url": "akali"
+  },
+  {
+    "ID_Chines": 10032,
+    "Nome_Chines": "菲奥娜",
+    "Nome_PTBR": "Fiora",
+    "Slug_Url": "fiora"
+  },
+  {
+    "ID_Chines": 10033,
+    "Nome_Chines": "布里茨",
+    "Nome_PTBR": "Blitzcrank",
+    "Slug_Url": "blitzcrank"
+  },
+  {
+    "ID_Chines": 10034,
+    "Nome_Chines": "萨勒芬妮",
+    "Nome_PTBR": "Seraphine",
+    "Slug_Url": "seraphine"
+  },
+  {
+    "ID_Chines": 10035,
+    "Nome_Chines": "莫德凯撒",
+    "Nome_PTBR": "Mordekaiser",
+    "Slug_Url": "mordekaiser"
+  },
+  {
+    "ID_Chines": 10036,
+    "Nome_Chines": "安妮",
+    "Nome_PTBR": "Annie",
+    "Slug_Url": "annie"
+  },
+  {
+    "ID_Chines": 10037,
+    "Nome_Chines": "亚索",
+    "Nome_PTBR": "Yasuo",
+    "Slug_Url": "yasuo"
+  },
+  {
+    "ID_Chines": 10038,
+    "Nome_Chines": "阿狸",
+    "Nome_PTBR": "Ahri",
+    "Slug_Url": "ahri"
+  },
+  {
+    "ID_Chines": 10039,
+    "Nome_Chines": "劫",
+    "Nome_PTBR": "Zed",
+    "Slug_Url": "zed"
+  },
+  {
+    "ID_Chines": 10040,
+    "Nome_Chines": "贾克斯",
+    "Nome_PTBR": "Jax",
+    "Slug_Url": "jax"
+  },
+  {
+    "ID_Chines": 10041,
+    "Nome_Chines": "凯尔",
+    "Nome_PTBR": "Kayle",
+    "Slug_Url": "kayle"
+  },
+  {
+    "ID_Chines": 10042,
+    "Nome_Chines": "卢锡安",
+    "Nome_PTBR": "Lucian",
+    "Slug_Url": "lucian"
+  },
+  {
+    "ID_Chines": 10044,
+    "Nome_Chines": "蕾欧娜",
+    "Nome_PTBR": "Leona",
+    "Slug_Url": "leona"
+  },
+  {
+    "ID_Chines": 10045,
+    "Nome_Chines": "崔丝塔娜",
+    "Nome_PTBR": "Tristana",
+    "Slug_Url": "tristana"
+  },
+  {
+    "ID_Chines": 10046,
+    "Nome_Chines": "提莫",
+    "Nome_PTBR": "Teemo",
+    "Slug_Url": "teemo"
+  },
+  {
+    "ID_Chines": 10047,
+    "Nome_Chines": "娑娜",
+    "Nome_PTBR": "Sona",
+    "Slug_Url": "sona"
+  },
+  {
+    "ID_Chines": 10048,
+    "Nome_Chines": "璐璐",
+    "Nome_PTBR": "Lulu",
+    "Slug_Url": "lulu"
+  },
+  {
+    "ID_Chines": 10049,
+    "Nome_Chines": "希瓦娜",
+    "Nome_PTBR": "Shyvana",
+    "Slug_Url": "shyvana"
+  },
+  {
+    "ID_Chines": 10050,
+    "Nome_Chines": "蔚",
+    "Nome_PTBR": "Vi",
+    "Slug_Url": "vi"
+  },
+  {
+    "ID_Chines": 10051,
+    "Nome_Chines": "霞",
+    "Nome_PTBR": "Xayah",
+    "Slug_Url": "xayah"
+  },
+  {
+    "ID_Chines": 10052,
+    "Nome_Chines": "洛",
+    "Nome_PTBR": "Rakan",
+    "Slug_Url": "rakan"
+  },
+  {
+    "ID_Chines": 10053,
+    "Nome_Chines": "图奇",
+    "Nome_PTBR": "Twitch",
+    "Slug_Url": "twitch"
+  },
+  {
+    "ID_Chines": 10054,
+    "Nome_Chines": "格温",
+    "Nome_PTBR": "Gwen",
+    "Slug_Url": "gwen"
+  },
+  {
+    "ID_Chines": 10055,
+    "Nome_Chines": "卡蜜尔",
+    "Nome_PTBR": "Camille",
+    "Slug_Url": "camille"
+  },
+  {
+    "ID_Chines": 10056,
+    "Nome_Chines": "嘉文四世",
+    "Nome_PTBR": "Jarvan IV",
+    "Slug_Url": "jarvan-iv"
+  },
+  {
+    "ID_Chines": 10057,
+    "Nome_Chines": "佛耶戈",
+    "Nome_PTBR": "Viego",
+    "Slug_Url": "viego"
+  },
+  {
+    "ID_Chines": 10058,
+    "Nome_Chines": "沃利贝尔",
+    "Nome_PTBR": "Volibear",
+    "Slug_Url": "volibear"
+  },
+  {
+    "ID_Chines": 10059,
+    "Nome_Chines": "李青",
+    "Nome_PTBR": "Lee Sin",
+    "Slug_Url": "lee-sin"
+  },
+  {
+    "ID_Chines": 10060,
+    "Nome_Chines": "库奇",
+    "Nome_PTBR": "Corki",
+    "Slug_Url": "corki"
+  },
+  {
+    "ID_Chines": 10061,
+    "Nome_Chines": "凯南",
+    "Nome_PTBR": "Kennen",
+    "Slug_Url": "kennen"
+  },
+  {
+    "ID_Chines": 10062,
+    "Nome_Chines": "蒙多医生",
+    "Nome_PTBR": "Dr. Mundo",
+    "Slug_Url": "dr-mundo"
+  },
+  {
+    "ID_Chines": 10063,
+    "Nome_Chines": "婕拉",
+    "Nome_PTBR": "Zyra",
+    "Slug_Url": "zyra"
+  },
+  {
+    "ID_Chines": 10064,
+    "Nome_Chines": "拉莫斯",
+    "Nome_PTBR": "Rammus",
+    "Slug_Url": "rammus"
+  },
+  {
+    "ID_Chines": 10065,
+    "Nome_Chines": "内瑟斯",
+    "Nome_PTBR": "Nasus",
+    "Slug_Url": "nasus"
+  },
+  {
+    "ID_Chines": 10066,
+    "Nome_Chines": "厄运小姐",
+    "Nome_PTBR": "Miss Fortune",
+    "Slug_Url": "miss-fortune"
+  },
+  {
+    "ID_Chines": 10067,
+    "Nome_Chines": "泽丽",
+    "Nome_PTBR": "Zeri",
+    "Slug_Url": "zeri"
+  },
+  {
+    "ID_Chines": 10068,
+    "Nome_Chines": "瑟提",
+    "Nome_PTBR": "Sett",
+    "Slug_Url": "sett"
+  },
+  {
+    "ID_Chines": 10069,
+    "Nome_Chines": "永恩",
+    "Nome_PTBR": "Yone",
+    "Slug_Url": "yone"
+  },
+  {
+    "ID_Chines": 10070,
+    "Nome_Chines": "易",
+    "Nome_PTBR": "Master Yi",
+    "Slug_Url": "master-yi"
+  },
+  {
+    "ID_Chines": 10071,
+    "Nome_Chines": "德莱厄斯",
+    "Nome_PTBR": "Darius",
+    "Slug_Url": "darius"
+  },
+  {
+    "ID_Chines": 10072,
+    "Nome_Chines": "格雷福斯",
+    "Nome_PTBR": "Graves",
+    "Slug_Url": "graves"
+  },
+  {
+    "ID_Chines": 10073,
+    "Nome_Chines": "千珏",
+    "Nome_PTBR": "Kindred",
+    "Slug_Url": "kindred"
+  },
+  {
+    "ID_Chines": 10074,
+    "Nome_Chines": "茂凯",
+    "Nome_PTBR": "Maokai",
+    "Slug_Url": "maokai"
+  },
+  {
+    "ID_Chines": 10075,
+    "Nome_Chines": "迦娜",
+    "Nome_PTBR": "Janna",
+    "Slug_Url": "janna"
+  },
+  {
+    "ID_Chines": 10076,
+    "Nome_Chines": "波比",
+    "Nome_PTBR": "Poppy",
+    "Slug_Url": "poppy"
+  },
+  {
+    "ID_Chines": 10077,
+    "Nome_Chines": "德莱文",
+    "Nome_PTBR": "Draven",
+    "Slug_Url": "draven"
+  },
+  {
+    "ID_Chines": 10078,
+    "Nome_Chines": "纳尔",
+    "Nome_PTBR": "Gnar",
+    "Slug_Url": "gnar"
+  },
+  {
+    "ID_Chines": 10079,
+    "Nome_Chines": "艾希",
+    "Nome_PTBR": "Ashe",
+    "Slug_Url": "ashe"
+  },
+  {
+    "ID_Chines": 10080,
+    "Nome_Chines": "基兰",
+    "Nome_PTBR": "Zilean",
+    "Slug_Url": "zilean"
+  },
+  {
+    "ID_Chines": 10081,
+    "Nome_Chines": "阿利斯塔",
+    "Nome_PTBR": "Alistar",
+    "Slug_Url": "alistar"
+  },
+  {
+    "ID_Chines": 10082,
+    "Nome_Chines": "安蓓萨",
+    "Nome_PTBR": "Ambessa",
+    "Slug_Url": "ambessa"
+  },
+  {
+    "ID_Chines": 10083,
+    "Nome_Chines": "墨菲特",
+    "Nome_PTBR": "Malphite",
+    "Slug_Url": "malphite"
+  },
+  {
+    "ID_Chines": 10084,
+    "Nome_Chines": "奈德丽",
+    "Nome_PTBR": "Nidalee",
+    "Slug_Url": "nidalee"
+  },
+  {
+    "ID_Chines": 10085,
+    "Nome_Chines": "阿萝拉",
+    "Nome_PTBR": "Aurora",
+    "Slug_Url": "aurora"
+  },
+  {
+    "ID_Chines": 10086,
+    "Nome_Chines": "菲兹",
+    "Nome_PTBR": "Fizz",
+    "Slug_Url": "fizz"
+  },
+  {
+    "ID_Chines": 10087,
+    "Nome_Chines": "吉格斯",
+    "Nome_PTBR": "Ziggs",
+    "Slug_Url": "ziggs"
+  },
+  {
+    "ID_Chines": 10089,
+    "Nome_Chines": "古拉加斯",
+    "Nome_PTBR": "Gragas",
+    "Slug_Url": "gragas"
+  },
+  {
+    "ID_Chines": 10090,
+    "Nome_Chines": "弗拉基米尔",
+    "Nome_PTBR": "Vladimir",
+    "Slug_Url": "vladimir"
+  },
+  {
+    "ID_Chines": 10091,
+    "Nome_Chines": "娜美",
+    "Nome_PTBR": "Nami",
+    "Slug_Url": "nami"
+  },
+  {
+    "ID_Chines": 10092,
+    "Nome_Chines": "锐雯",
+    "Nome_PTBR": "Riven",
+    "Slug_Url": "riven"
+  },
+  {
+    "ID_Chines": 10093,
+    "Nome_Chines": "韦鲁斯",
+    "Nome_PTBR": "Varus",
+    "Slug_Url": "varus"
+  },
+  {
+    "ID_Chines": 10094,
+    "Nome_Chines": "艾瑞莉娅",
+    "Nome_PTBR": "Irelia",
+    "Slug_Url": "irelia"
+  },
+  {
+    "ID_Chines": 10095,
+    "Nome_Chines": "卡特琳娜",
+    "Nome_PTBR": "Katarina",
+    "Slug_Url": "katarina"
+  },
+  {
+    "ID_Chines": 10096,
+    "Nome_Chines": "辛吉德",
+    "Nome_PTBR": "Singed",
+    "Slug_Url": "singed"
+  },
+  {
+    "ID_Chines": 10097,
+    "Nome_Chines": "索拉卡",
+    "Nome_PTBR": "Soraka",
+    "Slug_Url": "soraka"
+  },
+  {
+    "ID_Chines": 10098,
+    "Nome_Chines": "伊泽瑞尔",
+    "Nome_PTBR": "Ezreal",
+    "Slug_Url": "ezreal"
+  },
+  {
+    "ID_Chines": 10099,
+    "Nome_Chines": "加里奥",
+    "Nome_PTBR": "Galio",
+    "Slug_Url": "galio"
+  },
+  {
+    "ID_Chines": 10100,
+    "Nome_Chines": "阿克尚",
+    "Nome_PTBR": "Akshan",
+    "Slug_Url": "akshan"
+  },
+  {
+    "ID_Chines": 10101,
+    "Nome_Chines": "杰斯",
+    "Nome_PTBR": "Jayce",
+    "Slug_Url": "jayce"
+  },
+  {
+    "ID_Chines": 10102,
+    "Nome_Chines": "厄加特",
+    "Nome_PTBR": "Urgot",
+    "Slug_Url": "urgot"
+  },
+  {
+    "ID_Chines": 10103,
+    "Nome_Chines": "卡萨丁",
+    "Nome_PTBR": "Kassadin",
+    "Slug_Url": "kassadin"
+  },
+  {
+    "ID_Chines": 10104,
+    "Nome_Chines": "莎弥拉",
+    "Nome_PTBR": "Samira",
+    "Slug_Url": "samira"
+  },
+  {
+    "ID_Chines": 10105,
+    "Nome_Chines": "巴德",
+    "Nome_PTBR": "Bard",
+    "Slug_Url": "bard"
+  },
+  {
+    "ID_Chines": 10106,
+    "Nome_Chines": "奥拉夫",
+    "Nome_PTBR": "Olaf",
+    "Slug_Url": "olaf"
+  },
+  {
+    "ID_Chines": 10107,
+    "Nome_Chines": "希维尔",
+    "Nome_PTBR": "Sivir",
+    "Slug_Url": "sivir"
+  },
+  {
+    "ID_Chines": 10108,
+    "Nome_Chines": "米利欧",
+    "Nome_PTBR": "Milio",
+    "Slug_Url": "milio"
+  },
+  {
+    "ID_Chines": 10109,
+    "Nome_Chines": "丽桑卓",
+    "Nome_PTBR": "Lissandra",
+    "Slug_Url": "lissandra"
+  },
+  {
+    "ID_Chines": 10110,
+    "Nome_Chines": "克格莫",
+    "Nome_PTBR": "Kog'Maw",
+    "Slug_Url": "kogmaw"
+  },
+  {
+    "ID_Chines": 10112,
+    "Nome_Chines": "凯特琳",
+    "Nome_PTBR": "Caitlyn",
+    "Slug_Url": "caitlyn"
+  },
+  {
+    "ID_Chines": 10116,
+    "Nome_Chines": "芮尔",
+    "Nome_PTBR": "Rell",
+    "Slug_Url": "rell"
+  },
+  {
+    "ID_Chines": 10118,
+    "Nome_Chines": "慎",
+    "Nome_PTBR": "Shen",
+    "Slug_Url": "shen"
+  },
+  {
+    "ID_Chines": 10119,
+    "Nome_Chines": "布兰德",
+    "Nome_PTBR": "Brand",
+    "Slug_Url": "brand"
+  },
+  {
+    "ID_Chines": 10121,
+    "Nome_Chines": "雷克顿",
+    "Nome_PTBR": "Renekton",
+    "Slug_Url": "renekton"
+  },
+  {
+    "ID_Chines": 10122,
+    "Nome_Chines": "维迦",
+    "Nome_PTBR": "Veigar",
+    "Slug_Url": "veigar"
+  },
+  {
+    "ID_Chines": 10123,
+    "Nome_Chines": "赛娜",
+    "Nome_PTBR": "Senna",
+    "Slug_Url": "senna"
+  },
+  {
+    "ID_Chines": 10124,
+    "Nome_Chines": "派克",
+    "Nome_PTBR": "Pyke",
+    "Slug_Url": "pyke"
+  },
+  {
+    "ID_Chines": 10125,
+    "Nome_Chines": "赛恩",
+    "Nome_PTBR": "Sion",
+    "Slug_Url": "sion"
+  },
+  {
+    "ID_Chines": 10126,
+    "Nome_Chines": "斯维因",
+    "Nome_PTBR": "Swain",
+    "Slug_Url": "swain"
+  },
+  {
+    "ID_Chines": 10127,
+    "Nome_Chines": "黑默丁格",
+    "Nome_PTBR": "Heimerdinger",
+    "Slug_Url": "heimerdinger"
+  },
+  {
+    "ID_Chines": 10128,
+    "Nome_Chines": "泰隆",
+    "Nome_PTBR": "Talon",
+    "Slug_Url": "talon"
+  },
+  {
+    "ID_Chines": 10129,
+    "Nome_Chines": "维克兹",
+    "Nome_PTBR": "Vel'Koz",
+    "Slug_Url": "velkoz"
+  },
+  {
+    "ID_Chines": 10130,
+    "Nome_Chines": "锤石",
+    "Nome_PTBR": "Thresh",
+    "Slug_Url": "thresh"
+  },
+  {
+    "ID_Chines": 10131,
+    "Nome_Chines": "沃里克",
+    "Nome_PTBR": "Warwick",
+    "Slug_Url": "warwick"
+  },
+  {
+    "ID_Chines": 10132,
+    "Nome_Chines": "诺提勒斯",
+    "Nome_PTBR": "Nautilus",
+    "Slug_Url": "nautilus"
+  },
+  {
+    "ID_Chines": 10133,
+    "Nome_Chines": "费德提克",
+    "Nome_PTBR": "Fiddlesticks",
+    "Slug_Url": "fiddlesticks"
+  },
+  {
+    "ID_Chines": 10134,
+    "Nome_Chines": "卡莉丝塔",
+    "Nome_PTBR": "Kalista",
+    "Slug_Url": "kalista"
+  },
+  {
+    "ID_Chines": 10135,
+    "Nome_Chines": "莉莉娅",
+    "Nome_PTBR": "Lillia",
+    "Slug_Url": "lillia"
+  },
+  {
+    "ID_Chines": 10136,
+    "Nome_Chines": "奥恩",
+    "Nome_PTBR": "Ornn",
+    "Slug_Url": "ornn"
+  },
+  {
+    "ID_Chines": 10137,
+    "Nome_Chines": "瑞兹",
+    "Nome_PTBR": "Ryze",
+    "Slug_Url": "ryze"
+  },
+  {
+    "ID_Chines": 10138,
+    "Nome_Chines": "斯莫德",
+    "Nome_PTBR": "Smolder",
+    "Slug_Url": "smolder"
+  },
+  {
+    "ID_Chines": 10139,
+    "Nome_Chines": "梅尔",
+    "Nome_PTBR": "Mel",
+    "Slug_Url": "mel"
+  },
+  {
+    "ID_Chines": 10140,
+    "Nome_Chines": "兰博",
+    "Nome_PTBR": "Rumble",
+    "Slug_Url": "rumble"
+  },
+  {
+    "ID_Chines": 10141,
+    "Nome_Chines": "薇古丝",
+    "Nome_PTBR": "Vex",
+    "Slug_Url": "vex"
+  },
+  {
+    "ID_Chines": 10144,
+    "Nome_Chines": "维克托",
+    "Nome_PTBR": "Viktor",
+    "Slug_Url": "viktor"
+  },
+  {
+    "ID_Chines": 10146,
+    "Nome_Chines": "塔莉垭",
+    "Nome_PTBR": "Taliyah",
+    "Slug_Url": "taliyah"
+  },
+  {
+    "ID_Chines": 10151,
+    "Nome_Chines": "魔腾",
+    "Nome_PTBR": "Nocturne",
+    "Slug_Url": "nocturne"
+  },
+  {
+    "ID_Chines": 10152,
+    "Nome_Chines": "奎桑提",
+    "Nome_PTBR": "KSante",
+    "Slug_Url": "ksante"
+  },
+  {
+    "ID_Chines": 10166,
+    "Nome_Chines": "诺拉",
+    "Nome_PTBR": "Norra",
+    "Slug_Url": "norra"
+  }
+]
