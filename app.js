@@ -1,5 +1,16 @@
 // Chaves definidas em chave.js (não commitado no GitHub — ver .gitignore)
 // FIREBASE_CONFIG e DRAFT_CONFIG são declarados em chave.js
+if (typeof FIREBASE_CONFIG === "undefined") {
+  console.error("chave.js não carregado — crie o arquivo chave.js com suas credenciais.");
+  window.FIREBASE_CONFIG = { apiKey: "", projectId: "" };
+}
+if (typeof DRAFT_CONFIG === "undefined") {
+  window.DRAFT_CONFIG = {
+    geminiApiKey: "", geminiModel: "gemini-3.1-flash-lite",
+    mercadoPagoLink: "", subscriptionPrice: "R$ 19,90/mês",
+    adminEmails: [], firebaseAuthDomain: ""
+  };
+}
 
 const FIRESTORE_URL = `https://firestore.googleapis.com/v1/projects/${FIREBASE_CONFIG.projectId}/databases/(default)/documents/campeoes?key=${FIREBASE_CONFIG.apiKey}&pageSize=300`;
 
