@@ -63,6 +63,7 @@
         <button class="tab-btn" data-tab="ranking">Ranking</button>
         <button class="tab-btn" data-tab="tierlist">Tier List</button>
         <button class="tab-btn" data-tab="itens">Itens</button>
+        <button class="tab-btn tab-btn-premium" data-tab="draft"><i class="fa-solid fa-robot"></i> Draft IA</button>
       </nav>
 
       <div class="search-area">
@@ -609,6 +610,189 @@
       </div>
     </div>
 
+    <!-- ============================================ -->
+    <!--  Aba: DRAFT IA                               -->
+    <!-- ============================================ -->
+    <div class="tab-content" id="draft-tab-content" style="display: none;">
+
+      <!-- WALL: Login necessário -->
+      <div class="draft-wall glass-card" id="draft-auth-wall">
+        <div class="draft-wall-icon"><i class="fa-solid fa-robot"></i></div>
+        <h2>DRAFT <span class="accent-text">IA</span></h2>
+        <p class="draft-wall-desc">Análise inteligente do seu draft em tempo real com base no meta do Wild Rift</p>
+        <div class="draft-wall-features">
+          <div class="draft-feature-item"><i class="fa-solid fa-check-circle"></i> Recomendação por IA baseada no draft atual</div>
+          <div class="draft-feature-item"><i class="fa-solid fa-check-circle"></i> Análise de counters e sinergias do time</div>
+          <div class="draft-feature-item"><i class="fa-solid fa-check-circle"></i> Funciona em qualquer posição do draft</div>
+          <div class="draft-feature-item"><i class="fa-solid fa-check-circle"></i> Powered by Google Gemini AI</div>
+        </div>
+        <button class="draft-google-btn" id="draft-google-login-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" style="margin-right:8px;flex-shrink:0"><path fill="#fff" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#fff" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#fff" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#fff" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Entrar com Google
+        </button>
+      </div>
+
+      <!-- WALL: Assinatura necessária -->
+      <div class="draft-wall glass-card" id="draft-sub-wall" style="display: none;">
+        <div class="draft-wall-icon accent-text"><i class="fa-solid fa-crown"></i></div>
+        <h2>DRAFT <span class="accent-text">IA</span> Premium</h2>
+        <div class="draft-sub-user-info" id="draft-sub-user-info">
+          <img id="draft-sub-avatar" src="" alt="" class="draft-sub-user-avatar">
+          <span id="draft-sub-user-name"></span>
+        </div>
+        <div class="draft-pricing-card">
+          <div class="draft-pricing-amount">R$ 19,90<span>/mês</span></div>
+          <div class="draft-pricing-features">
+            <div><i class="fa-solid fa-check text-green"></i> Análises ilimitadas de draft</div>
+            <div><i class="fa-solid fa-check text-green"></i> Recomendação por IA para qualquer lane</div>
+            <div><i class="fa-solid fa-check text-green"></i> Análise de counters e composição do time</div>
+            <div><i class="fa-solid fa-check text-green"></i> Cancele a qualquer momento</div>
+          </div>
+        </div>
+        <button class="draft-subscribe-btn" id="draft-subscribe-btn">
+          <i class="fa-brands fa-pix"></i> Assinar com Mercado Pago
+        </button>
+        <p class="draft-sub-note">
+          Após o pagamento, envie o comprovante para
+          <a href="mailto:contato@wildriftmeta.com.br">contato@wildriftmeta.com.br</a>
+          para ativar sua conta em até 24h.
+        </p>
+        <button class="draft-text-btn" id="draft-sub-logout-btn">
+          <i class="fa-solid fa-right-from-bracket"></i> Sair da conta
+        </button>
+      </div>
+
+      <!-- APP PRINCIPAL DO DRAFT -->
+      <!-- Quick Picker — popup flutuante de busca de campeão -->
+      <div id="draft-quick-picker" class="draft-quick-picker" style="display:none;" role="dialog">
+        <div class="qp-search-wrap">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="draft-qp-search" placeholder="Buscar campeão..." autocomplete="off" spellcheck="false">
+          <button class="qp-close-btn" id="draft-qp-close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="qp-grid" id="draft-qp-grid"></div>
+      </div>
+
+      <div id="draft-app" style="display: none;">
+
+        <!-- Barra superior -->
+        <div class="draft-topbar glass-card">
+          <div class="draft-topbar-left">
+            <img class="draft-topbar-avatar" id="draft-topbar-avatar" src="" alt="">
+            <span class="draft-topbar-name" id="draft-topbar-name"></span>
+            <button class="draft-icon-btn" id="draft-logout-btn" title="Sair">
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+          </div>
+          <div class="draft-topbar-center">
+            <span class="draft-topbar-title"><i class="fa-solid fa-robot"></i> DRAFT <span class="accent-text">IA</span></span>
+          </div>
+          <div class="draft-topbar-right">
+            <button class="draft-icon-btn" id="draft-reset-btn" title="Resetar draft">
+              <i class="fa-solid fa-rotate-left"></i> Resetar
+            </button>
+            <button class="draft-analyze-btn" id="draft-analyze-btn">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Analisar Draft
+            </button>
+          </div>
+        </div>
+
+        <!-- Board principal do draft -->
+        <div class="draft-board glass-card">
+
+          <!-- Time Azul -->
+          <div class="draft-team-section" id="draft-blue-section">
+            <div class="draft-team-header draft-header-blue">
+              <span><i class="fa-solid fa-circle-dot"></i> TIME AZUL</span>
+            </div>
+            <div class="draft-bans-row" id="draft-blue-bans">
+              <span class="draft-bans-label">BANS</span>
+              <!-- ban slots injetados via JS -->
+            </div>
+            <div class="draft-picks-list" id="draft-blue-picks">
+              <!-- pick slots injetados via JS -->
+            </div>
+          </div>
+
+          <!-- Centro: seletor de time e lane -->
+          <div class="draft-center-col">
+            <div class="draft-vs-badge">VS</div>
+            <div class="draft-config-section">
+              <div class="draft-config-label"><i class="fa-solid fa-user"></i> Meu Time</div>
+              <div class="draft-team-toggle">
+                <button class="draft-team-toggle-btn active" data-team="blue" id="toggle-my-team-blue">Azul</button>
+                <button class="draft-team-toggle-btn" data-team="red" id="toggle-my-team-red">Vermelho</button>
+              </div>
+              <div class="draft-config-label" style="margin-top:12px"><i class="fa-solid fa-map-marker-alt"></i> Minha Lane</div>
+              <select class="draft-my-lane-select" id="draft-my-lane-select">
+                <option value="">Selecionar Lane</option>
+                <option value="Solo"><i class="fa-solid fa-shield-halved"></i> Solo</option>
+                <option value="Selva">Selva</option>
+                <option value="Mid">Mid</option>
+                <option value="ADC">ADC</option>
+                <option value="Suporte">Suporte</option>
+              </select>
+            </div>
+            <div class="draft-hint-box" id="draft-hint-box">
+              <i class="fa-solid fa-hand-pointer"></i>
+              <span id="draft-hint-text">Clique num slot para selecionar</span>
+            </div>
+          </div>
+
+          <!-- Time Vermelho -->
+          <div class="draft-team-section" id="draft-red-section">
+            <div class="draft-team-header draft-header-red">
+              <span>TIME VERMELHO <i class="fa-solid fa-circle-dot"></i></span>
+            </div>
+            <div class="draft-bans-row draft-bans-row-right" id="draft-red-bans">
+              <!-- ban slots injetados via JS -->
+              <span class="draft-bans-label">BANS</span>
+            </div>
+            <div class="draft-picks-list draft-picks-list-right" id="draft-red-picks">
+              <!-- pick slots injetados via JS -->
+            </div>
+          </div>
+
+        </div><!-- end draft-board -->
+
+        <!-- Painel de resposta da IA -->
+        <div class="draft-ai-panel glass-card" id="draft-ai-panel" style="display: none;">
+          <div class="draft-ai-panel-header">
+            <span><i class="fa-solid fa-robot accent-text"></i> Análise do Draft IA</span>
+            <button class="draft-icon-btn" id="draft-ai-close-btn"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+          <div class="draft-ai-loading" id="draft-ai-loading">
+            <div class="draft-ai-dots"><span></span><span></span><span></span></div>
+            <p>Analisando o draft com Gemini AI...</p>
+          </div>
+          <div class="draft-ai-text" id="draft-ai-text" style="display: none;"></div>
+        </div>
+
+        <!-- Pool de campeões -->
+        <div class="draft-pool glass-card">
+          <div class="draft-pool-controls">
+            <div class="draft-pool-search-wrap">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="draft-pool-search" placeholder="Buscar campeão...">
+            </div>
+            <div class="draft-pool-lane-filters" id="draft-pool-lane-filters">
+              <button class="pool-lane-btn active" data-lane="all"><i class="fa-solid fa-border-all"></i> Todos</button>
+              <button class="pool-lane-btn" data-lane="2"><i class="fa-solid fa-shield-halved"></i> Solo</button>
+              <button class="pool-lane-btn" data-lane="5"><i class="fa-solid fa-tree"></i> Selva</button>
+              <button class="pool-lane-btn" data-lane="1"><i class="fa-solid fa-wand-magic-sparkles"></i> Mid</button>
+              <button class="pool-lane-btn" data-lane="3"><i class="fa-solid fa-crosshairs"></i> ADC</button>
+              <button class="pool-lane-btn" data-lane="4"><i class="fa-solid fa-hands-holding-circle"></i> Suporte</button>
+            </div>
+          </div>
+          <div class="draft-champion-grid" id="draft-champion-grid">
+            <!-- Injetado via JS -->
+          </div>
+        </div>
+
+      </div><!-- end draft-app -->
+
+    </div><!-- end draft-tab-content -->
+
   </main>
 
   <!-- AdSense: Banner antes do Footer -->
@@ -905,6 +1089,13 @@
     </div>
   </div>
 
+  <!-- Firebase SDKs (compat mode) para Auth e Firestore -->
+  <!-- Firebase SDKs (compat mode) para Auth e Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <!-- Chaves de API (arquivo local, não commitado) -->
+  <script src="chave.js"></script>
   <script src="app.js"></script>
 </body>
 

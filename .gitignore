@@ -11,6 +11,9 @@ guide_details_out.json
 *.json.bak
 *.bak
 
+# Chaves e credenciais — nunca commitar
+chave.js
+
 # Environment variables
 .env
 .env.local

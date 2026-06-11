@@ -1,8 +1,5 @@
-// Configuração do Firebase (REST API)
-const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyAJfutv_N-tD4d5I4jvFBBaE4oMO3OoQ2Y",
-  projectId: "wild-rift-533bd"
-};
+// Chaves definidas em chave.js (não commitado no GitHub — ver .gitignore)
+// FIREBASE_CONFIG e DRAFT_CONFIG são declarados em chave.js
 
 const FIRESTORE_URL = `https://firestore.googleapis.com/v1/projects/${FIREBASE_CONFIG.projectId}/databases/(default)/documents/campeoes?key=${FIREBASE_CONFIG.apiKey}&pageSize=300`;
 
@@ -307,7 +304,7 @@ function switchTab(tab) {
 
   // Se for a aba de Itens, X1 ou Duos, esconde a barra de pesquisa principal do cabeçalho
   const searchArea = document.querySelector(".search-area");
-  if (tab === "itens" || tab === "x1" || tab === "duos") {
+  if (tab === "itens" || tab === "x1" || tab === "duos" || tab === "draft") {
     if (searchArea) {
       searchArea.style.opacity = "0";
       searchArea.style.pointerEvents = "none";
@@ -330,6 +327,8 @@ function switchTab(tab) {
     renderTierList();
   } else if (tab === "itens") {
     switchSubtab(activeSubtab);
+  } else if (tab === "draft") {
+    initDraftTab();
   }
 }
 
@@ -2925,5 +2924,1030 @@ function updateDuosConnections() {
   if (path) {
     path.setAttribute("d", `M ${startX} ${startY} C ${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${endX} ${endY}`);
   }
+}
+
+// ============================================================
+//  DRAFT IA — Módulo completo
+// ============================================================
+
+// DRAFT_CONFIG declarado em chave.js
+
+// ---------- Estado do draft ----------
+let draftState = {
+  myTeam: "blue",
+  mySlot: -1,
+  slots: {
+    blue: {
+      picks: Array(5).fill(null).map(() => ({ champion: null, lane: "" })),
+      bans: Array(3).fill(null)
+    },
+    red: {
+      picks: Array(5).fill(null).map(() => ({ champion: null })),
+      bans: Array(3).fill(null)
+    }
+  },
+  activeSlot: null,  // { team, type, index } — slot aguardando seleção
+  poolLaneFilter: "all",
+  poolSearch: ""
+};
+
+// ---------- Firebase / Auth ----------
+let firebaseApp = null;
+let firebaseAuth = null;
+let firebaseDb = null;
+let currentUser = null;
+let draftInitialized = false;
+
+function initFirebase() {
+  if (firebaseApp) return;
+  // firebase é um global injetado pelo CDN em index.html
+  const fb = window["firebase"];
+  try {
+    firebaseApp = fb.initializeApp({
+      apiKey: FIREBASE_CONFIG.apiKey,
+      projectId: FIREBASE_CONFIG.projectId,
+      authDomain: DRAFT_CONFIG.firebaseAuthDomain
+    });
+    firebaseAuth = fb.auth();
+    firebaseDb = fb.firestore();
+  } catch (e) {
+    firebaseApp = fb.app();
+    firebaseAuth = fb.auth();
+    firebaseDb = fb.firestore();
+  }
+}
+
+function initDraftTab() {
+  initFirebase();
+  if (draftInitialized) {
+    refreshDraftAuthState();
+    return;
+  }
+  draftInitialized = true;
+
+  firebaseAuth.onAuthStateChanged(async (user) => {
+    currentUser = user;
+    await refreshDraftAuthState();
+  });
+
+  // Botão Google Login
+  document.getElementById("draft-google-login-btn").addEventListener("click", draftSignInGoogle);
+  // Botão Logout (wall assinatura)
+  document.getElementById("draft-sub-logout-btn").addEventListener("click", draftSignOut);
+  // Botão Logout (topbar)
+  document.getElementById("draft-logout-btn").addEventListener("click", draftSignOut);
+  // Botão Assinar
+  document.getElementById("draft-subscribe-btn").addEventListener("click", () => {
+    window.open(DRAFT_CONFIG.mercadoPagoLink, "_blank");
+  });
+  // Botão Analisar
+  document.getElementById("draft-analyze-btn").addEventListener("click", runDraftAnalysis);
+  // Botão Resetar
+  document.getElementById("draft-reset-btn").addEventListener("click", resetDraft);
+  // Fechar painel IA
+  document.getElementById("draft-ai-close-btn").addEventListener("click", () => {
+    document.getElementById("draft-ai-panel").style.display = "none";
+    const row = document.getElementById("draft-ai-picks-row");
+    if (row) row.remove();
+  });
+  // Toggle meu time
+  document.getElementById("toggle-my-team-blue").addEventListener("click", () => setMyTeam("blue"));
+  document.getElementById("toggle-my-team-red").addEventListener("click", () => setMyTeam("red"));
+  // Minha lane
+  document.getElementById("draft-my-lane-select").addEventListener("change", () => {
+    // apenas informativa, usada no prompt
+  });
+  // Pool busca
+  document.getElementById("draft-pool-search").addEventListener("input", (e) => {
+    draftState.poolSearch = e.target.value;
+    renderDraftPool();
+  });
+  // Pool filtro de lane
+  document.querySelectorAll(".pool-lane-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".pool-lane-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      draftState.poolLaneFilter = btn.dataset.lane;
+      renderDraftPool();
+    });
+  });
+}
+
+async function refreshDraftAuthState() {
+  const authWall = document.getElementById("draft-auth-wall");
+  const subWall = document.getElementById("draft-sub-wall");
+  const app = document.getElementById("draft-app");
+
+  if (!currentUser) {
+    authWall.style.display = "flex";
+    subWall.style.display = "none";
+    app.style.display = "none";
+    return;
+  }
+
+  // Usuário logado — verificar assinatura
+  authWall.style.display = "none";
+
+  // Admin bypass: e-mails na lista têm acesso gratuito permanente
+  const isAdmin = DRAFT_CONFIG.adminEmails.includes(currentUser.email);
+
+  try {
+    const subDoc = await firebaseDb.collection("subscriptions").doc(currentUser.uid).get();
+    const activeVal = subDoc.exists ? subDoc.data().active : false;
+    const hasActive = isAdmin || activeVal === true || activeVal === "true";
+
+    if (hasActive) {
+      subWall.style.display = "none";
+      app.style.display = "block";
+      populateDraftAppUser();
+      if (!document.getElementById("draft-blue-bans").querySelector(".draft-ban-slot")) {
+        renderDraftBoard();
+        renderDraftPool();
+      }
+    } else {
+      subWall.style.display = "flex";
+      app.style.display = "none";
+      document.getElementById("draft-sub-avatar").src = currentUser.photoURL || "";
+      document.getElementById("draft-sub-user-name").textContent = currentUser.displayName || currentUser.email;
+    }
+  } catch (err) {
+    console.warn("Draft: erro ao verificar assinatura", err);
+    // Em caso de erro de rede, mostra a tela de assinatura
+    subWall.style.display = "flex";
+    app.style.display = "none";
+  }
+}
+
+function populateDraftAppUser() {
+  if (!currentUser) return;
+  const avatar = document.getElementById("draft-topbar-avatar");
+  const name = document.getElementById("draft-topbar-name");
+  if (avatar) avatar.src = currentUser.photoURL || "";
+  if (name) name.textContent = currentUser.displayName || currentUser.email;
+}
+
+function draftSignInGoogle() {
+  initFirebase();
+  const fb = window["firebase"];
+  const provider = new fb.auth.GoogleAuthProvider();
+  firebaseAuth.signInWithPopup(provider).catch(err => {
+    console.error("Draft: erro no login", err);
+    alert("Erro ao fazer login: " + err.message);
+  });
+}
+
+function draftSignOut() {
+  firebaseAuth.signOut();
+}
+
+// ---------- Seletor de time ----------
+function setMyTeam(team) {
+  draftState.myTeam = team;
+  document.getElementById("toggle-my-team-blue").classList.toggle("active", team === "blue");
+  document.getElementById("toggle-my-team-red").classList.toggle("active", team === "red");
+  // Atualiza marcação "meu slot"
+  document.querySelectorAll(".draft-pick-slot").forEach(el => {
+    const isMyTeam = el.dataset.team === team;
+    const idx = parseInt(el.dataset.index);
+    if (isMyTeam && idx === draftState.mySlot) {
+      el.classList.add("my-slot");
+    } else {
+      el.classList.remove("my-slot");
+    }
+  });
+}
+
+// ---------- Render do board ----------
+function renderDraftBoard() {
+  renderTeamSlots("blue");
+  renderTeamSlots("red");
+}
+
+function renderTeamSlots(team) {
+  const isBlue = team === "blue";
+  const bansContainer = document.getElementById(`draft-${team}-bans`);
+  const picksContainer = document.getElementById(`draft-${team}-picks`);
+
+  // Limpa slots existentes (mantém o label "BANS")
+  bansContainer.querySelectorAll(".draft-ban-slot").forEach(el => el.remove());
+
+  // Bans
+  for (let i = 0; i < 3; i++) {
+    const slot = document.createElement("div");
+    slot.className = "draft-ban-slot";
+    slot.id = `slot-${team}-ban-${i}`;
+    slot.dataset.team = team;
+    slot.dataset.type = "ban";
+    slot.dataset.index = i;
+    slot.innerHTML = `<div class="slot-inner"><i class="fa-solid fa-ban"></i></div>`;
+    slot.addEventListener("click", () => onSlotClick(team, "ban", i));
+    setupDropZone(slot, team, "ban", i);
+    bansContainer.insertBefore(slot, isBlue ? bansContainer.lastChild : bansContainer.firstChild);
+  }
+
+  // Picks
+  picksContainer.innerHTML = "";
+  for (let i = 0; i < 5; i++) {
+    const slot = document.createElement("div");
+    slot.className = "draft-pick-slot" + (!isBlue ? " draft-pick-slot-right" : "");
+    slot.id = `slot-${team}-pick-${i}`;
+    slot.dataset.team = team;
+    slot.dataset.type = "pick";
+    slot.dataset.index = i;
+
+    if (isBlue) {
+      slot.innerHTML = `
+        <div class="pick-avatar-wrap">
+          <div class="pick-avatar-circle"><i class="fa-solid fa-user"></i></div>
+          <button class="pick-remove-btn" title="Remover"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="pick-info">
+          <div class="pick-name">—</div>
+        </div>
+        <button class="pick-my-btn" data-team="${team}" data-index="${i}" title="Meu slot">★</button>`;
+    } else {
+      slot.innerHTML = `
+        <div class="pick-avatar-wrap">
+          <div class="pick-avatar-circle"><i class="fa-solid fa-user"></i></div>
+          <button class="pick-remove-btn" title="Remover"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="pick-info">
+          <div class="pick-name">—</div>
+        </div>`;
+    }
+
+    slot.addEventListener("click", (e) => {
+      if (e.target.closest(".pick-remove-btn")) return;
+      if (e.target.closest(".pick-my-btn")) return;
+      onSlotClick(team, "pick", i);
+    });
+
+    slot.querySelector(".pick-remove-btn").addEventListener("click", (e) => {
+      e.stopPropagation();
+      removeFromSlot(team, "pick", i);
+    });
+
+    if (isBlue) {
+      slot.querySelector(".pick-my-btn").addEventListener("click", (e) => {
+        e.stopPropagation();
+        setMySlot(team, i);
+      });
+    }
+
+    setupDropZone(slot, team, "pick", i);
+    picksContainer.appendChild(slot);
+  }
+}
+
+// ---------- Slot click → abre quick picker ----------
+function onSlotClick(team, type, index) {
+  const slotEl = document.getElementById(`slot-${team}-${type}-${index}`);
+
+  // Toggle: clicou no mesmo slot já ativo — fecha
+  if (draftState.activeSlot &&
+    draftState.activeSlot.team === team &&
+    draftState.activeSlot.type === type &&
+    draftState.activeSlot.index === index) {
+    closeQuickPicker();
+    return;
+  }
+
+  clearActiveSlot();
+  draftState.activeSlot = { team, type, index };
+  slotEl.classList.add("slot-active");
+  openQuickPicker(slotEl);
+}
+
+function clearActiveSlot() {
+  if (draftState.activeSlot) {
+    const { team, type, index } = draftState.activeSlot;
+    const el = document.getElementById(`slot-${team}-${type}-${index}`);
+    if (el) el.classList.remove("slot-active");
+  }
+  draftState.activeSlot = null;
+}
+
+// ---------- Quick Picker ----------
+let qpInitialized = false;
+
+function openQuickPicker(anchorEl) {
+  const picker = document.getElementById("draft-quick-picker");
+  const searchInput = document.getElementById("draft-qp-search");
+
+  // Posiciona o popup perto do slot clicado
+  positionQuickPicker(picker, anchorEl);
+
+  picker.style.display = "block";
+  searchInput.value = "";
+  renderQPGrid("");
+  searchInput.focus();
+
+  if (!qpInitialized) {
+    qpInitialized = true;
+
+    searchInput.addEventListener("input", (e) => renderQPGrid(e.target.value));
+    searchInput.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") { closeQuickPicker(); return; }
+      // Enter = seleciona o único resultado visível (ou o primeiro)
+      if (e.key === "Enter") {
+        const first = document.querySelector("#draft-qp-grid .qp-champ");
+        if (first) first.dispatchEvent(new MouseEvent("mousedown", { bubbles: true }));
+      }
+    });
+    document.getElementById("draft-qp-close").addEventListener("click", closeQuickPicker);
+
+    // Fecha ao clicar fora
+    document.addEventListener("mousedown", (e) => {
+      const picker = document.getElementById("draft-quick-picker");
+      if (picker.style.display !== "none" && !picker.contains(e.target)) {
+        const isSlot = e.target.closest(".draft-pick-slot, .draft-ban-slot");
+        if (!isSlot) closeQuickPicker();
+      }
+    }, true);
+  }
+}
+
+function positionQuickPicker(picker, anchorEl) {
+  const rect = anchorEl.getBoundingClientRect();
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  const pickerW = 320;
+  const pickerH = 350; // estimativa
+
+  let top = rect.bottom + 6 + window.scrollY;
+  let left = rect.left + window.scrollX;
+
+  // Não sair pela direita
+  if (left + pickerW > vw - 8) left = vw - pickerW - 8;
+  if (left < 8) left = 8;
+
+  // Se não couber embaixo, abre para cima
+  if (rect.bottom + pickerH > vh) {
+    top = rect.top - pickerH - 6 + window.scrollY;
+  }
+
+  picker.style.top = `${top}px`;
+  picker.style.left = `${left}px`;
+}
+
+function closeQuickPicker() {
+  document.getElementById("draft-quick-picker").style.display = "none";
+  clearActiveSlot();
+}
+
+function renderQPGrid(query) {
+  const grid = document.getElementById("draft-qp-grid");
+  if (!grid) return;
+
+  const used = getUsedChampionSlugs();
+  const banned = getBannedChampionSlugs();
+  const q = normalizeText(query);
+
+  // Deduplicar por slug
+  const seen = new Set();
+  let list = champions.filter(c => {
+    if (seen.has(c.slug)) return false;
+    seen.add(c.slug);
+    if (used.has(c.slug) || banned.has(c.slug)) return false;
+    if (q && !normalizeText(c.nome).includes(q)) return false;
+    return true;
+  });
+
+  const TIER_ORDER = { "S+": 0, "S": 1, "A": 2, "B": 3, "C": 4 };
+
+  list.sort((a, b) => {
+    if (q) {
+      // Com busca: começa com o termo vai primeiro, depois por tier
+      const aStarts = normalizeText(a.nome).startsWith(q);
+      const bStarts = normalizeText(b.nome).startsWith(q);
+      if (aStarts && !bStarts) return -1;
+      if (!aStarts && bStarts) return 1;
+    } else {
+      // Sem busca: ordena por tier (S+ primeiro) depois por nome
+      const ta = TIER_ORDER[a.tier] ?? 5;
+      const tb = TIER_ORDER[b.tier] ?? 5;
+      if (ta !== tb) return ta - tb;
+    }
+    return a.nome.localeCompare(b.nome);
+  });
+
+  // Limita a 60 para performance
+  list = list.slice(0, 60);
+
+  grid.innerHTML = "";
+  if (list.length === 0) {
+    grid.innerHTML = `<div class="qp-empty"><i class="fa-solid fa-search"></i><br>Nenhum campeão encontrado</div>`;
+    return;
+  }
+
+  list.forEach(champ => {
+    const div = document.createElement("div");
+    div.className = "qp-champ";
+    div.innerHTML = `
+      <img class="qp-champ-img"
+        src="${getChampionIcon(champ.slug, champ.id)}"
+        alt="${champ.nome}"
+        onerror="this.src='https://ddragon.leagueoflegends.com/cdn/16.11.1/img/champion/Aatrox.png'">
+      <span class="qp-champ-name">${champ.nome}</span>`;
+
+    div.addEventListener("mousedown", (e) => {
+      e.preventDefault(); // evita que o blur do input feche antes de registrar o clique
+      if (!draftState.activeSlot) return;
+      const { team, type, index } = draftState.activeSlot;
+      assignChampionToSlot({ slug: champ.slug, id: champ.id, name: champ.nome }, team, type, index);
+      closeQuickPicker();
+    });
+
+    grid.appendChild(div);
+  });
+}
+
+// ---------- Atribuir campeão ao slot ----------
+function assignChampionToSlot(champion, team, type, index) {
+  if (type === "ban") {
+    draftState.slots[team].bans[index] = champion;
+    updateBanSlotUI(team, index);
+  } else {
+    draftState.slots[team].picks[index].champion = champion;
+    updatePickSlotUI(team, index);
+  }
+  clearActiveSlot();
+  renderDraftPool();
+
+  // Auto-avançar: abre o próximo slot vazio do mesmo time e tipo
+  setTimeout(() => autoAdvanceToNextSlot(team, type, index), 80);
+}
+
+// Sequência oficial do draft Wild Rift:
+// Azul ×1 → Vermelho ×2 → Azul ×2 → Vermelho ×2 → Azul ×2 → Vermelho ×1
+const DRAFT_PICK_ORDER = [
+  { team: "blue", index: 0 },
+  { team: "red",  index: 0 },
+  { team: "red",  index: 1 },
+  { team: "blue", index: 1 },
+  { team: "blue", index: 2 },
+  { team: "red",  index: 2 },
+  { team: "red",  index: 3 },
+  { team: "blue", index: 3 },
+  { team: "blue", index: 4 },
+  { team: "red",  index: 4 },
+];
+
+function autoAdvanceToNextSlot(prevTeam, prevType, prevIndex) {
+  if (prevType === "ban") {
+    // Bans: avança para o próximo ban vazio do mesmo time
+    const bans = draftState.slots[prevTeam].bans;
+    for (let i = prevIndex + 1; i < bans.length; i++) {
+      if (!bans[i]) {
+        const nextEl = document.getElementById(`slot-${prevTeam}-ban-${i}`);
+        if (nextEl) {
+          draftState.activeSlot = { team: prevTeam, type: "ban", index: i };
+          nextEl.classList.add("slot-active");
+          openQuickPicker(nextEl);
+        }
+        return;
+      }
+    }
+    return;
+  }
+
+  // Picks: segue a sequência oficial do draft
+  const currentPos = DRAFT_PICK_ORDER.findIndex(
+    p => p.team === prevTeam && p.index === prevIndex
+  );
+  if (currentPos === -1) return;
+
+  for (let i = currentPos + 1; i < DRAFT_PICK_ORDER.length; i++) {
+    const next = DRAFT_PICK_ORDER[i];
+    if (!draftState.slots[next.team].picks[next.index].champion) {
+      const nextEl = document.getElementById(`slot-${next.team}-pick-${next.index}`);
+      if (nextEl) {
+        draftState.activeSlot = { team: next.team, type: "pick", index: next.index };
+        nextEl.classList.add("slot-active");
+        openQuickPicker(nextEl);
+      }
+      return;
+    }
+  }
+}
+
+function removeFromSlot(team, type, index) {
+  if (type === "ban") {
+    draftState.slots[team].bans[index] = null;
+    updateBanSlotUI(team, index);
+  } else {
+    draftState.slots[team].picks[index].champion = null;
+    updatePickSlotUI(team, index);
+  }
+  renderDraftPool();
+}
+
+function updateBanSlotUI(team, index) {
+  const slot = document.getElementById(`slot-${team}-ban-${index}`);
+  if (!slot) return;
+  const champion = draftState.slots[team].bans[index];
+  if (champion) {
+    slot.classList.add("slot-filled");
+    slot.innerHTML = `
+      <img src="${getChampionIcon(champion.slug, champion.id)}" alt="${champion.name}"
+           onerror="this.src='https://ddragon.leagueoflegends.com/cdn/16.11.1/img/champion/Aatrox.png'">
+      <div class="ban-x-overlay"><i class="fa-solid fa-ban"></i></div>`;
+    slot.onclick = () => removeFromSlot(team, "ban", index);
+  } else {
+    slot.classList.remove("slot-filled");
+    slot.innerHTML = `<div class="slot-inner"><i class="fa-solid fa-ban"></i></div>`;
+    slot.onclick = () => onSlotClick(team, "ban", index);
+  }
+  setupDropZone(slot, team, "ban", index);
+}
+
+function updatePickSlotUI(team, index) {
+  const slot = document.getElementById(`slot-${team}-pick-${index}`);
+  if (!slot) return;
+  const data = draftState.slots[team].picks[index];
+  const champion = data.champion;
+  const avatarCircle = slot.querySelector(".pick-avatar-circle");
+  const pickName = slot.querySelector(".pick-name");
+
+  if (champion) {
+    slot.classList.add("slot-filled");
+    avatarCircle.innerHTML = `<img src="${getChampionIcon(champion.slug, champion.id)}" alt="${champion.name}"
+      onerror="this.src='https://ddragon.leagueoflegends.com/cdn/16.11.1/img/champion/Aatrox.png'">`;
+    pickName.textContent = champion.name;
+  } else {
+    slot.classList.remove("slot-filled");
+    avatarCircle.innerHTML = `<i class="fa-solid fa-user"></i>`;
+    pickName.textContent = "—";
+  }
+}
+
+function setMySlot(team, index) {
+  // Remove marcação anterior
+  draftState.mySlot = index;
+  setMyTeam(team);
+  document.querySelectorAll(".pick-my-btn").forEach(btn => btn.classList.remove("active"));
+  const btn = document.querySelector(`.pick-my-btn[data-team="${team}"][data-index="${index}"]`);
+  if (btn) btn.classList.add("active");
+  document.querySelectorAll(".draft-pick-slot").forEach(el => {
+    el.classList.remove("my-slot");
+    if (el.dataset.team === team && parseInt(el.dataset.index) === index) {
+      el.classList.add("my-slot");
+    }
+  });
+}
+
+// ---------- Pool de campeões ----------
+function renderDraftPool() {
+  const grid = document.getElementById("draft-champion-grid");
+  if (!grid) return;
+
+  if (!champions || champions.length === 0) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:24px;font-size:0.85rem">
+      <i class="fa-solid fa-spinner fa-spin"></i> Carregando campeões...
+    </div>`;
+    return;
+  }
+
+  const usedSlugs = getUsedChampionSlugs();
+  const bannedSlugs = getBannedChampionSlugs();
+  const search = normalizeText(draftState.poolSearch);
+  const laneFilter = draftState.poolLaneFilter;
+
+  let filtered = champions.filter(c => {
+    if (laneFilter !== "all" && c.lane !== laneFilter) return false;
+    if (search && !normalizeText(c.nome).includes(search)) return false;
+    return true;
+  });
+
+  // Remover duplicatas por slug (campeões que jogam múltiplas lanes)
+  const seenSlugs = new Set();
+  filtered = filtered.filter(c => {
+    if (seenSlugs.has(c.slug)) return false;
+    seenSlugs.add(c.slug);
+    return true;
+  });
+
+  // Ordenar: disponíveis primeiro, depois banidos/usados
+  filtered.sort((a, b) => {
+    const aUsed = usedSlugs.has(a.slug) || bannedSlugs.has(a.slug);
+    const bUsed = usedSlugs.has(b.slug) || bannedSlugs.has(b.slug);
+    if (aUsed && !bUsed) return 1;
+    if (!aUsed && bUsed) return -1;
+    return a.nome.localeCompare(b.nome);
+  });
+
+  grid.innerHTML = "";
+  filtered.forEach(champ => {
+    const isUsed = usedSlugs.has(champ.slug);
+    const isBanned = bannedSlugs.has(champ.slug);
+    const div = document.createElement("div");
+    div.className = "draft-pool-champ" +
+      (isUsed ? " champ-used" : "") +
+      (isBanned ? " champ-banned" : "");
+    div.dataset.slug = champ.slug;
+    div.draggable = !isUsed && !isBanned;
+    div.innerHTML = `
+      <img class="pool-champ-img"
+        src="${getChampionIcon(champ.slug, champ.id)}"
+        alt="${champ.nome}"
+        onerror="this.src='https://ddragon.leagueoflegends.com/cdn/16.11.1/img/champion/Aatrox.png'">
+      <span class="pool-champ-name">${champ.nome}</span>`;
+
+    if (!isUsed && !isBanned) {
+      div.addEventListener("click", () => onPoolChampClick(champ));
+      div.addEventListener("dragstart", (e) => {
+        e.dataTransfer.setData("application/draft-champ", JSON.stringify({
+          slug: champ.slug, id: champ.id, name: champ.nome
+        }));
+        e.dataTransfer.effectAllowed = "copy";
+      });
+    }
+    grid.appendChild(div);
+  });
+}
+
+function onPoolChampClick(champ) {
+  if (!draftState.activeSlot) return;
+  const { team, type, index } = draftState.activeSlot;
+  assignChampionToSlot({ slug: champ.slug, id: champ.id, name: champ.nome }, team, type, index);
+}
+
+function getUsedChampionSlugs() {
+  const set = new Set();
+  ["blue", "red"].forEach(team => {
+    draftState.slots[team].picks.forEach(p => { if (p && p.champion) set.add(p.champion.slug); });
+  });
+  return set;
+}
+
+function getBannedChampionSlugs() {
+  const set = new Set();
+  ["blue", "red"].forEach(team => {
+    draftState.slots[team].bans.forEach(b => { if (b) set.add(b.slug); });
+  });
+  return set;
+}
+
+// ---------- Drag and Drop (drop zones) ----------
+function setupDropZone(el, team, type, index) {
+  el.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "copy";
+    el.classList.add("drag-over");
+  });
+  el.addEventListener("dragleave", () => el.classList.remove("drag-over"));
+  el.addEventListener("drop", (e) => {
+    e.preventDefault();
+    el.classList.remove("drag-over");
+    try {
+      const data = JSON.parse(e.dataTransfer.getData("application/draft-champ"));
+      assignChampionToSlot(data, team, type, index);
+    } catch { }
+  });
+}
+
+// ---------- Reset ----------
+function resetDraft() {
+  draftState.slots = {
+    blue: {
+      picks: Array(5).fill(null).map(() => ({ champion: null, lane: "" })),
+      bans: Array(3).fill(null)
+    },
+    red: {
+      picks: Array(5).fill(null).map(() => ({ champion: null })),
+      bans: Array(3).fill(null)
+    }
+  };
+  draftState.mySlot = -1;
+  draftState.activeSlot = null;
+  renderDraftBoard();
+  renderDraftPool();
+  document.getElementById("draft-ai-panel").style.display = "none";
+  const picksRow = document.getElementById("draft-ai-picks-row");
+  if (picksRow) picksRow.remove();
+  document.getElementById("draft-my-lane-select").value = "";
+  document.querySelectorAll(".pick-my-btn").forEach(b => b.classList.remove("active"));
+}
+
+// ============================================================
+//  DRAFT IA — Análise com Gemini
+// ============================================================
+
+function buildDraftPrompt() {
+  const myTeam = draftState.myTeam;
+  const myLane = document.getElementById("draft-my-lane-select").value || "não informada";
+  const mySlot = draftState.mySlot;
+
+  const LANE_LABELS = {
+    "Solo": "Solo (Baron)", "Selva": "Selva (Jungle)",
+    "Mid": "Mid", "ADC": "ADC (Bot)", "Suporte": "Suporte"
+  };
+
+  // Monta aliados
+  const allies = draftState.slots[myTeam].picks;
+  let allyLines = [];
+  allies.forEach((p, i) => {
+    const champName = p.champion ? p.champion.name : "ainda não selecionado";
+    const myMark = (i === mySlot) ? " ← MEU SLOT (não selecionado ainda)" : "";
+    allyLines.push(`  ${i + 1}. ${champName}${myMark}`);
+  });
+  const allyBans = draftState.slots[myTeam].bans
+    .map(b => b ? b.name : "—").join(", ");
+
+  // Monta inimigos
+  const enemyTeam = myTeam === "blue" ? "red" : "blue";
+  const enemies = draftState.slots[enemyTeam].picks;
+  let enemyLines = [];
+  enemies.forEach((p, i) => {
+    const champName = p.champion ? p.champion.name : "ainda não selecionado";
+    enemyLines.push(`  ${i + 1}. ${champName}`);
+  });
+  const enemyBans = draftState.slots[enemyTeam].bans
+    .map(b => b ? b.name : "—").join(", ");
+
+  const filledAllies = allies.filter(p => p.champion).length;
+  const totalSlots = 5;
+  const remainingAllies = totalSlots - filledAllies;
+
+  return `Você é um especialista em Wild Rift (versão mobile de League of Legends para celular) no nível Challenger.
+
+Analise o draft atual e recomende os melhores campeões para eu selecionar.
+
+== MEU TIME (${myTeam === "blue" ? "Time Azul" : "Time Vermelho"}) ==
+${allyLines.join("\n")}
+Banimentos do meu time: ${allyBans}
+Minha lane: ${LANE_LABELS[myLane] || myLane}
+Slots ainda vazios no meu time: ${remainingAllies}
+
+== TIME INIMIGO ==
+${enemyLines.join("\n")}
+Banimentos inimigos: ${enemyBans}
+
+== CONTEXTO ==
+- É Wild Rift (celular), não LoL PC. As mecânicas e o meta são diferentes.
+- O draft pode estar incompleto — analise com base nos picks já feitos.
+- Meu slot é indicado por "MEU SLOT" e ainda não foi preenchido.
+- As lanes dos aliados NÃO estão informadas — deduza quais lanes cada campeão provavelmente ocupa com base no meta atual do Wild Rift para montar a análise de composição.
+
+== FORMATO OBRIGATÓRIO DA RESPOSTA ==
+IMPORTANTE: A primeira linha da sua resposta DEVE ser exatamente neste formato (sem texto antes):
+PICKS: NomeCampeão1, NomeCampeão2, NomeCampeão3
+
+Em seguida, escreva a análise completa em português brasileiro:
+1. Breve análise da composição deduzida do time aliado (quais lanes cada um provavelmente joga).
+2. Principais ameaças inimigas a considerar.
+3. Justificativa de cada um dos 3 campeões recomendados para minha lane (${LANE_LABELS[myLane] || myLane}).
+
+Seja direto e objetivo. Destaque os nomes dos campeões em **negrito**.`;
+}
+
+async function runDraftAnalysis() {
+  const apiKey = DRAFT_CONFIG.geminiApiKey;
+  if (!apiKey) {
+    showAIError("Chave da API Gemini não configurada.");
+    return;
+  }
+
+  const panel = document.getElementById("draft-ai-panel");
+  const loading = document.getElementById("draft-ai-loading");
+  const textEl = document.getElementById("draft-ai-text");
+
+  panel.style.display = "block";
+  loading.style.display = "flex";
+  textEl.style.display = "none";
+  textEl.innerHTML = "";
+  panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+  const prompt = buildDraftPrompt();
+  // Streaming endpoint
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${DRAFT_CONFIG.geminiModel}:streamGenerateContent?alt=sse&key=${apiKey}`;
+
+  try {
+    const resp = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: { temperature: 0.7, maxOutputTokens: 1024 }
+      })
+    });
+
+    if (!resp.ok) {
+      const errData = await resp.json().catch(() => ({}));
+      const msg = errData?.error?.message || `HTTP ${resp.status}`;
+      throw new Error(msg);
+    }
+
+    loading.style.display = "none";
+    textEl.style.display = "block";
+
+    const reader = resp.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = "";
+    let fullText = "";
+    let picksRendered = false;
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split("\n");
+      buffer = lines.pop(); // guarda linha incompleta para próxima iteração
+
+      for (const line of lines) {
+        if (!line.startsWith("data: ")) continue;
+        const jsonStr = line.slice(6).trim();
+        if (!jsonStr || jsonStr === "[DONE]") continue;
+        try {
+          const data = JSON.parse(jsonStr);
+          const chunk = data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+          if (!chunk) continue;
+          fullText += chunk;
+
+          // Extrai retratos da linha PICKS: logo que ela aparecer
+          if (!picksRendered && fullText.includes("\n")) {
+            const firstLine = fullText.split("\n")[0];
+            if (firstLine.startsWith("PICKS:")) {
+              picksRendered = true;
+              renderAIPicksRow(firstLine.replace("PICKS:", "").trim());
+            }
+          }
+
+          // Mostra texto sem a linha PICKS: (já exibida como retratos)
+          const displayText = fullText.replace(/^PICKS:[^\n]*\n?/, "");
+          textEl.innerHTML = formatAIResponse(displayText);
+        } catch { /* ignora JSON mal-formado */ }
+      }
+    }
+  } catch (err) {
+    loading.style.display = "none";
+    showAIError("Erro ao chamar Gemini API: " + err.message);
+  }
+}
+
+function renderAIPicksRow(picksStr) {
+  const panel = document.getElementById("draft-ai-panel");
+  const existing = document.getElementById("draft-ai-picks-row");
+  if (existing) existing.remove();
+
+  const names = picksStr.split(",").map(s => s.trim()).filter(Boolean).slice(0, 3);
+  if (names.length === 0) return;
+
+  const myLane = document.getElementById("draft-my-lane-select").value;
+  const isDuoLane = myLane === "ADC" || myLane === "Suporte";
+  const duoRoleKey = myLane === "ADC" ? "adc" : "support";
+  const duoLabel = myLane === "ADC" ? "Suporte ideal" : "ADC ideal";
+
+  const row = document.createElement("div");
+  row.id = "draft-ai-picks-row";
+  row.style.cssText = `
+    display:flex; gap:12px; align-items:flex-start; padding:14px 18px 4px;
+    flex-wrap:wrap; border-bottom:1px solid rgba(255,255,255,0.06);
+  `;
+
+  const borderColors = ["var(--accent-gold)", "rgba(200,170,110,0.5)", "rgba(200,170,110,0.3)"];
+  const glows = ["0 0 18px rgba(200,170,110,0.5)", "none", "none"];
+
+  names.forEach((name, i) => {
+    const champ = champions.find(c =>
+      normalizeText(c.nome) === normalizeText(name) ||
+      normalizeText(c.nome).includes(normalizeText(name)) ||
+      normalizeText(name).includes(normalizeText(c.nome))
+    );
+
+    // Card externo
+    const card = document.createElement("div");
+    card.style.cssText = `
+      display:flex; flex-direction:column; align-items:center; gap:5px;
+      padding:10px 12px; border-radius:12px;
+      background:${i === 0 ? "rgba(200,170,110,0.07)" : "rgba(255,255,255,0.03)"};
+      border:1px solid ${i === 0 ? "rgba(200,170,110,0.25)" : "rgba(255,255,255,0.07)"};
+      min-width:90px; cursor:${champ ? "pointer" : "default"};
+      transition:background 0.2s, box-shadow 0.2s;
+    `;
+    if (champ) {
+      card.title = "Clique para ver build";
+      card.onmouseenter = () => { card.style.background = "rgba(200,170,110,0.12)"; card.style.boxShadow = "0 4px 16px rgba(200,170,110,0.15)"; };
+      card.onmouseleave = () => { card.style.background = i === 0 ? "rgba(200,170,110,0.07)" : "rgba(255,255,255,0.03)"; card.style.boxShadow = "none"; };
+      card.addEventListener("click", () => showChampionDetails(champ));
+    }
+
+    // Rank label
+    const rankEl = document.createElement("span");
+    rankEl.style.cssText = `font-size:0.6rem;font-weight:800;letter-spacing:1.5px;color:${i === 0 ? "var(--accent-gold)" : "var(--text-muted)"};`;
+    rankEl.textContent = i === 0 ? "★ 1ª OPÇÃO" : i === 1 ? "2ª OPÇÃO" : "3ª OPÇÃO";
+
+    // Avatar principal
+    const avatarWrap = document.createElement("div");
+    avatarWrap.style.cssText = `
+      width:64px; height:64px; border-radius:50%;
+      border:3px solid ${borderColors[i]};
+      overflow:hidden; background:rgba(255,255,255,0.05);
+      box-shadow:${glows[i]}; flex-shrink:0;
+      ${champ ? "cursor:pointer;" : ""}
+    `;
+    if (champ) {
+      const img = document.createElement("img");
+      img.src = getChampionIcon(champ.slug, champ.id);
+      img.alt = name;
+      img.style.cssText = "width:100%;height:100%;object-fit:cover;pointer-events:none;";
+      img.onerror = () => { img.src = "https://ddragon.leagueoflegends.com/cdn/16.11.1/img/champion/Aatrox.png"; };
+      avatarWrap.appendChild(img);
+    } else {
+      avatarWrap.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--text-muted)"><i class="fa-solid fa-user"></i></div>`;
+    }
+
+    // Nome do campeão
+    const nameEl = document.createElement("span");
+    nameEl.style.cssText = "font-size:0.75rem;font-weight:600;color:var(--text-primary);text-align:center;";
+    nameEl.textContent = champ ? champ.nome : name;
+
+    card.appendChild(rankEl);
+    card.appendChild(avatarWrap);
+    card.appendChild(nameEl);
+
+    // Duo partner (apenas ADC/Suporte)
+    if (isDuoLane && champ) {
+      const duoEntry = BOTLANE_DUOS[champ.slug];
+      if (duoEntry && duoEntry.role === duoRoleKey) {
+        const partnerSlug = duoEntry.bestPartner;
+        const partner = champions.find(c => c.slug === partnerSlug);
+
+        if (partner) {
+          // Divisor
+          const divider = document.createElement("div");
+          divider.style.cssText = "width:32px;height:1px;background:rgba(255,255,255,0.1);margin:2px 0;";
+          card.appendChild(divider);
+
+          // Label duo
+          const duoLabelEl = document.createElement("span");
+          duoLabelEl.style.cssText = "font-size:0.58rem;letter-spacing:1px;color:var(--text-muted);font-weight:700;";
+          duoLabelEl.textContent = duoLabel.toUpperCase();
+          card.appendChild(duoLabelEl);
+
+          // Avatar do parceiro (clicável)
+          const partnerWrap = document.createElement("div");
+          partnerWrap.style.cssText = `
+            width:40px; height:40px; border-radius:50%;
+            border:2px solid rgba(34,197,94,0.5);
+            overflow:hidden; background:rgba(255,255,255,0.05);
+            cursor:pointer; transition:box-shadow 0.15s;
+            box-shadow:0 0 8px rgba(34,197,94,0.2);
+          `;
+          partnerWrap.title = `Ver build de ${partner.nome}`;
+          partnerWrap.onmouseenter = () => { partnerWrap.style.boxShadow = "0 0 14px rgba(34,197,94,0.5)"; };
+          partnerWrap.onmouseleave = () => { partnerWrap.style.boxShadow = "0 0 8px rgba(34,197,94,0.2)"; };
+          partnerWrap.addEventListener("click", (e) => {
+            e.stopPropagation();
+            showChampionDetails(partner);
+          });
+
+          const partnerImg = document.createElement("img");
+          partnerImg.src = getChampionIcon(partner.slug, partner.id);
+          partnerImg.alt = partner.nome;
+          partnerImg.style.cssText = "width:100%;height:100%;object-fit:cover;pointer-events:none;";
+          partnerImg.onerror = () => { partnerImg.src = "https://ddragon.leagueoflegends.com/cdn/16.11.1/img/champion/Aatrox.png"; };
+          partnerWrap.appendChild(partnerImg);
+          card.appendChild(partnerWrap);
+
+          // Nome do parceiro
+          const partnerName = document.createElement("span");
+          partnerName.style.cssText = "font-size:0.65rem;color:rgba(34,197,94,0.8);text-align:center;";
+          partnerName.textContent = partner.nome;
+          card.appendChild(partnerName);
+
+          // Score de sinergia
+          const scoreEl = document.createElement("span");
+          scoreEl.style.cssText = "font-size:0.6rem;color:var(--text-muted);";
+          scoreEl.textContent = `Sinergia ${duoEntry.tier} (${duoEntry.score})`;
+          card.appendChild(scoreEl);
+        }
+      }
+    }
+
+    row.appendChild(card);
+  });
+
+  const textEl = document.getElementById("draft-ai-text");
+  panel.insertBefore(row, textEl);
+}
+
+function formatAIResponse(text) {
+  return text
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*(.+?)\*/g, "<em>$1</em>")
+    .replace(/^#{1,3}\s+(.+)$/gm, "<strong style='font-size:1rem;display:block;margin-top:12px;color:var(--accent-gold)'>$1</strong>")
+    .replace(/\n/g, "<br>");
+}
+
+function showAIError(msg) {
+  const panel = document.getElementById("draft-ai-panel");
+  const loading = document.getElementById("draft-ai-loading");
+  const textEl = document.getElementById("draft-ai-text");
+  panel.style.display = "block";
+  loading.style.display = "none";
+  textEl.style.display = "block";
+  textEl.innerHTML = `<span style='color:var(--red)'><i class='fa-solid fa-circle-exclamation'></i> ${msg.replace(/\n/g, "<br>")}</span>`;
 }
 
