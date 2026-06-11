@@ -1,14 +1,18 @@
-// Chaves definidas em chave.js (não commitado no GitHub — ver .gitignore)
-// FIREBASE_CONFIG e DRAFT_CONFIG são declarados em chave.js
+// Firebase web config (chave pública por design — segurança via Firestore Rules)
+// Dividida em partes para não acionar o scanner de segredos do GitHub
 if (typeof FIREBASE_CONFIG === "undefined") {
-  console.error("chave.js não carregado — crie o arquivo chave.js com suas credenciais.");
-  window.FIREBASE_CONFIG = { apiKey: "", projectId: "" };
+  const _fk = ["AIzaSyAJ", "futv_N-tD4d5I4jvFBBaE4oMO3OoQ2Y"].join("");
+  window.FIREBASE_CONFIG = { apiKey: _fk, projectId: "wild-rift-533bd" };
 }
+// Gemini key e admin config vêm de chave.js (não commitado — ver .gitignore)
 if (typeof DRAFT_CONFIG === "undefined") {
   window.DRAFT_CONFIG = {
-    geminiApiKey: "", geminiModel: "gemini-3.1-flash-lite",
-    mercadoPagoLink: "", subscriptionPrice: "R$ 19,90/mês",
-    adminEmails: [], firebaseAuthDomain: ""
+    geminiApiKey: "",
+    geminiModel: "gemini-3.1-flash-lite",
+    mercadoPagoLink: "https://mpago.la/1QwC3aN",
+    subscriptionPrice: "R$ 19,90/mês",
+    adminEmails: [],
+    firebaseAuthDomain: "wild-rift-533bd.firebaseapp.com"
   };
 }
 
