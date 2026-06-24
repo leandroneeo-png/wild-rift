@@ -850,9 +850,9 @@
       "imageUrl": null
     },
     "3135": {
-      "name": "Cajado do Vazio",
-      "description": "<mainText><stats><attention> 80</attention> de Poder de Habilidade<br><attention> 40%</attention> de Penetração Mágica</stats><br><br></mainText>",
-      "price": 1050,
+      "name": "[NEW]Cajado do Vazio",
+      "description": "<!--wl-no-auto-icons--><ul>\n<li><font color=\"#78c878\">+95 de Poder de Habilidade</font></li>\n<li><font color=\"#78c878\">+40% de Penetração Mágica</font></li></ul>\n<!-- notionvc: 96fe7c7b-f80a-4a9b-a3be-25936f378c6d -->",
+      "price": 3000,
       "imageUrl": null
     },
     "3134": {
@@ -898,9 +898,9 @@
       "imageUrl": null
     },
     "3102": {
-      "name": "Véu da Banshee",
-      "description": "<mainText><stats><attention> 120</attention> de Poder de Habilidade<br><attention> 50</attention> de Resistência Mágica</stats><br><br><passive>Anular</passive><br>Concede um Escudo de Feitiço.<br></mainText>",
-      "price": 250,
+      "name": "[NEW]Véu da Banshee",
+      "description": "<!--wl-no-auto-icons--><ul>\n<li><font color=\"#78c878\">+105 de Poder de Habilidade</font></li>\n<li><font color=\"#78c878\">+40 de Resistencia Magica</font></li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Passivo (Anular):</font> Concede um escudo de feitico que bloqueia a proxima habilidade inimiga.</li><li><br></li>\n<li><font color=\"#f0e6d2\">Tempo de Recarga:</font> 30 segundos sem sofrer dano de campeoes para o escudo se regenerar.</li>\n</ul>\n<!-- notionvc: 4f831829-cda4-46f8-a77a-09fe10728911 -->",
+      "price": 3000,
       "imageUrl": null
     },
     "3095": {
@@ -976,10 +976,10 @@
       "imageUrl": null
     },
     "2420": {
-      "name": "Armaguarda da Caçadora",
-      "description": "<p>+30 Armadura<br>+25 Poder de Habilidade</p>",
-      "price": 1200,
-      "imageUrl": null
+      "name": "[NEW]Armaguarda da Caçadora",
+      "description": "<!--wl-no-auto-icons--><p><img src=\"https://wildlegends.net/icons/ar.png\" alt=\"ar\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;<font color=\"#66ffb2\">+20 Armadura<br></font><img src=\"https://wildlegends.net/icons/ap.png\" alt=\"ap\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;<font color=\"#66ffb2\">+35 Poder de Habilidade</font></p><p><br></p><p><font color=\"#f0e6d2\">Efeito Ativo (Estase):</font> Torna o campeao <font color=\"#af6ea0\">invulneravel</font> e <font color=\"#af6ea0\">inalvejavel</font> por 2,5 segundos, mas impede que ele se mova, ataque, use habilidades ou ative outros itens durante o periodo.<!-- notionvc: 55e8e3f2-36b0-4de9-b7cd-775605587cfd --></p><p><br></p><p><font color=\"#f0e6d2\">Tempo de Recarga:</font> 120 segundos.<!-- notionvc: f4f0d403-2b1c-4897-aff4-91047eb13f29 --></p>",
+      "price": 1400,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/iCwYze3jFSOGNSiKtSOw2Ba5oJysTDqs.webp"
     },
     "1058": {
       "name": "Bastão Desnecessariamente Grande",
@@ -1063,6 +1063,150 @@
       "name": "Botas da Velocidade",
       "description": "<!--wl-no-auto-icons--><p><img src=\"https://wildlegends.net/icons/ms.png\" alt=\"ms\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\"><font color=\"#78c878\">+25 Velocidade de Movimento</font></p>",
       "price": 500,
+      "imageUrl": null
+    },
+    "127106": {
+      "name": "[NEW]Placa Gargolítica",
+      "description": "<div><font color=\"#78c878\">+200 Vida Máxima</font></div><div><font color=\"#78c878\">+45 Armadura</font></div><div><font color=\"#78c878\">+45 Resistência Mágica</font></div><div><font color=\"#78c878\">+10 Aceleração de Habilidade</font></div><div><br></div><div><font color=\"#f0e6d2\">Placa de Pedra - Ativo:</font> Concede um escudo no valor de 100 + 90% da sua Vida Bônus e aumenta o tamanho do seu campeão. O escudo decai continuamente ao longo de 2,5 segundos.</div><div><br></div><div><font color=\"#f0e6d2\">Tempo de Recarga:</font> 60 segundos</div>",
+      "price": 2900,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/cy_8uFWOExEiDTaNYJFGo4gBgG_hWoOj.webp"
+    },
+    "127104": {
+      "name": "Botas do Dinamismo (REFORMULADAS)",
+      "description": "<div><font color=\"#78c878\">+40 de Dano de Ataque</font></div><div><font color=\"#78c878\">+12 de Penetração Armadura</font></div><div><font color=\"#78c878\">+6% de Penetração de Armadura</font></div><div><font color=\"#78c878\">+45 de Velocidade de Movimento</font></div><div><br></div><div><font color=\"#f0e6d2\">Passiva (Passos Rápidos):</font> Concede +20 de Velocidade de Movimento adicional fora de combate.</div>",
+      "price": 2200,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/VcBeke1ikNHVT4uWpg8ArZOqBGRK8jDw.webp"
+    },
+    "127103": {
+      "name": "Sapatos do Feiticeiro (REFORMULADAS)",
+      "description": "<div><font color=\"#78c878\">+40 de Poder de Habilidade</font></div><div><font color=\"#78c878\">+18 de Penetração Mágica&nbsp;</font></div><div><font color=\"#78c878\">+8% de Penetração Mágica&nbsp;</font></div><div><font color=\"#78c878\">+100% de Regeneração de Mana Base</font></div><div><font color=\"#78c878\">+45 de Velocidade de Movimento</font></div><div><br></div><div><font color=\"#f0e6d2\">Passiva (Equilíbrio):</font> Campeões que não utilizam mana recebem 50% de Regeneração de Vida Base no lugar.</div><div><br></div><div><font color=\"#f0e6d2\">Passiva (Destruição de Tropas):</font> Ataques básicos e habilidades ativas passam a causar 22 de Dano Verdadeiro adicional contra tropas.</div>",
+      "price": 2200,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/N8jdIeeSoaxGyVn_zZMBKvBIgvIhYkjr.webp"
+    },
+    "127102": {
+      "name": "Botas da Lucidez de Ionia (REFORMULADAS)",
+      "description": "<div><font color=\"#78c878\">+75% de Regeneração de Mana Base</font></div><div><font color=\"#78c878\">+25 de Aceleração de Habilidade</font></div><div><font color=\"#78c878\">+45 de Velocidade de Movimento</font></div><div><br></div><div><font color=\"#f0e6d2\">Passiva (Invocação):</font> Reduz o tempo de recarga dos Feitiços de Invocador (Summoner Spells) em 20%.</div><div><br></div><div><font color=\"#f0e6d2\">Passiva (Celeridade de Noxus):</font> Quando você fornece cura ou escudo para aliados, utiliza um Feitiço de Invocador ou causa dano a inimigos com habilidades, você ganha 10% (para campeões corpo a corpo) / 8% (para campeões à distância) de Velocidade de Movimento por 4 segundos.</div><div><br></div><div><font color=\"#f0e6d2\">Restrição:</font> A mesma habilidade só pode ativar este efeito uma vez a cada 4 segundos.</div>",
+      "price": 2000,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/4Vnkie2ZPdZ4nYR9F4wyg_5jOV3C0p0c.webp"
+    },
+    "127101": {
+      "name": "Botas Galvanizadas de Aço (REFORMULADAS)",
+      "description": "<div><font color=\"#78c878\">+150 de Vida Máxima</font></div><div><font color=\"#78c878\">+50% de Regeneração de Vida Base</font></div><div><font color=\"#78c878\">+35 de Armadura</font></div><div><font color=\"#78c878\">+45 de Velocidade de Movimento</font></div><div><br></div><div><font color=\"#f0e6d2\">Passiva (Bloqueio):</font> Reduz em 10% o dano proveniente de ataques básicos de campeões.</div><div><br></div><div><font color=\"#f0e6d2\">Passiva (Resistência de Noxus):</font> Ao receber dano físico de campeões, você ganha um escudo de dano físico de 10−120+8% da sua Vida Máxima, com duração de 5 segundos.</div><div><font color=\"#f0e6d2\">Tempo de Recarga:</font> 12 segundos.</div>",
+      "price": 2200,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/vCbtetEB_5U2sJyYS4I2C09tM4BMnhLP.webp"
+    },
+    "127100": {
+      "name": "Passos de Mercúrio (REFORMULADAS)",
+      "description": "<div><font color=\"#78c878\">+150 de Vida Máxima</font></div><div><font color=\"#78c878\">+50% de Regeneração de Vida Base</font></div><div><font color=\"#78c878\">+35 de Resistência Mágica</font></div><div><font color=\"#78c878\">+30% de Tenacidade</font></div><div><font color=\"#78c878\">+45 de Velocidade de Movimento</font></div><div><br></div><div>Passiva (Obstinação de Noxus): Ao receber dano mágico de campeões, você ganha um escudo de dano mágico de 10 - 120 + 8% da sua Vida Máxima, com duração de 5 segundos.</div><div>Tempo de Recarga: 12 segundos</div><div><br></div><div><br></div>",
+      "price": 2200,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/mHFmOwSaHbkCu1Qfzb3YdKJ0hWN3ln5-.webp"
+    },
+    "127099": {
+      "name": "Grevas do Berserker (Reformuladas)",
+      "description": "<div><font color=\"#78c878\">+50% de Velocidade de Ataque</font></div><div><font color=\"#78c878\">+5% de Vampirismo Físico</font></div><div><font color=\"#78c878\">+45 de Velocidade de Movimento</font></div><div><br></div><div><font color=\"#f0e6d2\">Passiva (Passos de Noxus):</font> Ataques básicos que atingem campeões concedem 15% (para campeões corpo a corpo) / 12% (para campeões à distância) de Velocidade de Movimento, decaindo ao longo de 2 segundos.</div><div><br></div><div><font color=\"#f0e6d2\">Passiva (Firmeza/Cura):</font> Cada ataque básico que atinge um alvo restaura 12 pontos de Vida para o próprio campeão.</div>",
+      "price": 2200,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/UV9u2X_FQJQSkPa9buD-5tfMPQFGfiPG.webp"
+    },
+    "127098": {
+      "name": "Grevas Vorazes (REFORMULADAS)",
+      "description": "<div><font color=\"#78c878\">+25 de Dano de Ataque</font></div><div><font color=\"#78c878\">+45 de Velocidade de Movimento</font></div><div><font color=\"#78c878\">+10% de Vampirismo Universal</font></div><div><br></div><div>Passiva:&nbsp;Quando a sua Vida estiver acima de 50%, você ganha 5% de dano adicional. Quando a sua Vida estiver abaixo de 50%, você ganha 12% de aumento em curas recebidas e fortalecimento de escudos.</div>",
+      "price": 2200,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/YODvryAH7TYoxKHEuImpRw-s3mufypJZ.webp"
+    },
+    "127097": {
+      "name": "[NEW]Crepusculo e Alvorada",
+      "description": "<!--wl-no-auto-icons--><ul>\n<li><font color=\"#78c878\">+350 de Vida Maxima</font></li>\n<li><font color=\"#78c878\">+25% de Velocidade de Ataque</font></li>\n<li><font color=\"#78c878\">+70 de Poder de Habilidade</font></li>\n<li><font color=\"#78c878\">+20 de Aceleracao de Habilidade</font></li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Passivo (Lamina Arcana): </font>Apos usar uma habilidade, seu proximo ataque basico causa (75% de Dano de Ataque base + 10% de Poder de Habilidade) como Dano Magico adicional. Apos um breve intervalo, o alvo sofre uma aplicacao adicional de efeitos ao contato (On-Hit Effects).</li><li><br></li>\n<li><font color=\"#f0e6d2\">Tempo de Recarga:</font> 1,5 segundos.</li>\n</ul>\n<!-- notionvc: ac6ef41f-1a03-4576-852c-e4e4f4ec7fe4 -->",
+      "price": 3100,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/Me-uDURoqEzYnEhaPDRuKMBhblTTC9Ie.webp"
+    },
+    "127096": {
+      "name": "[NEW]Cinturão Hextec",
+      "description": "<!--wl-no-auto-icons--><ul>\n<li><font color=\"#78c878\">+250 de Vida Maxima</font></li>\n<li><font color=\"#78c878\">+70 de Poder de Habilidade</font></li>\n<li><font color=\"#78c878\">+20 de Aceleração de Habilidade</font></li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Ativo (Projeteis de Fogo):</font> Avança para a frente e dispara uma salva de projeteis de fogo em formato de cone, causando 100 + 10% de Poder de Habilidade como Dano Magico.</li><li><br></li>\n<li><font color=\"#f0e6d2\">Restricao de Dano:</font> Se um campeão ou monstro da selva for atingido por mais de um projetil, os projeteis subsequentes causam apenas 10% de dano.</li>\n<li>Tempo de Recarga: 30 segundos.</li>\n</ul>\n<!-- notionvc: 9bf556ae-69e0-4b67-8599-7cae7d0c6745 -->",
+      "price": 2700,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/Tg0VWTmvwJz7Xh5ERObcBIAt8oUPc7G2.webp"
+    },
+    "127095": {
+      "name": "[NEW]Redenção",
+      "description": "<!--wl-no-auto-icons--><ul>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/hp.png\" alt=\"hp\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+150 de Vida Maxima</font></li>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/ap.png\" alt=\"ap\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+45 de Poder de Habilidade</font></li>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/Mana_regeneration.png\" alt=\"mpreg\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+50% de Regeneração de Mana Base</font></li>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/cdr.png\" alt=\"cdr\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+20 de Aceleração de Habilidade</font></li>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/heal_and_shield_strength.webp\" alt=\"heal_shield\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+5% de Poder de Cura e Escudo</font></li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Ativo (Interferencia):</font> Revela uma grande área alvo. Apos 2,5 segundos, <font color=\"#66ffb2\">cura os aliados</font> na região em <font color=\"#66ffb2\">150-350</font> (baseado no nivel do aliado) de Vida e causa 10% da Vida Maxima dos campeoes inimigos como <font color=\"#f0e6d2\">Dano Verdadeiro</font>.</li><li><br></li>\n<li><font color=\"#f0e6d2\">Tempo de Recarga:</font> 60 segundos.</li><li><br></li>\n<li><font color=\"#f0e6d2\">Nota especial:</font> Esta habilidade pode ser usada enquanto estiver morto (aguardando o renascimento).</li>\n</ul>\n<!-- notionvc: 55ec6f95-fe90-4852-b52c-2dd61ace5d83 -->",
+      "price": 2600,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/X0-ZVlHtUi8-TEOsjr93NCyCH4yE3E9L.webp"
+    },
+    "127094": {
+      "name": "[NEW]Ampulheta de Zhonya",
+      "description": "<!--wl-no-auto-icons--><ul>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/ar.png\" alt=\"ar\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+40 de Armadura</font></li>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/ap.png\" alt=\"ap\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+110 de Poder de Habilidade</font></li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Ativo (Estase):</font> Torna o campeão <font color=\"#af6ea0\">invulneravel</font> e <font color=\"#af6ea0\">inalvejavel </font>por 2,5 segundos, mas impede que ele se mova, ataque, use habilidades ou ative outros itens durante o periodo.</li><li><br></li>\n<li><font color=\"#f0e6d2\">Tempo de Recarga:</font> 90 segundos.</li>\n</ul>\n<!-- notionvc: 3b7e0143-6560-4542-9cf6-cbffd86fda52 -->",
+      "price": 3300,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/Sof_SF3kYokmI2iA3bPQepaYKAxCnMpo.webp"
+    },
+    "127093": {
+      "name": "[NEW]Lagrima da Deusa",
+      "description": "<!--wl-no-auto-icons--><ul>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/mana.png\" alt=\"mana\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+200 de Mana Maximo</font></li>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/cdr.png\" alt=\"cdr\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+5 de Aceleracao de Habilidade</font></li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Passivo (Asmoco):</font> Restitui <font color=\"#5ec5ff\">10%</font> do <font color=\"#5ec5ff\">Mana</font> gasto.</li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Passivo (Carga de Mana):</font> Ao gastar <font color=\"#5ec5ff\">Mana</font>, aumenta o <font color=\"#5ec5ff\">Mana Máximo</font> em <font color=\"#5ec5ff\">6</font>, ate um limite máximo de <font color=\"#5ec5ff\">+700 de Mana</font>. Pode ser ativado ate 3 vezes a cada 10 segundos. Limitado a 1 item da linha Lagrima da Deusa.</li>\n</ul>\n<!-- notionvc: 15574c0c-6970-496c-9369-4a5960ba10cc -->",
+      "price": 500,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/Z8KxgEBCdFrA03PXePs-316aLOzz4gFt.webp"
+    },
+    "127091": {
+      "name": "[NEW]Forca do Vendaval",
+      "description": "<!--wl-no-auto-icons--><ul>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/ad.png\" alt=\"ad\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+50 de Dano de Ataque</font></li>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/crit.png\" alt=\"crit\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+25% de Taxa de Acerto Critico</font></li>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/as.png\" alt=\"as\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+15% de Velocidade de Ataque</font></li>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/ms.png\" alt=\"ms\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+5% de Velocidade de Movimento</font></li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Ativo (Chuva de Canivete):</font> Avança na direção selecionada e dispara 3 projeteis contra o inimigo com a menor quantidade de vida proximo ao destino final. Prioriza campeões e causa um total de <font color=\"#f59e0b\">40-125</font> (<img src=\"https://wildlegends.net/icons/perlevel.png\" alt=\"perlevel\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;) + <font color=\"#f59e0b\">35% de&nbsp;<img src=\"https://wildlegends.net/icons/ad.png\" alt=\"ad\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;&nbsp;adicional</font> como <font color=\"#f59e0b\">Dano Fisico</font>.</li><li><br></li>\n<li><font color=\"#f0e6d2\">Tempo de Recarga do Ativo:</font> 60 segundos.</li>\n</ul>\n<!-- notionvc: 89ad0473-56f1-42a9-9d13-2144adb5f688 -->",
+      "price": 3100,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/W4k8A6ZiVfSmoHzyzWDPbpR-a31d9j3x.webp"
+    },
+    "127090": {
+      "name": "[NEW]Quebrapassos",
+      "description": "<!--wl-no-auto-icons--><ul>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/hp.png\" alt=\"hp\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+400 de Vida Maxima</font></li>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/ad.png\" alt=\"ad\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+40 de Dano de Ataque</font></li>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/as.png\" alt=\"as\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+15% de Velocidade de Ataque</font></li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Ativo (Onda de Choque Destruidora de Linhas):</font> Avança uma curta distancia a frente, causando <font color=\"#f59e0b\">100% de Dano Fisico</font> aos inimigos ao redor e aplicando <font color=\"#af6ea0\">40% de Lentidao</font> por 3 segundos.</li><li><br></li>\n<li><font color=\"#f0e6d2\">Tempo de Recarga do Ativo:</font> 25 segundos.</li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Passivo (Avanço):</font> Causar <font color=\"#f59e0b\">Dano Fisico</font> concede <font color=\"#f0e6d2\">20 de Velocidade de Movimento</font> por 2 segundos.</li>\n</ul>\n<!-- notionvc: 77a09b12-cd03-41d4-8802-96c5701061b6 -->",
+      "price": 3100,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/84lYNkioBp3enXjjWwmtSBw57XEMstdG.webp"
+    },
+    "127089": {
+      "name": "[NEW]Hemodrenario",
+      "description": "<!--wl-no-auto-icons--><ul>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/hp.png\" alt=\"hp\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+350 de Vida Maxima</font></li>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/ad.png\" alt=\"ad\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+40 de Dano de Ataque</font></li>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/cdr.png\" alt=\"cdr\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+15 de Aceleração de Habilidade</font></li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Ativo (Corte Sedento):</font> Causa <font color=\"#f59e0b\">175% de Dano Fisico</font> base aos inimigos proximos. Cada campeao inimigo atingido cura o usuario em (<font color=\"#f59e0b\">20% de&nbsp;</font><img src=\"https://wildlegends.net/icons/ad.png\" alt=\"ad\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;&nbsp;+ <font color=\"#78c878\">10% da&nbsp;<img src=\"https://wildlegends.net/icons/hp.png\" alt=\"hp\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;&nbsp;Perdida</font>).</li><li><br></li>\n<li><font color=\"#f0e6d2\">Tempo de Recarga do Ativo:</font> 12 segundos.</li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Passivo (Sede de Sangue):</font> Concede <font color=\"#aa1e78\">8% de Vampirismo Global</font>.</li>\n</ul>\n<!-- notionvc: 1e177a88-de4b-4f48-8fc7-4c8cb1cd71c3 -->",
+      "price": 3100,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/-iZBFOj1-zYnzfDyO_H7RrNsJtpR0STd.webp"
+    },
+    "127088": {
+      "name": "[NEW]Cimitarra Mercurial",
+      "description": "<!--wl-no-auto-icons--><ul>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/ad.png\" alt=\"ad\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+40 de Dano de Ataque</font></li>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/omnivamp.webp\" alt=\"omnivamp\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+8% de Vampirismo Fisico</font></li>\n<li><font color=\"#78c878\"><img src=\"https://wildlegends.net/icons/mr.png\" alt=\"mr\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+40 de Resistencia Magica</font></li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Ativo (Mercurio):</font> Remove todos os efeitos de controle de grupo (CC) do campeao e concede imunidade a novos efeitos de controle por 0,25 segundos.</li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Passivo (Tenacidade):</font> Concede <font color=\"#a78bfa\">30% de Tenacidade</font> e <font color=\"#5ec5ff\">30% de Resistencia a Lentidão</font> por 1,5 segundos apos o termino do efeito ativo.</li><li><br></li>\n<li><font color=\"#f0e6d2\">Tempo de Recarga:</font> 60 segundos.</li>\n<li><br></li><li><font color=\"#f0e6d2\">Restrição:</font> Nao pode ser usado durante efeitos de Arremesso ao Ar ou Repulsao.</li>\n</ul>\n<!-- notionvc: 25e9ab61-e9e6-474e-adb6-b10058bb9289 -->",
+      "price": 3100,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/ZHEIu-XNytygpnrVVKlO1zDZxxbf8bhu.webp"
+    },
+    "127087": {
+      "name": "[NEW]Bandana de Mercúrio",
+      "description": "<!--wl-no-auto-icons--><ul>\n<li><font color=\"#66ffb2\"><img src=\"https://wildlegends.net/icons/mr.png\" alt=\"mr\" class=\"editor-inline-icon\" width=\"16\" height=\"16\" style=\"display: inline-block; width: 16px; height: 16px; margin-right: 4px;\">&nbsp;+30 de Resistencia Magica</font></li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Ativo (Mercurio):</font> Remove todos os efeitos de controle de grupo (CC) do campeão e concede imunidade a novos efeitos de controle por 0,25 segundos.</li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Passivo (Tenacidade):</font> Concede <font color=\"#a78bfa\">30% de Tenacidade</font> e <font color=\"#5ec5ff\">30% de Resistencia a Lentidão</font> por 1,5 segundos apos o termino do efeito ativo.</li><li><br></li>\n<li>Tempo de Recarga: 60 segundos.</li><li><br></li>\n<li><font color=\"#f0e6d2\">Restrição:</font> Não pode ser usado durante efeitos de <font color=\"#af6ea0\">Arremesso ao Ar</font> ou <font color=\"#af6ea0\">Repulsão</font>.</li>\n</ul>\n<!-- notionvc: 1a103e57-7c47-4cfe-807f-183ac346a93c -->",
+      "price": 1100,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/bCYNZvpFk6VCcjHoCeFfbTkC77MspCSm.webp"
+    },
+    "4646": {
+      "name": "[NEW]Ápice da Tempestade",
+      "description": "<!--wl-no-auto-icons--><ul>\n<li><font color=\"#78c878\">+90 de Poder de Habilidade</font></li>\n<li><font color=\"#78c878\">+15 de Penetracao Magica</font></li>\n<li><font color=\"#78c878\">+6% de Velocidade de Movimento</font></li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Passivo (Invasao da Tempestade):</font> Causar dano equivalente a 25% da Vida Maxima de um campeao inimigo dentro de 2,5 segundos aplica Squall (Tempestade) ao alvo e concede a voce 25% de Velocidade de Movimento adicional por 2,5 segundos.</li>\n<li>Tempo de Recarga: 25 segundos.</li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Passivo (Squall):</font> Apos 2 segundos, atinge o alvo causando 125 + 10% do Poder de Habilidade como Dano Magico. Se o inimigo morrer antes do raio atingir, ele explode imediatamente causando dano em uma grande area e concede 25 de ouro ao usuario.</li>\n</ul>\n<!-- notionvc: 75d711f5-8328-4a6f-86e5-fb888280e01d -->",
+      "price": 2900,
+      "imageUrl": null
+    },
+    "4010": {
+      "name": "[NEW]Maldição Sanguessuga",
+      "description": "<!--wl-no-auto-icons--><ul>\n<li><font color=\"#78c878\">+350 de Vida Maxima</font></li>\n<li><font color=\"#78c878\">+65 de Poder de Habilidade</font></li>\n<li><font color=\"#78c878\">+15 de Aceleracao de Habilidade</font></li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Passivo (Deterioracao Maligna):</font> Causar Dano Magico a campeoes por meio de habilidades ou passivas reduz a Resistencia Magica do alvo em 7,5% por 6 segundos, acumulando ate um limite maximo de 30% de reducao.</li>\n</ul>\n<!-- notionvc: b38a6b13-cc86-43b4-84bf-754e0f46f34d -->",
+      "price": 2900,
+      "imageUrl": null
+    },
+    "3190": {
+      "name": "[NEW]Medalhão dos Solari de Ferro",
+      "description": "<!--wl-no-auto-icons--><ul>\r\n<li><font color=\"#78c878\">+200 de Vida Maxima</font></li>\r\n<li><font color=\"#78c878\">+30 de Armadura</font></li>\r\n<li><font color=\"#78c878\">+30 de Resistencia Magica</font></li>\r\n<li><font color=\"#78c878\">+10 de Aceleracao de Habilidade</font></li><li><br></li>\r\n<li><font color=\"#f0e6d2\">Efeito Ativo (Devoção):</font> Concede a si mesmo e aos aliados proximos um escudo que absorve 250-370 de dano, com duracao de 2,5 segundos.</li>\r\n<li>Tempo de Recarga: 60 segundos.</li><li><br></li>\r\n<li><font color=\"#f0e6d2\">Restrição:</font> Se o alvo tiver sido afetado por outro Medalhao nos ultimos 20 segundos, o valor do escudo sera reduzido pela metade.</li>\r\n</ul>\r\n<!-- notionvc: 2c7e7a53-546f-49ea-8f11-242509095d17 -->",
+      "price": 2600,
+      "imageUrl": "https://cdn-guide.wildlegends.net/production/item/yUUVnDQ6nTa6b9vWXj5YWRPV_f7ef0Hz.webp"
+    },
+    "3137": {
+      "name": "[NEW]Criptoflora",
+      "description": "<!--wl-no-auto-icons--><ul>\n<li><font color=\"#78c878\">+75 de Poder de Habilidade</font></li>\n<li><font color=\"#78c878\">+30% de Penetracao Magica</font></li>\n<li><font color=\"#78c878\">+20 de Aceleracao de Habilidade</font></li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Passivo (Vida na Morte):</font> Sempre que um campeao inimigo morrer dentro de 3 segundos apos receber dano de voce, cria uma nova estrela em sua localizacao que cura os aliados na area em 100 + 20% do Poder de Habilidade como Vida.</li><li><br></li>\n<li><font color=\"#f0e6d2\">Tempo de Recarga:</font> 60 segundos.</li>\n</ul>\n<!-- notionvc: 07df6c4b-998d-4f5b-8339-c20d484a11a4 -->",
+      "price": 3000,
+      "imageUrl": null
+    },
+    "2503": {
+      "name": "[NEW]Tocha de Chamas Negras",
+      "description": "<!--wl-no-auto-icons--><ul>\n<li><font color=\"#78c878\">+80 de Poder de Habilidade</font></li>\n<li><font color=\"#78c878\">+500 de Mana Maximo</font></li>\n<li><font color=\"#78c878\">+20 de Aceleracao de Habilidade</font></li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Passivo (Chama Negra):</font> Causar dano com habilidades queima os alvos, aplicando 20 + 2% do Poder de Habilidade como Dano Magico por segundo durante 3 segundos.</li><li><br></li>\n<li><font color=\"#f0e6d2\">Modificador de Selva:</font> O dano da queima por segundo e aumentado para 40 + 2% do Poder de Habilidade contra monstros da selva.</li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Passivo (Chama Sombria):</font> Cada campeão inimigo ou monstro da selva afetado pela sua queima concede a voce 4% de Poder de Habilidade adicional.</li>\n</ul>\n<!-- notionvc: 716be8ff-dc4c-445e-b1e5-349ba8331a01 -->",
+      "price": 2800,
+      "imageUrl": null
+    },
+    "2065": {
+      "name": "[NEW]Hino Bélico de Shurelya",
+      "description": "<!--wl-no-auto-icons--><ul>\n<li><font color=\"#78c878\">+50 de Poder de Habilidade</font></li>\n<li><font color=\"#78c878\">+50% de Regeneracao de Mana Base</font></li>\n<li><font color=\"#78c878\">+20 de Aceleracao de Habilidade</font></li>\n<li><font color=\"#78c878\">+5% de Velocidade de Movimento</font></li><li><br></li>\n<li><font color=\"#f0e6d2\">Efeito Ativo (Discurso Inspirador):</font> Concede 30% de Velocidade de Movimento adicional por 4 segundos aos aliados proximos.</li><li><br></li>\n<li><font color=\"#f0e6d2\">Tempo de Recarga:</font> 60 segundos.</li>\n</ul>\n<!-- notionvc: 87f48c42-52ab-45ea-a6cb-c7b93339a0c3 -->",
+      "price": 2600,
       "imageUrl": null
     }
   },

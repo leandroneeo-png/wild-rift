@@ -2226,7 +2226,7 @@ const BOTLANE_DUOS = {
     tier: "S+",
     description: "Sinergia de alto nível mecânico. O Thresh pode lançar a lanterna (W) para salvar a Kalista após investidas profundas, ou a Kalista usa o Chamado do Destino (R) para puxar o Thresh e arremessá-lo no meio dos inimigos, criando uma iniciação perfeita.",
     tip: "Coordenem o uso do R da Kalista para salvar o Thresh quando ele iniciar com pouca vida ou para surpreender inimigos recuados.",
-    alternatives: ["nautilus", "taric", "rell"]
+    alternatives: ["nautilus", "leona", "rell"]
   },
   "kogmaw": {
     role: "adc",
@@ -2374,6 +2374,15 @@ const BOTLANE_DUOS = {
     tip: "Evitem gastar o puxão do Blitzcrank aleatoriamente. Guardem a habilidade para criar pressão apenas com a sua presença.",
     alternatives: ["samira", "draven", "kaisa"]
   },
+  "brand": {
+    role: "support",
+    bestPartner: "jhin",
+    score: "9.5",
+    tier: "S",
+    description: "O Brand oferece uma tremenda pressão na fase de rotas com seu alto dano mágico e pokagem constante. Ele aplica chamas com suas habilidades e pode atordoar inimigos com o combo correto, além de causar destruição em área em lutas de equipe.",
+    tip: "Abuse do alcance do seu W para desgastar o inimigo e guarde o atordoamento do Q para quando sofrer engage na rota.",
+    alternatives: ["ashe", "caitlyn", "miss-fortune"]
+  },
   "braum": {
     role: "support",
     bestPartner: "lucian",
@@ -2382,6 +2391,15 @@ const BOTLANE_DUOS = {
     description: "O disparo duplo da passiva do Lucian aplica acúmulos da passiva do Braum (Golpes Concussivos) com extrema rapidez, ativando o atordoamento em menos de um segundo nas trocas agressivas.",
     tip: "O Braum deve pular no Lucian com o W e usar o escudo (E) para absorver o dano inimigo após o início das trocas.",
     alternatives: ["ashe", "ezreal", "jinx"]
+  },
+  "galio": {
+    role: "support",
+    bestPartner: "samira",
+    score: "9.4",
+    tier: "S",
+    description: "O Galio oferece excelente controle de grupo em área e proteção contra dano mágico. Quando ele inicia com o flash + Provocação (W) ou com sua ultimate (Entrada Heroica), facilita para atiradores agressivos entrarem na luta.",
+    tip: "Use sua Provocação de Escudo (W) defensivamente se o inimigo iniciar no seu atirador, ou use flash + W ofensivamente para iniciar.",
+    alternatives: ["kaisa", "miss-fortune", "draven"]
   },
   "janna": {
     role: "support",
@@ -2428,6 +2446,15 @@ const BOTLANE_DUOS = {
     tip: "Coordenem o tempo da armadilha para colocá-la exatamente na metade da duração do enraizamento da Lux.",
     alternatives: ["jhin", "varus", "ezreal"]
   },
+  "malphite": {
+    role: "support",
+    bestPartner: "miss-fortune",
+    score: "9.4",
+    tier: "S",
+    description: "O Malphite suporte foca em iniciação com sua ultimate (Força Incontrolável) no nível 6. Ao arremessar múltiplos inimigos ao ar, ele cria a janela perfeita para ADCs de alto dano em área descarregarem suas habilidades.",
+    tip: "Guarde sua mana na fase inicial e use o Q apenas para zoneamento. A partir do nível 6, coordene seu engage com a ultimate do seu ADC.",
+    alternatives: ["yasuo", "samira", "kaisa"]
+  },
   "maokai": {
     role: "support",
     bestPartner: "kaisa",
@@ -2469,9 +2496,18 @@ const BOTLANE_DUOS = {
     bestPartner: "kaisa",
     score: "9.8",
     tier: "S+",
-    description: "Nautilus é o melhor aplicador de controle de grupo para a passiva da Kai'Sa, concessões stacks imediatos e permitindo que ela use seu ultimate de reposicionamento agressivo.",
+    description: "O Nautilus é o melhor aplicador de controle de grupo para a passiva da Kai'Sa, concedendo stacks imediatos e permitindo que ela use seu ultimate de reposicionamento agressivo.",
     tip: "Foquem o mesmo alvo focado pela âncora do Nautilus para estourar a passiva da Kai'Sa o mais rápido possível.",
     alternatives: ["samira", "draven", "jhin"]
+  },
+  "ornn": {
+    role: "support",
+    bestPartner: "caitlyn",
+    score: "9.4",
+    tier: "S",
+    description: "Ornn é um tanque robusto com muito controle de grupo. Seus pilares (Q) combinados com a investida (E) criam oportunidades fáceis de abate, além de sua ultimate (Chamado do Deus da Forja) que inicia lutas de longa distância.",
+    tip: "Aproveite a passiva do Ornn para forjar itens na rota, mantendo vantagem de atributos sem precisar voltar para a base.",
+    alternatives: ["jhin", "kaisa", "samira"]
   },
   "pyke": {
     role: "support",
@@ -2509,6 +2545,15 @@ const BOTLANE_DUOS = {
     tip: "A Seraphine deve usar suas habilidades através dos aliados para estender o alcance de sua ultimate.",
     alternatives: ["caitlyn", "ashe", "senna"]
   },
+  "sett": {
+    role: "support",
+    bestPartner: "samira",
+    score: "9.3",
+    tier: "A",
+    description: "O Sett suporte foca em agressão na fase de rotas com o seu puxão (E) e o ultimate (Show de Talentos) para isolar inimigos chaves. Ele absorve muito dano com a passiva do W (Cascudo) e pune inimigos que avançam demais.",
+    tip: "Use o flash + E para iniciar trocas rápidas nos primeiros níveis, zoneando os adversários e garantindo prioridade na rota.",
+    alternatives: ["kaisa", "draven", "tristana"]
+  },
   "sona": {
     role: "support",
     bestPartner: "ezreal",
@@ -2527,6 +2572,15 @@ const BOTLANE_DUOS = {
     tip: "Soraka deve manter o posicionamento seguro atrás da Vayne e focar em acertar o Q para regenerar sua própria vida.",
     alternatives: ["ezreal", "smolder", "jinx"]
   },
+  "swain": {
+    role: "support",
+    bestPartner: "jhin",
+    score: "9.4",
+    tier: "S",
+    description: "Swain oferece controle de grupo de longa distância com seu E e puxa inimigos imobilizados. Sua ultimate (Ascensão Demoníaca) concede muita sobrevivência em lutas prolongadas, drenando a vida dos oponentes.",
+    tip: "Use o seu E quando o inimigo estiver próximo de tropas para surpreendê-los com o raio de explosão, e siga com o puxão e o W.",
+    alternatives: ["samira", "draven", "kaisa"]
+  },
   "thresh": {
     role: "support",
     bestPartner: "draven",
@@ -2536,12 +2590,30 @@ const BOTLANE_DUOS = {
     tip: "Thresh deve dominar o arbusto da rota para criar ameaça constante com a presença de seu gancho.",
     alternatives: ["kalista", "jinx", "kaisa"]
   },
+  "veigar": {
+    role: "support",
+    bestPartner: "jhin",
+    score: "9.3",
+    tier: "A",
+    description: "Veigar suporte traz controle de zona extremo com o seu Horizonte de Eventos (E). A gaiola força os inimigos a ficarem parados ou serem atordoados, criando aberturas fáceis para o seu atirador castigar.",
+    tip: "Use a gaiola defensivamente para parar engages inimigos ou ofensivamente para cercar o atirador adversário sem flash.",
+    alternatives: ["caitlyn", "miss-fortune", "tristana"]
+  },
+  "velkoz": {
+    role: "support",
+    bestPartner: "jhin",
+    score: "9.3",
+    tier: "A",
+    description: "Vel'Koz foca em pokagem de longa distância com suas habilidades geométricas, causando dano verdadeiro através de sua passiva de Desconstrução Orgânica. Funciona muito bem com ADCs que controlam o grupo de longe.",
+    tip: "Mantenha-se recuado e abuse do alcance do Q para desgastar a vida dos inimigos antes de tentar um combo completo com a ultimate.",
+    alternatives: ["caitlyn", "ashe", "ezreal"]
+  },
   "yuumi": {
     role: "support",
     bestPartner: "ezreal",
     score: "9.6",
     tier: "S+",
-    description: "Duo extremamente móvel e seguro. O Ezreal consegue desviar de habilidades com o E, carregando a Yuumi em segurança enquanto ela cura e amplifica seu poder de pokagem.",
+    description: "Duo extremamente móvel e seguro. O Ezreal consegue desviar de habilidades com o E, carregando a Yuumi in segurança enquanto ela cura e amplifica seu poder de pokagem.",
     tip: "Yuumi deve aproveitar momentos de recarga inimiga para descer do Ezreal e bater para recuperar mana com seu escudo passivo.",
     alternatives: ["zeri", "twitch", "jinx"]
   },
