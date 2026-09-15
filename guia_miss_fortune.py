@@ -39,7 +39,7 @@ ROTA_FRAGIL = [
 ROTA_TANQUE = [
     ('Início', 500, ['Espada Longa'], 'Espada Longa'),
     ('1ª volta', 1200, ['Cetro Vampírico'], 'Cetro Vampírico'),
-    ('2ª volta', 900, ['Cetro Vampírico'], 'Botas (base) + poções'),
+    ('2ª volta', 900, ['Cetro Vampírico'], 'Botas do Dinamismo (base)'),
     ('3ª volta', 1800, ['Sedenta por Sangue'], 'completa Sedenta por Sangue'),
     ('4ª volta', 1300, ['Sedenta por Sangue',
                         'Botas do Dinamismo (REFORMULADAS)'],
@@ -55,12 +55,11 @@ ROTA_TANQUE = [
                         'Botas do Dinamismo (REFORMULADAS)',
                         'Espada do Rei Destruído', 'Lembrete Mortal',
                         'Gume do Infinito'], 'Gume do Infinito'),
-    ('Build fechada', 3300, ['Sedenta por Sangue',
+    ('Build fechada', 3100, ['Sedenta por Sangue',
                              'Botas do Dinamismo (REFORMULADAS)',
                              'Espada do Rei Destruído', 'Lembrete Mortal',
-                             'Gume do Infinito',
-                             'Lembranças do Lorde Dominik'],
-     'Lembranças do Lorde Dominik'),
+                             'Gume do Infinito', '[NEW]Cimitarra Mercurial'],
+     'Cimitarra Mercurial'),
 ]
 
 
@@ -178,6 +177,11 @@ def main():
       'de entrar.')
     w('')
     tabela(itens, ROTA_FRAGIL, 'Rota de compras', linhas)
+    w('> **Penetração é escolha única.** Lembrete Mortal, Lembranças do Lorde '
+      'Dominik e Rancor de Serylda nascem todos do Último Sussurro: a loja não '
+      'deixa levar dois. Escolha pelo inimigo — Dominik contra vida alta, '
+      'Lembrete Mortal contra cura, Serylda contra mobilidade.')
+    w('')
     w('**Ordem de habilidades:** maximize o **Tiro Duplo** primeiro (dano de '
       'rota e limpeza de onda), depois **Golpes Fatais**, deixando **Fazer '
       'Chover** por último. Ultimate sempre que disponível (nível 5, 9, 13).')
@@ -191,7 +195,7 @@ def main():
       'nem escudo: qualquer acerto de Blitzcrank, Nautilus ou Leona vira morte.')
     w('')
     w('- **Nível 1-4**: fique **atrás da sua onda**, nunca na lateral livre. '
-      'Farme com ataque básico e com o Tiro Duplo quicando; não contest a '
+      'Farme com ataque básico e com o Tiro Duplo quicando; não conteste a '
       'troca, você perde a corrida de dano contra um tanque com cura do '
       'suporte.')
     w('- **Segure o Fazer Chover para defesa**, não para dano: a lentidão é o '
@@ -207,6 +211,15 @@ def main():
       'quase metade do valor contra 250 de armadura.')
     w('')
     tabela(itens, ROTA_TANQUE, 'Rota de compras', linhas)
+    w('> **Um item de penetração só.** Aqui a escolha é Lembrete Mortal (as '
+      'Feridas Dolorosas cortam a cura do suporte tanque). Se o time inimigo '
+      'for de vida alta sem cura, troque por Lembranças do Lorde Dominik no '
+      'mesmo slot — nunca os dois.')
+    w('')
+    w('> A **Cimitarra Mercurial** fecha a build porque o ativo dela limpa o '
+      'CC que te mata nessa rota. Se levar ela, o encantamento das botas deve '
+      'ser **Estase**, não Mercúrio — são o mesmo efeito.')
+    w('')
     w('**Ordem de habilidades:** ainda Tiro Duplo primeiro, mas suba o **Fazer '
       'Chover** um ponto cedo (nível 3) pelo desengate. Se o suporte inimigo é '
       'Blitzcrank, o ponto em Fazer Chover no nível 2 já se paga.')
@@ -249,6 +262,12 @@ def main():
     w('| Rota contra Jhin, Sivir ou Varus (você é o counter) | **Agressivo '
       'desde o nível 1** |')
     w('| Luta coletiva com 3+ inimigos agrupados | Ult de trás, nunca de frente |')
+    w('')
+    w('> **Confira a árvore na loja.** O `metadata.json` guarda preço, '
+      'atributos e passiva, mas não a receita nem a exclusividade dos itens. '
+      'Nenhum número deste guia detecta sozinho que dois itens não podem ser '
+      'combinados — os conflitos conhecidos estão listados em '
+      '`atirador_custo_beneficio.md`, seção 5.')
     w('')
     w('A Miss Fortune não tem escape: toda decisão agressiva depende de o '
       'inimigo ter gastado o CC dele antes. Essa é a única regra que não muda '

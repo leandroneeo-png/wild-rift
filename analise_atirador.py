@@ -361,7 +361,37 @@ def dps_por_ouro(nome, item, contexto, alvo):
 
 
 # --------------------------------------------------------------------------
-# 4. Relatorio
+# 4. Itens que nao podem andar juntos
+# --------------------------------------------------------------------------
+# Wild Rift bloqueia itens que entregam o mesmo efeito unico. O banco nao tem
+# campo de receita nem de exclusividade, entao a deteccao abaixo e feita pelo
+# nome da passiva no texto. Conflitos por componente compartilhado (dois
+# lendarios que nascem do mesmo item epico) NAO aparecem aqui.
+import collections
+
+# Confirmados em jogo e invisiveis para o detector (mesmo componente epico).
+CONFLITOS_POR_COMPONENTE = {
+    'Último Sussurro (penetração de armadura)': [
+        'Lembrete Mortal', 'Lembranças do Lorde Dominik', 'Rancor de Serylda',
+    ],
+}
+
+
+def passivas_compartilhadas(itens):
+    grupos = collections.defaultdict(set)
+    for nome, item in itens.items():
+        for linha in item['desc'].split('\n'):
+            achado = re.match(r'^([A-ZÀ-Ý][^:]{2,28}):', linha.strip())
+            if achado:
+                grupos[achado.group(1).strip()].add(nome)
+    gerais = ('Tempo de Recarga', 'Tempo de Recarga do Ativo', 'Restrição',
+              'Missão', 'Tributo', 'Azuporim')
+    return {p: sorted(n) for p, n in sorted(grupos.items())
+            if len(n) > 1 and p not in gerais}
+
+
+# --------------------------------------------------------------------------
+# 5. Relatorio
 # --------------------------------------------------------------------------
 def linha_stats(stats):
     ordem = ['ad', 'as', 'crit', 'hp', 'armadura', 'mr', 'ah', 'vamp',
@@ -487,8 +517,34 @@ def main():
     w('- Passivas de utilidade (lentidão, vel. de movimento, escudos) não entram.')
     w('')
 
+    # --- conflitos de itens ---
+    w('## 5. Itens que não podem andar juntos')
+    w('')
+    w('O Wild Rift bloqueia dois itens que entregam o mesmo efeito único, e o '
+      '`metadata.json` **não tem campo de receita nem de exclusividade** — só '
+      'o texto da passiva. Então esta lista sai do nome da passiva repetida:')
+    w('')
+    w('| Efeito único | Itens que o carregam |')
+    w('|---|---|')
+    for passiva, nomes in passivas_compartilhadas(itens).items():
+        w('| %s | %s |' % (passiva, ', '.join(n.replace('[NEW]', '')
+                                              for n in nomes)))
+    w('')
+    w('**O detector não pega tudo.** Dois lendários que nascem do mesmo item '
+      'épico também são mutuamente exclusivos, e a receita não está no banco. '
+      'O caso que importa para atirador:')
+    w('')
+    for grupo, nomes in CONFLITOS_POR_COMPONENTE.items():
+        w('- **%s** — só um destes por build: %s.' % (grupo, ', '.join(nomes)))
+    w('')
+    w('Ou seja: a penetração percentual é **escolha única**, não acumulável. '
+      'Contra vida alta, Lembranças do Lorde Dominik (Mata-Gigantes); contra '
+      'cura, Lembrete Mortal (Feridas Dolorosas); contra mobilidade, Rancor de '
+      'Serylda (lentidão).')
+    w('')
+
     # --- itens basicos de referencia ---
-    w('## 5. Itens primários usados como régua')
+    w('## 6. Itens primários usados como régua')
     w('')
     w('| Item básico | Preço | Atributos |')
     w('|---|---|---|')
@@ -499,7 +555,7 @@ def main():
     w('')
 
     # --- leitura pratica ---
-    w('## 6. Leitura prática')
+    w('## 7. Leitura prática')
     w('')
     w('**Melhor custo-benefício puro (atributos por ouro):** Sedenta por Sangue, '
       'Terminus, Dançarina Fantasma, Lembrete Mortal e Lembranças do Lorde '
@@ -537,16 +593,23 @@ def main():
       'eficientes, 171% e 127%)')
     w('3. Item de crítico com AD alto (Sedenta por Sangue ou Força do Vendaval)')
     w('4. Gume do Infinito, quando o crítico já estiver alto')
-    w('5. Penetração conforme o inimigo (Lembrete Mortal ou Lembranças do Lorde '
-      'Dominik contra tanques)')
+    w('5. Penetração conforme o inimigo — **um só** item da linha do Último '
+      'Sussurro (Lembrete Mortal, Lembranças do Lorde Dominik ou Rancor de '
+      'Serylda); o jogo não deixa combinar dois')
     w('')
 
     # --- observacoes sobre os dados ---
     sem_preco = sorted(n for n, i in itens.items() if not i['preco'])
-    w('## 7. Observações sobre os dados')
+    w('## 8. Observações sobre os dados')
     w('')
     w('- Preços e atributos vêm de `metadata.json`; mudanças de patch invalidam '
       'os números.')
+    w('- O banco não guarda a árvore de construção nem a exclusividade dos '
+      'itens. Sem esses dois campos, nenhuma ferramenta do projeto consegue '
+      'avisar que Lembrete Mortal e Lembranças do Lorde Dominik não podem ser '
+      'comprados juntos — vale adicionar.')
+    w('- O Wild Rift não tem poções nem consumíveis, e o banco reflete isso: '
+      'não existe nenhum item desse tipo em `metadata.json`.')
     w('- Penetração de armadura plana não tem item básico puro de referência: '
       'está precificada pela equivalência com penetração percentual contra 100 '
       'de armadura.')

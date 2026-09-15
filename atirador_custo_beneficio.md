@@ -132,7 +132,41 @@ Referência: atirador nível 15 com 110 de AD base e 0.90 ataque/s base. Alvo fr
 - **Sedenta por Sangue**, **Arco-escudo Imortal**, **Cimitarra Mercurial**: parte do preço é sobrevivência, não dano.
 - Passivas de utilidade (lentidão, vel. de movimento, escudos) não entram.
 
-## 5. Itens primários usados como régua
+## 5. Itens que não podem andar juntos
+
+O Wild Rift bloqueia dois itens que entregam o mesmo efeito único, e o `metadata.json` **não tem campo de receita nem de exclusividade** — só o texto da passiva. Então esta lista sai do nome da passiva repetida:
+
+| Efeito único | Itens que o carregam |
+|---|---|
+| Carga de Mana | Aproximação Invernal, Cajado do Arcanjo, Cristal de Safira, Lágrima da Deusa, Manamune |
+| Choque | Estilhaço de Kircheis, Muramana |
+| Conversão | Grevas Vorazes, Projetor Psíquico |
+| Efeito Ativo (Estase) | Ampulheta de Zhonya, Armaguarda da Caçadora |
+| Efeito Ativo (Mercurio) | Bandana de Mercúrio, Cimitarra Mercurial |
+| Efeito Passivo (Tenacidade) | Bandana de Mercúrio, Cimitarra Mercurial |
+| Embalo | Couraça do Defunto, Lâmina Fantasma de Youmuu |
+| Entrelaçar | Armadura de Espinhos, Colete Espinhoso |
+| Equilíbrio | Botas de Mana, Orbe do Infinito |
+| Espinhos | Armadura de Espinhos, Colete Espinhoso |
+| Eternidade | Bastão das Eras, Catalisador das Eras, Redenção |
+| Fascínio | Abraço de Seraph, Aproximação Invernal, Cajado do Arcanjo, Fimbulwinter, Lágrima da Deusa, Manamune, Muramana |
+| Fervor | Força da Trindade, Zelo, [OFF] Força da Trindade |
+| Gélido | Cetro de Cristal de Rylai, Rancor de Serylda |
+| Imolar | Resplendor Vazio, Égide de Fogo Solar |
+| Impulso | Escamas Emergentes, Lâmina da Fúria de Guinsoo |
+| Lâmina Arcana | Força da Trindade, Fulgor, Manopla dos Glacinatas, Perdição de Lich, Ruptor Divino, [OFF] Força da Trindade |
+| Salva-Vidas | Abraço de Seraph, Arco-escudo Imortal, Mandíbula de Malmortius, Manto da Meia-noite, Sinal de Sterak |
+| Turbo | Detonador Magnético, Hexoplaca Experimental |
+| Valentia | Força da Trindade, [OFF] Força da Trindade |
+| Último Sussurro | Lembrete Mortal, Último Sussurro |
+
+**O detector não pega tudo.** Dois lendários que nascem do mesmo item épico também são mutuamente exclusivos, e a receita não está no banco. O caso que importa para atirador:
+
+- **Último Sussurro (penetração de armadura)** — só um destes por build: Lembrete Mortal, Lembranças do Lorde Dominik, Rancor de Serylda.
+
+Ou seja: a penetração percentual é **escolha única**, não acumulável. Contra vida alta, Lembranças do Lorde Dominik (Mata-Gigantes); contra cura, Lembrete Mortal (Feridas Dolorosas); contra mobilidade, Rancor de Serylda (lentidão).
+
+## 6. Itens primários usados como régua
 
 | Item básico | Preço | Atributos |
 |---|---|---|
@@ -147,7 +181,7 @@ Referência: atirador nível 15 com 110 de AD base e 0.90 ataque/s base. Alvo fr
 | Botas da Velocidade | 500g | 25 Vel. Movimento |
 | Cristal de Safira | 500g | 5 Acel. Habilidade, 100 Mana |
 
-## 6. Leitura prática
+## 7. Leitura prática
 
 **Melhor custo-benefício puro (atributos por ouro):** Sedenta por Sangue, Terminus, Dançarina Fantasma, Lembrete Mortal e Lembranças do Lorde Dominik passam de 140% — pagam-se sozinhos antes mesmo da passiva.
 
@@ -170,11 +204,13 @@ Referência: atirador nível 15 com 110 de AD base e 0.90 ataque/s base. Alvo fr
 2. Botas do Dinamismo ou Grevas do Berserker (as duas botas mais eficientes, 171% e 127%)
 3. Item de crítico com AD alto (Sedenta por Sangue ou Força do Vendaval)
 4. Gume do Infinito, quando o crítico já estiver alto
-5. Penetração conforme o inimigo (Lembrete Mortal ou Lembranças do Lorde Dominik contra tanques)
+5. Penetração conforme o inimigo — **um só** item da linha do Último Sussurro (Lembrete Mortal, Lembranças do Lorde Dominik ou Rancor de Serylda); o jogo não deixa combinar dois
 
-## 7. Observações sobre os dados
+## 8. Observações sobre os dados
 
 - Preços e atributos vêm de `metadata.json`; mudanças de patch invalidam os números.
+- O banco não guarda a árvore de construção nem a exclusividade dos itens. Sem esses dois campos, nenhuma ferramenta do projeto consegue avisar que Lembrete Mortal e Lembranças do Lorde Dominik não podem ser comprados juntos — vale adicionar.
+- O Wild Rift não tem poções nem consumíveis, e o banco reflete isso: não existe nenhum item desse tipo em `metadata.json`.
 - Penetração de armadura plana não tem item básico puro de referência: está precificada pela equivalência com penetração percentual contra 100 de armadura.
 - 5 itens do banco estão com preço 0 e ficaram fora das tabelas: Abraço de Seraph, Fimbulwinter, Muramana, [OFF] Força da Trindade, [OFF] Juramento do Protetor.
 

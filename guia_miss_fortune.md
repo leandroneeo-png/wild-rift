@@ -46,35 +46,41 @@ Por isso a régua que vale para ela é a da eficiência de ouro pura, onde os it
 
 DPS = ataques básicos do atirador de referência do relatório (nível 15, 110 de AD base, 0.90 ataque/s). Serve para comparar as etapas entre si, não é a simulação exata da Miss Fortune — Amor Duplo, o Tiro Duplo e o Tiroteio somam por cima disso e escalam com AD e crítico.
 
+> **Penetração é escolha única.** Lembrete Mortal, Lembranças do Lorde Dominik e Rancor de Serylda nascem todos do Último Sussurro: a loja não deixa levar dois. Escolha pelo inimigo — Dominik contra vida alta, Lembrete Mortal contra cura, Serylda contra mobilidade.
+
 **Ordem de habilidades:** maximize o **Tiro Duplo** primeiro (dano de rota e limpeza de onda), depois **Golpes Fatais**, deixando **Fazer Chover** por último. Ultimate sempre que disponível (nível 5, 9, 13).
 
 ## 3. Contra suporte TANQUE/ENGATE (Leona, Nautilus, Blitzcrank, Alistar, Thresh, Braum, Rell)
 
 **Postura: passiva até o nível 5 e até ter botas.** Aqui a troca de dano não é o problema — o problema é uma única pegada. Você não tem dash nem escudo: qualquer acerto de Blitzcrank, Nautilus ou Leona vira morte.
 
-- **Nível 1-4**: fique **atrás da sua onda**, nunca na lateral livre. Farme com ataque básico e com o Tiro Duplo quicando; não contest a troca, você perde a corrida de dano contra um tanque com cura do suporte.
+- **Nível 1-4**: fique **atrás da sua onda**, nunca na lateral livre. Farme com ataque básico e com o Tiro Duplo quicando; não conteste a troca, você perde a corrida de dano contra um tanque com cura do suporte.
 - **Segure o Fazer Chover para defesa**, não para dano: a lentidão é o que cancela o engate depois que o CC deles acerta.
 - **Nível 5**: primeiro momento de jogar para frente — mas só com o CC principal do suporte inimigo em recarga (Q do Blitz, E do Naut, E da Leona). Conte a recarga, é a informação mais valiosa da rota.
 - **Encantamento de Estase (1.000g) ou de Mercúrio (800g)** nas botas é obrigatório nessa rota, e vale mais que 1.000g de dano.
 - **Contra tanque de linha de frente**, os números do relatório são claros: Espada do Rei Destruído (40,7 DPS/1000g contra tanque) e Lembrete Mortal são os itens que mantêm rendimento; crítico puro perde quase metade do valor contra 250 de armadura.
 
-### Rota de compras — 18.900 de ouro até fechar a build
+### Rota de compras — 18.700 de ouro até fechar a build
 
 | Etapa | Ouro da volta | Compra | Total investido | AD | Crítico | DPS no frágil | DPS no tanque |
 |---|---|---|---|---|---|---|---|
 | Início | 500g | Espada Longa | 500g | +12 | 0% | 55 | 31 |
 | 1ª volta | 1200g | Cetro Vampírico | 1700g | +20 | 0% | 58 | 33 |
-| 2ª volta | 900g | Botas (base) + poções | 2600g | +20 | 0% | 58 | 33 |
+| 2ª volta | 900g | Botas do Dinamismo (base) | 2600g | +20 | 0% | 58 | 33 |
 | 3ª volta | 1800g | completa Sedenta por Sangue | 4400g | +55 | 25% | 88 | 50 |
 | 4ª volta | 1300g | evolui as botas + Encantamento de Estase | 5700g | +95 | 25% | 120 | 68 |
 | 5ª volta | 3200g | Espada do Rei Destruído | 8900g | +120 | 25% | 245 | 170 |
 | 6ª volta | 3300g | Lembrete Mortal | 12200g | +145 | 50% | 402 | 297 |
 | 7ª volta | 3400g | Gume do Infinito | 15600g | +205 | 75% | 601 | 423 |
-| Build fechada | 3300g | Lembranças do Lorde Dominik | 18900g | +230 | 100% | 1009 | 926 |
+| Build fechada | 3100g | Cimitarra Mercurial | 18700g | +245 | 75% | 666 | 464 |
 
 "Ouro da volta" é o preço de loja do que você compra naquela ida à base e "total investido" soma tudo que já passou pela build, componentes inclusos — em jogo a loja abate o valor das peças que você já carrega, então o número na tela costuma ser menor.
 
 DPS = ataques básicos do atirador de referência do relatório (nível 15, 110 de AD base, 0.90 ataque/s). Serve para comparar as etapas entre si, não é a simulação exata da Miss Fortune — Amor Duplo, o Tiro Duplo e o Tiroteio somam por cima disso e escalam com AD e crítico.
+
+> **Um item de penetração só.** Aqui a escolha é Lembrete Mortal (as Feridas Dolorosas cortam a cura do suporte tanque). Se o time inimigo for de vida alta sem cura, troque por Lembranças do Lorde Dominik no mesmo slot — nunca os dois.
+
+> A **Cimitarra Mercurial** fecha a build porque o ativo dela limpa o CC que te mata nessa rota. Se levar ela, o encantamento das botas deve ser **Estase**, não Mercúrio — são o mesmo efeito.
 
 **Ordem de habilidades:** ainda Tiro Duplo primeiro, mas suba o **Fazer Chover** um ponto cedo (nível 3) pelo desengate. Se o suporte inimigo é Blitzcrank, o ponto em Fazer Chover no nível 2 já se paga.
 
@@ -100,6 +106,8 @@ DPS = ataques básicos do atirador de referência do relatório (nível 15, 110 
 | Rota contra Draven, Kalista ou Jinx (counters diretos) | **Passivo até o 1º lendário** |
 | Rota contra Jhin, Sivir ou Varus (você é o counter) | **Agressivo desde o nível 1** |
 | Luta coletiva com 3+ inimigos agrupados | Ult de trás, nunca de frente |
+
+> **Confira a árvore na loja.** O `metadata.json` guarda preço, atributos e passiva, mas não a receita nem a exclusividade dos itens. Nenhum número deste guia detecta sozinho que dois itens não podem ser combinados — os conflitos conhecidos estão listados em `atirador_custo_beneficio.md`, seção 5.
 
 A Miss Fortune não tem escape: toda decisão agressiva depende de o inimigo ter gastado o CC dele antes. Essa é a única regra que não muda com o item.
 
