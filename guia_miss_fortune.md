@@ -2,7 +2,7 @@
 
 Gerado por `guia_miss_fortune.py`, em cima do modelo de `analise_atirador.py` (preços e atributos de `metadata.json`).
 
-Dados do próprio projeto (`tencent_data.json`): Miss Fortune está com **52,18% de vitórias**, 23,28% de presença e 2,42% de banimentos — é a atiradora mais jogada do banco. Pelos counters de `campeoes_counters.md`: ela **vence** Jhin, Sivir e Varus, e **perde** para Draven, Kalista e Jinx.
+Dados do próprio projeto (`tencent_data.json`): Miss Fortune está com **52,18% de vitórias**, 23,28% de presença e 2,42% de banimentos — é a atiradora mais jogada do banco. Pelos counters de `campeoes_counters.md` (coluna "Forte Contra"): ela **vence** Draven, Kalista e Jinx, e **perde** para Jhin, Sivir e Varus.
 
 ## 1. Por que a build dela foge do ranking geral de atirador
 
@@ -155,8 +155,8 @@ Feitiços disponíveis no projeto (`SPELLS_MAPPING`, `app.js`): Flash, Curar, Ba
 | Suporte inimigo tanque, antes do seu nível 5 | **Passivo, farmar** |
 | CC principal do suporte inimigo em recarga | **Agressivo** |
 | Você sem o Tiroteio, eles com o ult pronto | **Passivo** |
-| Rota contra Draven, Kalista ou Jinx (counters diretos) | **Passivo até o 1º lendário** |
-| Rota contra Jhin, Sivir ou Varus (você é o counter) | **Agressivo desde o nível 1** |
+| Rota contra Draven, Kalista ou Jinx (você é o counter) | **Agressivo desde o nível 1** |
+| Rota contra Jhin, Sivir ou Varus (eles te counteram) | **Passivo até o 1º lendário** |
 | Luta coletiva com 3+ inimigos agrupados | Ult de trás, nunca de frente |
 
 > **Confira a árvore na loja.** O `metadata.json` guarda preço, atributos e passiva, mas não a receita nem a exclusividade dos itens. Nenhum número deste guia detecta sozinho que dois itens não podem ser combinados — os conflitos conhecidos estão listados em `atirador_custo_beneficio.md`, seção 5.

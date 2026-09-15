@@ -204,8 +204,8 @@ def main():
     w('Dados do próprio projeto (`tencent_data.json`): Miss Fortune está com '
       '**52,18% de vitórias**, 23,28% de presença e 2,42% de banimentos — é a '
       'atiradora mais jogada do banco. Pelos counters de '
-      '`campeoes_counters.md`: ela **vence** Jhin, Sivir e Varus, e **perde** '
-      'para Draven, Kalista e Jinx.')
+      '`campeoes_counters.md` (coluna "Forte Contra"): ela **vence** Draven, '
+      'Kalista e Jinx, e **perde** para Jhin, Sivir e Varus.')
     w('')
 
     w('## 1. Por que a build dela foge do ranking geral de atirador')
@@ -427,10 +427,10 @@ def main():
     w('| Suporte inimigo tanque, antes do seu nível 5 | **Passivo, farmar** |')
     w('| CC principal do suporte inimigo em recarga | **Agressivo** |')
     w('| Você sem o Tiroteio, eles com o ult pronto | **Passivo** |')
-    w('| Rota contra Draven, Kalista ou Jinx (counters diretos) | **Passivo '
-      'até o 1º lendário** |')
-    w('| Rota contra Jhin, Sivir ou Varus (você é o counter) | **Agressivo '
-      'desde o nível 1** |')
+    w('| Rota contra Draven, Kalista ou Jinx (você é o counter) | '
+      '**Agressivo desde o nível 1** |')
+    w('| Rota contra Jhin, Sivir ou Varus (eles te counteram) | **Passivo até '
+      'o 1º lendário** |')
     w('| Luta coletiva com 3+ inimigos agrupados | Ult de trás, nunca de frente |')
     w('')
     w('> **Confira a árvore na loja.** O `metadata.json` guarda preço, '
