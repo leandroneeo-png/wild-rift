@@ -63,6 +63,82 @@ ROTA_TANQUE = [
 ]
 
 
+# Runas modeladas a partir do texto de metadata.json['runes'] (nível 15,
+# campeã de ataque à distância). Cada função recebe o perfil já montado com os
+# itens e devolve o dano por segundo extra que a runa adiciona fora do ataque.
+RUNAS_CHAVE = {
+    'Fortalecimento': (
+        'Amplifica também o Tiro Duplo e o Tiroteio',
+        lambda p: setattr(p, 'bonus_dano', p.bonus_dano + 0.09) or 200 / 4.0),
+    'Ritmo Fatal': (
+        'Só ataque básico; ultrapassa o limite de vel. de ataque',
+        lambda p: setattr(p, 'as_pct', p.as_pct + 0.60) or 0.0),
+    'Conquistador': (
+        'AD adaptativo, então soma no Tiro Duplo e no Tiroteio',
+        lambda p: setattr(p, 'ad', p.ad + 42) or 0.0),
+    'Eletrocutar': (
+        'Explosão a cada 13s; bom para pegar alvo isolado',
+        lambda p: (194 + 0.35 * p.ad) / 13.0),
+    'Primeiro Ataque': (
+        'Dano verdadeiro nos 3s iniciais + ouro extra',
+        lambda p: setattr(p, 'bonus_dano', p.bonus_dano + 0.07 * 0.3) or 0.0),
+    'Colheita Sombria': (
+        'Só contra alvo abaixo de 50% de vida',
+        lambda p: (40 + 10 * 20 + 0.25 * p.ad) / 20.0),
+    'Agilidade nos Pés': (
+        'Cura e velocidade; dano quase nulo',
+        lambda p: 0.0),
+}
+
+BUILD_COMPARACAO = ['[NEW]Forca do Vendaval', 'Grevas do Berserker (Reformuladas)',
+                    'A Coletora', 'Gume do Infinito']
+
+
+# Dano extra de cada runa numa troca de 3 ataques (o padrao da Miss Fortune na
+# rota), em vez de luta longa. Ritmo Fatal nao aparece aqui de proposito: ele
+# da mais ataques por segundo, nao mais dano por ataque.
+TROCA_CURTA = {
+    'Fortalecimento': ('plano', 200.0),      # gatilho no 3º ataque
+    'Eletrocutar': ('ad', (194.0, 0.35)),    # 194 + 35% do AD adicional
+    'Conquistador': ('ad_medio', 14.0),      # 3 acumulos, subindo
+    'Primeiro Ataque': ('amp', 0.07),        # dano verdadeiro nos 3s
+    'Ritmo Fatal': ('plano', 0.0),
+    'Colheita Sombria': ('plano', 0.0),      # alvo ainda acima de 50%
+    'Agilidade nos Pés': ('plano', 0.0),
+}
+
+
+def troca_de_3_ataques(itens, runa, alvo):
+    p, _ = perfil_da_build(itens, BUILD_COMPARACAO, alvo)
+    reducao = 100.0 / (100.0 + alvo['armadura'] * (1 - min(p.pen_pct, 0.9))
+                       - p.pen_plana)
+    mult_crit = 1 + min(p.crit, 1.0) * (p.dano_critico - 1)
+    ad = base.BASE_AD + p.ad
+    extra_ad, plano, amp = 0.0, 0.0, 0.0
+    if runa:
+        tipo, valor = TROCA_CURTA[runa]
+        if tipo == 'plano':
+            plano = valor
+        elif tipo == 'ad':
+            plano = valor[0] + valor[1] * p.ad
+        elif tipo == 'ad_medio':
+            extra_ad = valor
+        elif tipo == 'amp':
+            amp = valor
+    por_ataque = (ad + extra_ad) * mult_crit + p.onhit_fis
+    return (3 * por_ataque * (1 + amp) + plano) * reducao
+
+
+def dps_com_runa(itens, runa, alvo):
+    p, _ = perfil_da_build(itens, BUILD_COMPARACAO, alvo)
+    extra = 0.0
+    if runa:
+        extra = RUNAS_CHAVE[runa][1](p) or 0.0
+    reducao = 100.0 / (100.0 + alvo['armadura'] * (1 - min(p.pen_pct, 0.9))
+                       - p.pen_plana)
+    return base.dps(p, alvo) + extra * reducao
+
+
 def perfil_da_build(itens, nomes, alvo):
     """Soma os atributos de todos os itens da build e aplica as passivas."""
     total = {}
@@ -249,7 +325,101 @@ def main():
       'posicionamento | Ficar no fundo, ult só com o CC inimigo gasto |')
     w('')
 
-    w('## 5. Regras rápidas de postura')
+    w('## 5. Runas')
+    w('')
+    w('O `metadata.json` tem 58 runas com o texto completo, e o `app.js` '
+      '(`RUNES_KEYSTONES`, linha 107) diz quais são de **Chave**. O que o banco '
+      '**não** tem é a qual dos outros três espaços cada runa pertence — então '
+      'só a escolha de Chave abaixo é calculada; as demais vão por função, e '
+      'você confirma o espaço na tela do jogo.')
+    w('')
+    w('### Chave — comparação calculada')
+    w('')
+    w('Build de referência: Força do Vendaval + Grevas do Berserker + A '
+      'Coletora + Gume do Infinito (155 de AD, 75% de crítico). Duas colunas '
+      'porque as duas situações premiam runas diferentes: **luta longa** é DPS '
+      'com você batendo sem parar; **troca de 3 ataques** é o que realmente '
+      'acontece na rota.')
+    w('')
+    w('| Runa de Chave | Luta longa (DPS) | Troca de 3 ataques (dano) | '
+      'Alcance do efeito |')
+    w('|---|---|---|---|')
+    linhas_runa = []
+    for nome, (nota, _) in RUNAS_CHAVE.items():
+        linhas_runa.append((troca_de_3_ataques(itens, nome,
+                                               base.ALVOS['frágil']),
+                            dps_com_runa(itens, nome, base.ALVOS['frágil']),
+                            nome, nota))
+    for troca, dps_longa, nome, nota in sorted(linhas_runa, reverse=True):
+        w('| **%s** | %.0f | %.0f | %s |' % (nome, dps_longa, troca, nota))
+    w('| _(sem runa de Chave)_ | %.0f | %.0f | referência |'
+      % (dps_com_runa(itens, None, base.ALVOS['frágil']),
+         troca_de_3_ataques(itens, None, base.ALVOS['frágil'])))
+    w('')
+    w('**Leitura honesta da tabela:** em luta longa, **Ritmo Fatal** ganha '
+      '(%.0f contra %.0f de DPS), porque 60%% de velocidade de ataque rende '
+      'muito quando você fica batendo. Na troca de 3 ataques ele rende '
+      '**zero** — mais ataques por segundo não é mais dano por ataque, e a '
+      'Miss Fortune não fica 6 ataques em cima de ninguém.'
+      % (dps_com_runa(itens, 'Ritmo Fatal', base.ALVOS['frágil']),
+         dps_com_runa(itens, 'Fortalecimento', base.ALVOS['frágil'])))
+    w('')
+    w('**Escolha padrão: Fortalecimento.** É a segunda melhor em luta longa, a '
+      'segunda melhor na troca curta, e é a única cuja amplificação de 9% '
+      'também vale para o Tiro Duplo e o Tiroteio — que a tabela nem conta, '
+      'porque ela só mede ataque básico.')
+    w('')
+    w('- **Contra suporte frágil, jogando para matar cedo**: **Eletrocutar** — '
+      '%.0f de dano na troca de 3 ataques contra %.0f do Fortalecimento. É a '
+      'runa que transforma uma troca no nível 3 em abate.'
+      % (troca_de_3_ataques(itens, 'Eletrocutar', base.ALVOS['frágil']),
+         troca_de_3_ataques(itens, 'Fortalecimento', base.ALVOS['frágil'])))
+    w('- **Contra suporte tanque**: Fortalecimento. A amplificação de 9% '
+      'funciona contra qualquer armadura; crítico, não.')
+    w('- **Ritmo Fatal** só se você for de segurar ataque básico em luta '
+      'coletiva longa — não é o padrão dela.')
+    w('- **Primeiro Ataque** se você joga para economia: o ouro extra adianta '
+      'o primeiro lendário, que é o pico que mais importa.')
+    w('')
+    w('### Os outros três espaços')
+    w('')
+    w('| Função | Runa | Por quê |')
+    w('|---|---|---|')
+    w('| Dano contínuo | **Brutal** | 6 + 8% do AD adicional por ataque, '
+      'adaptativo; escala com a build inteira |')
+    w('| Execução | **Golpe de Misericórdia** | +8% de dano em alvo abaixo de '
+      '40% de vida — casa com a passiva de execução de A Coletora |')
+    w('| Abertura de luta | **Dilacerar** | +8% de dano em alvo acima de 60% '
+      'de vida; melhor que Golpe de Misericórdia em rota de poke |')
+    w('| Sobrevivência na rota | **Ventos Revigorantes** | regenera 6 + 2% da '
+      'vida perdida; segura rota contra poke |')
+    w('| Contra CC pesado | **Perserverança** | 10% de tenacidade + armadura e '
+      'RM ao ser imobilizada — direto contra Leona, Naut e Blitz |')
+    w('| Escala tardia | **Tempestade Crescente** | AD adaptativo que cresce a '
+      'cada 3 min a partir dos 6 min |')
+    w('| Vampirismo | **Lenda: Linhagem** | até 8% de vampirismo universal |')
+    w('')
+    w('**Contra suporte frágil:** Brutal + Dilacerar + Tempestade Crescente. '
+      'Rota de troca de dano, você quer dano puro em cima do Amor Duplo.')
+    w('')
+    w('**Contra suporte tanque:** Brutal + Perserverança + Ventos Revigorantes. '
+      'Aqui sobreviver ao engate vale mais do que 8% de dano — sem escape, '
+      'tenacidade é o que te dá a chance de usar o Flash depois do CC.')
+    w('')
+    w('> Se duas dessas caírem no mesmo espaço na tela do jogo, fique com a de '
+      'cima da lista e pegue a próxima da mesma coluna.')
+    w('')
+    w('### Feitiços')
+    w('')
+    w('Feitiços disponíveis no projeto (`SPELLS_MAPPING`, `app.js`): Flash, '
+      'Curar, Barreira, Exaustão, Incendiar, Purificar, Fantasma e Golpear.')
+    w('')
+    w('**Flash + Curar** contra suporte frágil (a cura salva da troca e do '
+      'Incendiar). **Flash + Barreira** contra suporte de engate: a barreira '
+      'absorve a explosão do combo enquanto o CC ainda está em cima de você.')
+    w('')
+
+    w('## 6. Regras rápidas de postura')
     w('')
     w('| Situação | Jogar |')
     w('|---|---|')

@@ -95,7 +95,59 @@ DPS = ataques básicos do atirador de referência do relatório (nível 15, 110 
 | **Gume do Infinito com crítico alto** | Crítico passa de 175% para 205% de dano — vale 39,3 DPS/1000g no 4º slot contra 13,8 no 1º | Só comprar depois de 50% de crítico |
 | **Build fechada (6 itens)** | Sem novos picos: a partir daí é posicionamento | Ficar no fundo, ult só com o CC inimigo gasto |
 
-## 5. Regras rápidas de postura
+## 5. Runas
+
+O `metadata.json` tem 58 runas com o texto completo, e o `app.js` (`RUNES_KEYSTONES`, linha 107) diz quais são de **Chave**. O que o banco **não** tem é a qual dos outros três espaços cada runa pertence — então só a escolha de Chave abaixo é calculada; as demais vão por função, e você confirma o espaço na tela do jogo.
+
+### Chave — comparação calculada
+
+Build de referência: Força do Vendaval + Grevas do Berserker + A Coletora + Gume do Infinito (155 de AD, 75% de crítico). Duas colunas porque as duas situações premiam runas diferentes: **luta longa** é DPS com você batendo sem parar; **troca de 3 ataques** é o que realmente acontece na rota.
+
+| Runa de Chave | Luta longa (DPS) | Troca de 3 ataques (dano) | Alcance do efeito |
+|---|---|---|---|
+| **Eletrocutar** | 380 | 879 | Explosão a cada 13s; bom para pegar alvo isolado |
+| **Fortalecimento** | 430 | 853 | Amplifica também o Tiro Duplo e o Tiroteio |
+| **Primeiro Ataque** | 378 | 800 | Dano verdadeiro nos 3s iniciais + ouro extra |
+| **Conquistador** | 429 | 787 | AD adaptativo, então soma no Tiro Duplo e no Tiroteio |
+| **Ritmo Fatal** | 505 | 748 | Só ataque básico; ultrapassa o limite de vel. de ataque |
+| **Colheita Sombria** | 378 | 748 | Só contra alvo abaixo de 50% de vida |
+| **Agilidade nos Pés** | 370 | 748 | Cura e velocidade; dano quase nulo |
+| _(sem runa de Chave)_ | 370 | 748 | referência |
+
+**Leitura honesta da tabela:** em luta longa, **Ritmo Fatal** ganha (505 contra 430 de DPS), porque 60% de velocidade de ataque rende muito quando você fica batendo. Na troca de 3 ataques ele rende **zero** — mais ataques por segundo não é mais dano por ataque, e a Miss Fortune não fica 6 ataques em cima de ninguém.
+
+**Escolha padrão: Fortalecimento.** É a segunda melhor em luta longa, a segunda melhor na troca curta, e é a única cuja amplificação de 9% também vale para o Tiro Duplo e o Tiroteio — que a tabela nem conta, porque ela só mede ataque básico.
+
+- **Contra suporte frágil, jogando para matar cedo**: **Eletrocutar** — 879 de dano na troca de 3 ataques contra 853 do Fortalecimento. É a runa que transforma uma troca no nível 3 em abate.
+- **Contra suporte tanque**: Fortalecimento. A amplificação de 9% funciona contra qualquer armadura; crítico, não.
+- **Ritmo Fatal** só se você for de segurar ataque básico em luta coletiva longa — não é o padrão dela.
+- **Primeiro Ataque** se você joga para economia: o ouro extra adianta o primeiro lendário, que é o pico que mais importa.
+
+### Os outros três espaços
+
+| Função | Runa | Por quê |
+|---|---|---|
+| Dano contínuo | **Brutal** | 6 + 8% do AD adicional por ataque, adaptativo; escala com a build inteira |
+| Execução | **Golpe de Misericórdia** | +8% de dano em alvo abaixo de 40% de vida — casa com a passiva de execução de A Coletora |
+| Abertura de luta | **Dilacerar** | +8% de dano em alvo acima de 60% de vida; melhor que Golpe de Misericórdia em rota de poke |
+| Sobrevivência na rota | **Ventos Revigorantes** | regenera 6 + 2% da vida perdida; segura rota contra poke |
+| Contra CC pesado | **Perserverança** | 10% de tenacidade + armadura e RM ao ser imobilizada — direto contra Leona, Naut e Blitz |
+| Escala tardia | **Tempestade Crescente** | AD adaptativo que cresce a cada 3 min a partir dos 6 min |
+| Vampirismo | **Lenda: Linhagem** | até 8% de vampirismo universal |
+
+**Contra suporte frágil:** Brutal + Dilacerar + Tempestade Crescente. Rota de troca de dano, você quer dano puro em cima do Amor Duplo.
+
+**Contra suporte tanque:** Brutal + Perserverança + Ventos Revigorantes. Aqui sobreviver ao engate vale mais do que 8% de dano — sem escape, tenacidade é o que te dá a chance de usar o Flash depois do CC.
+
+> Se duas dessas caírem no mesmo espaço na tela do jogo, fique com a de cima da lista e pegue a próxima da mesma coluna.
+
+### Feitiços
+
+Feitiços disponíveis no projeto (`SPELLS_MAPPING`, `app.js`): Flash, Curar, Barreira, Exaustão, Incendiar, Purificar, Fantasma e Golpear.
+
+**Flash + Curar** contra suporte frágil (a cura salva da troca e do Incendiar). **Flash + Barreira** contra suporte de engate: a barreira absorve a explosão do combo enquanto o CC ainda está em cima de você.
+
+## 6. Regras rápidas de postura
 
 | Situação | Jogar |
 |---|---|
