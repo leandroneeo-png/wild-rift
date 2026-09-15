@@ -106,9 +106,9 @@ Build de referência: Força do Vendaval + Grevas do Berserker + A Coletora + Gu
 | Runa de Chave | Luta longa (DPS) | Troca de 3 ataques (dano) | Alcance do efeito |
 |---|---|---|---|
 | **Eletrocutar** | 380 | 879 | Explosão a cada 13s; bom para pegar alvo isolado |
-| **Fortalecimento** | 430 | 853 | Amplifica também o Tiro Duplo e o Tiroteio |
+| **Fortalecimento** | 430 | 853 | Amplifica todo o dano, habilidades incluídas |
 | **Primeiro Ataque** | 378 | 800 | Dano verdadeiro nos 3s iniciais + ouro extra |
-| **Conquistador** | 429 | 787 | AD adaptativo, então soma no Tiro Duplo e no Tiroteio |
+| **Conquistador** | 429 | 787 | AD adaptativo: soma também nas habilidades |
 | **Ritmo Fatal** | 505 | 748 | Só ataque básico; ultrapassa o limite de vel. de ataque |
 | **Colheita Sombria** | 378 | 748 | Só contra alvo abaixo de 50% de vida |
 | **Agilidade nos Pés** | 370 | 748 | Cura e velocidade; dano quase nulo |

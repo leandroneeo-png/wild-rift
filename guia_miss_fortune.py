@@ -68,13 +68,13 @@ ROTA_TANQUE = [
 # itens e devolve o dano por segundo extra que a runa adiciona fora do ataque.
 RUNAS_CHAVE = {
     'Fortalecimento': (
-        'Amplifica também o Tiro Duplo e o Tiroteio',
+        'Amplifica todo o dano, habilidades incluídas',
         lambda p: setattr(p, 'bonus_dano', p.bonus_dano + 0.09) or 200 / 4.0),
     'Ritmo Fatal': (
         'Só ataque básico; ultrapassa o limite de vel. de ataque',
         lambda p: setattr(p, 'as_pct', p.as_pct + 0.60) or 0.0),
     'Conquistador': (
-        'AD adaptativo, então soma no Tiro Duplo e no Tiroteio',
+        'AD adaptativo: soma também nas habilidades',
         lambda p: setattr(p, 'ad', p.ad + 42) or 0.0),
     'Eletrocutar': (
         'Explosão a cada 13s; bom para pegar alvo isolado',
@@ -159,7 +159,7 @@ def perfil_da_build(itens, nomes, alvo):
     return p, total
 
 
-def tabela(itens, rota, titulo, linhas):
+def tabela(itens, rota, titulo, linhas, nota=None):
     w = linhas.append
     w('### %s — %s de ouro até fechar a build'
       % (titulo, '{:,}'.format(sum(e[1] for e in rota)).replace(',', '.')))
@@ -183,11 +183,12 @@ def tabela(itens, rota, titulo, linhas):
       'componentes inclusos — em jogo a loja abate o valor das peças que você '
       'já carrega, então o número na tela costuma ser menor.')
     w('')
+    padrao = ('não é a simulação exata da Miss Fortune — Amor Duplo, o Tiro '
+              'Duplo e o Tiroteio somam por cima disso e escalam com AD e '
+              'crítico')
     w('DPS = ataques básicos do atirador de referência do relatório '
       '(nível 15, %d de AD base, %.2f ataque/s). Serve para comparar as etapas '
-      'entre si, não é a simulação exata da Miss Fortune — Amor Duplo, o Tiro '
-      'Duplo e o Tiroteio somam por cima disso e escalam com AD e crítico.'
-      % (base.BASE_AD, base.BASE_AS))
+      'entre si, %s.' % (base.BASE_AD, base.BASE_AS, nota or padrao))
     w('')
 
 
